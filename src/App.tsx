@@ -1,0 +1,22 @@
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Navigation } from './components/Navigation';
+import { Models } from './pages/Models';
+import { Chat } from './pages/Chat';
+import './App.css';
+
+function App() {
+  return (
+    <Router>
+      <div className="app">
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<Models />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;

@@ -1,0 +1,280 @@
+import { useState, useEffect, useRef } from 'react';
+import { ollamaService } from '../services/ollama';
+import { StorageService } from '../utils/storage';
+import type { OllamaModel, ChatSession, Message } from '../types';
+import './Chat.css';
+
+export function Chat() {
+  const [models, setModels] = useState<OllamaModel[]>([]);
+  const [sessions, setSessions] = useState<ChatSession[]>([]);
+  const [currentSession, setCurrentSession] = useState<ChatSession | null>(null);
+  const [selectedModel, setSelectedModel] = useState<string>('');
+  const [inputMessage, setInputMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [streamingMessage, setStreamingMessage] = useState('');
+  const [showSidebar, setShowSidebar] = useState(true);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    loadModels();
+    loadSessions();
+  }, []);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [currentSession?.messages, streamingMessage]);
+
+  const loadModels = async () => {
+    try {
+      const modelList = await ollamaService.listModels();
+      setModels(modelList);
+      if (modelList.length > 0 && !selectedModel) {
+        setSelectedModel(modelList[0].name);
+      }
+    } catch (err) {
+      console.error('Failed to load models:', err);
+    }
+  };
+
+  const loadSessions = () => {
+    const loadedSessions = StorageService.getChatSessions();
+    setSessions(loadedSessions);
+  };
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const createNewChat = () => {
+    const newSession: ChatSession = {
+      id: Date.now().toString(),
+      title: 'New Chat',
+      model: selectedModel || models[0]?.name || '',
+      messages: [],
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+    };
+    setCurrentSession(newSession);
+  };
+
+  const loadSession = (sessionId: string) => {
+    const session = StorageService.getChatSession(sessionId);
+    if (session) {
+      setCurrentSession(session);
+      setSelectedModel(session.model);
+    }
+  };
+
+  const deleteSession = (sessionId: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (confirm('Are you sure you want to delete this chat?')) {
+      StorageService.deleteChatSession(sessionId);
+      loadSessions();
+      if (currentSession?.id === sessionId) {
+        setCurrentSession(null);
+      }
+    }
+  };
+
+  const saveCurrentSession = (session: ChatSession) => {
+    // Update title based on first message
+    if (session.messages.length === 1 && session.title === 'New Chat') {
+      const firstMessage = session.messages[0].content;
+      session.title = firstMessage.slice(0, 50) + (firstMessage.length > 50 ? '...' : '');
+    }
+
+    session.updatedAt = Date.now();
+    StorageService.saveChatSession(session);
+    loadSessions();
+  };
+
+  const handleSendMessage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!inputMessage.trim() || isLoading || !selectedModel) return;
+
+    const userMessage: Message = {
+      role: 'user',
+      content: inputMessage.trim(),
+    };
+
+    let session = currentSession;
+    if (!session) {
+      session = {
+        id: Date.now().toString(),
+        title: 'New Chat',
+        model: selectedModel,
+        messages: [],
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      };
+      setCurrentSession(session);
+    }
+
+    const updatedSession = {
+      ...session,
+      messages: [...session.messages, userMessage],
+    };
+    setCurrentSession(updatedSession);
+    setInputMessage('');
+    setIsLoading(true);
+    setStreamingMessage('');
+
+    try {
+      const response = await ollamaService.chat(
+        {
+          model: selectedModel,
+          messages: updatedSession.messages,
+        },
+        (partialMessage) => {
+          setStreamingMessage(partialMessage);
+        }
+      );
+
+      const assistantMessage: Message = {
+        role: 'assistant',
+        content: response,
+      };
+
+      const finalSession = {
+        ...updatedSession,
+        messages: [...updatedSession.messages, assistantMessage],
+      };
+      setCurrentSession(finalSession);
+      saveCurrentSession(finalSession);
+      setStreamingMessage('');
+    } catch (err) {
+      console.error('Failed to send message:', err);
+      alert('Failed to send message. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="chat-page">
+      {/* Sidebar */}
+      <div className={`sidebar ${showSidebar ? 'open' : 'closed'}`}>
+        <div className="sidebar-header">
+          <h2>Chat History</h2>
+          <button onClick={() => setShowSidebar(!showSidebar)} className="toggle-sidebar">
+            {showSidebar ? '‹' : '›'}
+          </button>
+        </div>
+
+        {showSidebar && (
+          <>
+            <button onClick={createNewChat} className="new-chat-button">
+              + New Chat
+            </button>
+
+            <div className="sessions-list">
+              {sessions.length === 0 ? (
+                <div className="empty-sessions">No chat history yet</div>
+              ) : (
+                sessions
+                  .sort((a, b) => b.updatedAt - a.updatedAt)
+                  .map((session) => (
+                    <div
+                      key={session.id}
+                      className={`session-item ${currentSession?.id === session.id ? 'active' : ''}`}
+                      onClick={() => loadSession(session.id)}
+                    >
+                      <div className="session-info">
+                        <div className="session-title">{session.title}</div>
+                        <div className="session-meta">
+                          <span className="session-model">{session.model}</span>
+                          <span className="session-date">
+                            {new Date(session.updatedAt).toLocaleDateString()}
+                          </span>
+                        </div>
+                      </div>
+                      <button
+                        onClick={(e) => deleteSession(session.id, e)}
+                        className="delete-session"
+                        title="Delete chat"
+                      >
+                        🗑️
+                      </button>
+                    </div>
+                  ))
+              )}
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Main chat area */}
+      <div className="chat-main">
+        <div className="chat-header">
+          <div className="model-selector">
+            <label htmlFor="model-select">Model:</label>
+            <select
+              id="model-select"
+              value={selectedModel}
+              onChange={(e) => setSelectedModel(e.target.value)}
+              disabled={isLoading}
+            >
+              {models.length === 0 ? (
+                <option>No models available</option>
+              ) : (
+                models.map((model) => (
+                  <option key={model.name} value={model.name}>
+                    {model.name}
+                  </option>
+                ))
+              )}
+            </select>
+          </div>
+        </div>
+
+        <div className="messages-container">
+          {!currentSession || currentSession.messages.length === 0 ? (
+            <div className="empty-chat">
+              <h2>Start a conversation</h2>
+              <p>Select a model and send a message to begin</p>
+            </div>
+          ) : (
+            <>
+              {currentSession.messages.map((message, index) => (
+                <div key={index} className={`message ${message.role}`}>
+                  <div className="message-role">
+                    {message.role === 'user' ? '👤 You' : '🤖 Assistant'}
+                  </div>
+                  <div className="message-content">{message.content}</div>
+                </div>
+              ))}
+
+              {streamingMessage && (
+                <div className="message assistant streaming">
+                  <div className="message-role">🤖 Assistant</div>
+                  <div className="message-content">{streamingMessage}</div>
+                </div>
+              )}
+
+              <div ref={messagesEndRef} />
+            </>
+          )}
+        </div>
+
+        <form onSubmit={handleSendMessage} className="input-form">
+          <textarea
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleSendMessage(e);
+              }
+            }}
+            placeholder="Type your message... (Enter to send, Shift+Enter for new line)"
+            disabled={isLoading || models.length === 0}
+            rows={3}
+          />
+          <button type="submit" disabled={isLoading || !inputMessage.trim() || models.length === 0}>
+            {isLoading ? 'Sending...' : 'Send'}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
