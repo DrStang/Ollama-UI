@@ -46,23 +46,48 @@ Before you begin, ensure you have the following installed:
    npm install
    ```
 
-3. **Start the development server**
+3. **Start Ollama with CORS enabled** (in a separate terminal)
+
+   **Linux/Mac:**
+   ```bash
+   ./start-ollama.sh
+   ```
+
+   **Or manually:**
+   ```bash
+   OLLAMA_ORIGINS="http://localhost:5173" ollama serve
+   ```
+
+   **Windows:**
+   ```batch
+   start-ollama.bat
+   ```
+
+   **Or manually (PowerShell):**
+   ```powershell
+   $env:OLLAMA_ORIGINS="http://localhost:5173"
+   ollama serve
+   ```
+
+4. **Start the development server** (in a new terminal)
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**
+5. **Open your browser**
    - Navigate to `http://localhost:5173`
 
 ## Usage
 
 ### Getting Started
 
+> **Important:** Make sure Ollama is running with CORS enabled before accessing the UI!
+> If you see connection errors, see [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+
 1. **Ensure Ollama is running**
-   ```bash
-   ollama serve
-   ```
-   The Ollama server should be running on `http://localhost:11434`
+   - Use the startup scripts: `./start-ollama.sh` (Linux/Mac) or `start-ollama.bat` (Windows)
+   - The Ollama server should be running on `http://localhost:11434`
+   - You should see "Ollama is running" in your terminal
 
 2. **Pull your first model** (if you haven't already)
    - Go to the "Models" page
@@ -182,24 +207,25 @@ Ollama-UI/
 
 ## Troubleshooting
 
-### Ollama Connection Issues
+**Getting connection errors?** See the detailed [TROUBLESHOOTING.md](TROUBLESHOOTING.md) guide.
 
-**Error: Failed to fetch models**
-- Ensure Ollama is running: `ollama serve`
-- Check if Ollama is accessible: `curl http://localhost:11434/api/tags`
-- Verify CORS settings if needed
+### Quick Fixes
 
-### Models Not Loading
+**Error: `ERR_CONNECTION_REFUSED` or `Failed to fetch`**
+1. Make sure Ollama is running: `ollama serve`
+2. Ensure CORS is enabled: `OLLAMA_ORIGINS="http://localhost:5173" ollama serve`
+3. Use the provided startup scripts: `./start-ollama.sh` or `start-ollama.bat`
 
-- Restart the Ollama service
-- Clear browser cache and reload
-- Check Ollama logs for errors
+**No models available**
+- Pull a model first: `ollama pull llama2`
+- Or use the UI: Go to Models page and enter a model name
 
-### Chat Not Responding
+**Chat not responding**
+- Verify model is installed: `ollama list`
+- Check browser console (F12) for errors
+- Make sure Ollama server is still running
 
-- Verify the selected model is properly installed
-- Check browser console for error messages
-- Ensure Ollama has enough system resources
+For more detailed troubleshooting, see [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
 
 ## Contributing
 

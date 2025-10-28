@@ -1,6 +1,6 @@
 import type { OllamaModel, PullProgress, ChatRequest, ChatResponse } from '../types';
 
-const OLLAMA_BASE_URL = 'http://localhost:11434';
+const OLLAMA_BASE_URL = import.meta.env.VITE_OLLAMA_BASE_URL || 'http://localhost:11434';
 
 export class OllamaService {
   private baseUrl: string;
@@ -9,16 +9,36 @@ export class OllamaService {
     this.baseUrl = baseUrl;
   }
 
+  async healthCheck(): Promise<boolean> {
+    try {
+      const response = await fetch(`${this.baseUrl}/api/tags`, {
+        method: 'GET',
+        signal: AbortSignal.timeout(5000), // 5 second timeout
+      });
+      return response.ok;
+    } catch (error) {
+      return false;
+    }
+  }
+
   async listModels(): Promise<OllamaModel[]> {
     try {
       const response = await fetch(`${this.baseUrl}/api/tags`);
       if (!response.ok) {
-        throw new Error(`Failed to fetch models: ${response.statusText}`);
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
       const data = await response.json();
       return data.models || [];
     } catch (error) {
-      console.error('Error listing models:', error);
+      if (error instanceof TypeError && error.message === 'Failed to fetch') {
+        throw new Error(
+          `Cannot connect to Ollama server at ${this.baseUrl}.\n\n` +
+          `Please ensure:\n` +
+          `1. Ollama is running (run: ollama serve)\n` +
+          `2. CORS is enabled (set: OLLAMA_ORIGINS="http://localhost:5173")\n` +
+          `3. Server is accessible at ${this.baseUrl}`
+        );
+      }
       throw error;
     }
   }

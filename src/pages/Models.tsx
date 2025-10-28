@@ -91,7 +91,9 @@ export function Models() {
 
       {error && (
         <div className="error-banner">
-          <span>⚠️ {error}</span>
+          <div className="error-content">
+            <pre className="error-message">⚠️ {error}</pre>
+          </div>
           <button onClick={() => setError(null)}>✕</button>
         </div>
       )}
