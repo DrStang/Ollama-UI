@@ -28,6 +28,7 @@ export interface ChatSession {
   id: string;
   title: string;
   model: string;
+  systemPrompt?: string;
   messages: Message[];
   createdAt: number;
   updatedAt: number;

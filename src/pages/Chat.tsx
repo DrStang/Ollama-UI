@@ -9,6 +9,8 @@ export function Chat() {
   const [sessions, setSessions] = useState<ChatSession[]>([]);
   const [currentSession, setCurrentSession] = useState<ChatSession | null>(null);
   const [selectedModel, setSelectedModel] = useState<string>('');
+  const [systemPrompt, setSystemPrompt] = useState<string>('');
+  const [showSystemPrompt, setShowSystemPrompt] = useState<boolean>(false);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [streamingMessage, setStreamingMessage] = useState('');
@@ -23,6 +25,15 @@ export function Chat() {
   useEffect(() => {
     scrollToBottom();
   }, [currentSession?.messages, streamingMessage]);
+
+  // Update system prompt when session changes
+  useEffect(() => {
+    if (currentSession?.systemPrompt !== undefined) {
+      setSystemPrompt(currentSession.systemPrompt);
+    } else {
+      setSystemPrompt('');
+    }
+  }, [currentSession?.id]);
 
   const loadModels = async () => {
     try {
@@ -50,11 +61,13 @@ export function Chat() {
       id: Date.now().toString(),
       title: 'New Chat',
       model: selectedModel || models[0]?.name || '',
+      systemPrompt: '',
       messages: [],
       createdAt: Date.now(),
       updatedAt: Date.now(),
     };
     setCurrentSession(newSession);
+    setSystemPrompt('');
   };
 
   const loadSession = (sessionId: string) => {
@@ -62,6 +75,7 @@ export function Chat() {
     if (session) {
       setCurrentSession(session);
       setSelectedModel(session.model);
+      setSystemPrompt(session.systemPrompt || '');
     }
   };
 
@@ -88,6 +102,18 @@ export function Chat() {
     loadSessions();
   };
 
+  const handleSystemPromptSave = () => {
+    if (currentSession) {
+      const updatedSession = {
+        ...currentSession,
+        systemPrompt: systemPrompt.trim(),
+      };
+      setCurrentSession(updatedSession);
+      saveCurrentSession(updatedSession);
+    }
+    setShowSystemPrompt(false);
+  };
+
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputMessage.trim() || isLoading || !selectedModel) return;
@@ -103,6 +129,7 @@ export function Chat() {
         id: Date.now().toString(),
         title: 'New Chat',
         model: selectedModel,
+        systemPrompt: systemPrompt.trim(),
         messages: [],
         createdAt: Date.now(),
         updatedAt: Date.now(),
@@ -110,8 +137,11 @@ export function Chat() {
       setCurrentSession(session);
     }
 
+    // FIX: Update model to currently selected model
     const updatedSession = {
       ...session,
+      model: selectedModel,
+      systemPrompt: systemPrompt.trim(),
       messages: [...session.messages, userMessage],
     };
     setCurrentSession(updatedSession);
@@ -120,10 +150,23 @@ export function Chat() {
     setStreamingMessage('');
 
     try {
+      // Build messages array with system prompt if present
+      const messagesToSend: Message[] = [];
+
+      if (systemPrompt.trim()) {
+        messagesToSend.push({
+          role: 'system',
+          content: systemPrompt.trim(),
+        });
+      }
+
+      // Add all conversation messages
+      messagesToSend.push(...updatedSession.messages);
+
       const response = await ollamaService.chat(
         {
           model: selectedModel,
-          messages: updatedSession.messages,
+          messages: messagesToSend,
         },
         (partialMessage) => {
           setStreamingMessage(partialMessage);
@@ -225,20 +268,83 @@ export function Chat() {
               )}
             </select>
           </div>
+
+          <button
+            onClick={() => setShowSystemPrompt(!showSystemPrompt)}
+            className={`system-prompt-toggle ${systemPrompt.trim() ? 'active' : ''}`}
+            title={systemPrompt.trim() ? 'System prompt set' : 'Set system prompt'}
+          >
+            {systemPrompt.trim() ? '⚙️ System Prompt ✓' : '⚙️ System Prompt'}
+          </button>
         </div>
+
+        {showSystemPrompt && (
+          <div className="system-prompt-editor">
+            <div className="system-prompt-header">
+              <label htmlFor="system-prompt">System Prompt</label>
+              <span className="system-prompt-info">
+                Set instructions or context for the AI assistant
+              </span>
+            </div>
+            <textarea
+              id="system-prompt"
+              value={systemPrompt}
+              onChange={(e) => setSystemPrompt(e.target.value)}
+              placeholder="e.g., You are a helpful coding assistant. Always provide clear explanations with code examples."
+              rows={4}
+              className="system-prompt-textarea"
+            />
+            <div className="system-prompt-actions">
+              <button
+                onClick={handleSystemPromptSave}
+                className="save-system-prompt"
+              >
+                Save
+              </button>
+              <button
+                onClick={() => setShowSystemPrompt(false)}
+                className="cancel-system-prompt"
+              >
+                Cancel
+              </button>
+              {systemPrompt.trim() && (
+                <button
+                  onClick={() => {
+                    setSystemPrompt('');
+                    if (currentSession) {
+                      const updatedSession = { ...currentSession, systemPrompt: '' };
+                      setCurrentSession(updatedSession);
+                      saveCurrentSession(updatedSession);
+                    }
+                  }}
+                  className="clear-system-prompt"
+                >
+                  Clear
+                </button>
+              )}
+            </div>
+          </div>
+        )}
 
         <div className="messages-container">
           {!currentSession || currentSession.messages.length === 0 ? (
             <div className="empty-chat">
               <h2>Start a conversation</h2>
               <p>Select a model and send a message to begin</p>
+              {systemPrompt.trim() && (
+                <div className="system-prompt-preview">
+                  <strong>System Prompt Active:</strong> {systemPrompt.slice(0, 100)}
+                  {systemPrompt.length > 100 ? '...' : ''}
+                </div>
+              )}
             </div>
           ) : (
             <>
               {currentSession.messages.map((message, index) => (
                 <div key={index} className={`message ${message.role}`}>
                   <div className="message-role">
-                    {message.role === 'user' ? '👤 You' : '🤖 Assistant'}
+                    {message.role === 'user' ? '👤 You' :
+                     message.role === 'system' ? '⚙️ System' : '🤖 Assistant'}
                   </div>
                   <div className="message-content">{message.content}</div>
                 </div>
