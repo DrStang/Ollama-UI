@@ -15,6 +15,8 @@ export function Chat() {
   const [isLoading, setIsLoading] = useState(false);
   const [streamingMessage, setStreamingMessage] = useState('');
   const [showSidebar, setShowSidebar] = useState(true);
+  const [editingSessionId, setEditingSessionId] = useState<string | null>(null);
+  const [editingTitle, setEditingTitle] = useState<string>('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -91,8 +93,8 @@ export function Chat() {
   };
 
   const saveCurrentSession = (session: ChatSession) => {
-    // Update title based on first message
-    if (session.messages.length === 1 && session.title === 'New Chat') {
+    // Update title based on first message (after first exchange: user + assistant = 2 messages)
+    if (session.messages.length === 2 && session.title === 'New Chat') {
       const firstMessage = session.messages[0].content;
       session.title = firstMessage.slice(0, 50) + (firstMessage.length > 50 ? '...' : '');
     }
@@ -100,6 +102,33 @@ export function Chat() {
     session.updatedAt = Date.now();
     StorageService.saveChatSession(session);
     loadSessions();
+  };
+
+  const startRenaming = (sessionId: string, currentTitle: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setEditingSessionId(sessionId);
+    setEditingTitle(currentTitle);
+  };
+
+  const saveRename = (sessionId: string) => {
+    if (editingTitle.trim()) {
+      const session = StorageService.getChatSession(sessionId);
+      if (session) {
+        session.title = editingTitle.trim();
+        StorageService.saveChatSession(session);
+        loadSessions();
+        if (currentSession?.id === sessionId) {
+          setCurrentSession({ ...currentSession, title: editingTitle.trim() });
+        }
+      }
+    }
+    setEditingSessionId(null);
+    setEditingTitle('');
+  };
+
+  const cancelRename = () => {
+    setEditingSessionId(null);
+    setEditingTitle('');
   };
 
   const handleSystemPromptSave = () => {
@@ -220,10 +249,61 @@ export function Chat() {
                     <div
                       key={session.id}
                       className={`session-item ${currentSession?.id === session.id ? 'active' : ''}`}
-                      onClick={() => loadSession(session.id)}
+                      onClick={() => editingSessionId !== session.id && loadSession(session.id)}
                     >
                       <div className="session-info">
-                        <div className="session-title">{session.title}</div>
+                        {editingSessionId === session.id ? (
+                          <div className="session-title-edit">
+                            <input
+                              type="text"
+                              value={editingTitle}
+                              onChange={(e) => setEditingTitle(e.target.value)}
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                  saveRename(session.id);
+                                } else if (e.key === 'Escape') {
+                                  cancelRename();
+                                }
+                              }}
+                              onClick={(e) => e.stopPropagation()}
+                              autoFocus
+                              className="rename-input"
+                            />
+                            <div className="rename-actions">
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  saveRename(session.id);
+                                }}
+                                className="save-rename"
+                                title="Save"
+                              >
+                                ✓
+                              </button>
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  cancelRename();
+                                }}
+                                className="cancel-rename"
+                                title="Cancel"
+                              >
+                                ✕
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="session-title-container">
+                            <div className="session-title">{session.title}</div>
+                            <button
+                              onClick={(e) => startRenaming(session.id, session.title, e)}
+                              className="rename-session"
+                              title="Rename chat"
+                            >
+                              ✎
+                            </button>
+                          </div>
+                        )}
                         <div className="session-meta">
                           <span className="session-model">{session.model}</span>
                           <span className="session-date">
@@ -231,13 +311,15 @@ export function Chat() {
                           </span>
                         </div>
                       </div>
-                      <button
-                        onClick={(e) => deleteSession(session.id, e)}
-                        className="delete-session"
-                        title="Delete chat"
-                      >
-                        🗑️
-                      </button>
+                      {editingSessionId !== session.id && (
+                        <button
+                          onClick={(e) => deleteSession(session.id, e)}
+                          className="delete-session"
+                          title="Delete chat"
+                        >
+                          🗑️
+                        </button>
+                      )}
                     </div>
                   ))
               )}

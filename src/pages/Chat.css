@@ -101,13 +101,100 @@
   min-width: 0;
 }
 
+.session-title-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
 .session-title {
   font-weight: 500;
   color: #333;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+
+.rename-session {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #999;
+  padding: 0.25rem;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.session-item:hover .rename-session {
+  opacity: 1;
+}
+
+.rename-session:hover {
+  background: #f0f0f0;
+  color: #646cff;
+}
+
+.session-title-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   margin-bottom: 0.25rem;
+  width: 100%;
+}
+
+.rename-input {
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  border: 2px solid #646cff;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-family: inherit;
+  background: white;
+}
+
+.rename-input:focus {
+  outline: none;
+  border-color: #535bf2;
+}
+
+.rename-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.save-rename,
+.cancel-rename {
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.save-rename {
+  background: #646cff;
+  color: white;
+}
+
+.save-rename:hover {
+  background: #535bf2;
+}
+
+.cancel-rename {
+  background: #e0e0e0;
+  color: #666;
+}
+
+.cancel-rename:hover {
+  background: #d0d0d0;
 }
 
 .session-meta {
