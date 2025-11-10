@@ -19,6 +19,14 @@ export interface PullProgress {
   completed?: number;
 }
 
+export interface Attachment {
+  id: string;
+  type: 'image' | 'pdf' | 'document' | 'text';
+  name: string;
+  size: number;
+  content: string; // base64 for images, text content for documents
+  mimeType: string;
+  uploadedAt: number;
 export interface MessageImage {
   data: string; // base64 encoded image
   mimeType: string; // e.g., 'image/png', 'image/jpeg'
@@ -27,6 +35,34 @@ export interface MessageImage {
 export interface Message {
   role: 'user' | 'assistant' | 'system';
   content: string;
+  images?: string[]; // base64 encoded images for vision models
+  attachments?: Attachment[];
+}
+
+export interface DocumentChunk {
+  id: string;
+  content: string;
+  embedding?: number[];
+  metadata: {
+    source: string;
+    page?: number;
+    chunkIndex: number;
+  };
+}
+
+export interface RAGContext {
+  enabled: boolean;
+  documents: DocumentChunk[];
+  topK: number; // number of relevant chunks to retrieve
+}
+
+export interface Memory {
+  id: string;
+  sessionId: string;
+  summary: string;
+  keyPoints: string[];
+  embedding?: number[];
+  createdAt: number;
   images?: MessageImage[]; // For vision model support
   attachments?: Attachment[]; // For document attachments
 }
@@ -47,6 +83,9 @@ export interface ChatSession {
   model: string;
   systemPrompt?: string;
   messages: Message[];
+  attachments?: Attachment[];
+  ragContext?: RAGContext;
+  memoryIds?: string[]; // IDs of relevant memories from other sessions
   createdAt: number;
   updatedAt: number;
 }
@@ -55,6 +94,7 @@ export interface ChatRequest {
   model: string;
   messages: Message[];
   stream?: boolean;
+  images?: string[]; // for vision models
 }
 
 export interface ChatResponse {

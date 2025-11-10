@@ -21,6 +21,11 @@ export class OllamaService {
     }
   }
 
+  isVisionModel(modelName: string): boolean {
+    const visionModels = ['llava', 'bakllava', 'moondream', 'cogvlm'];
+    return visionModels.some((vm) => modelName.toLowerCase().includes(vm));
+  }
+
   async listModels(): Promise<OllamaModel[]> {
     try {
       const response = await fetch(`${this.baseUrl}/api/tags`);
