@@ -1,4 +1,4 @@
-import type { OllamaModel, PullProgress, ChatRequest, ChatResponse } from '../types';
+import type { OllamaModel, PullProgress, ChatRequest, ChatResponse, EmbeddingRequest, EmbeddingResponse } from '../types';
 
 const OLLAMA_BASE_URL = import.meta.env.VITE_OLLAMA_BASE_URL || 'http://localhost:11434';
 
@@ -162,6 +162,34 @@ export class OllamaService {
       console.error('Error in chat:', error);
       throw error;
     }
+  }
+
+  async generateEmbedding(request: EmbeddingRequest): Promise<number[]> {
+    try {
+      const response = await fetch(`${this.baseUrl}/api/embeddings`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to generate embedding: ${response.statusText}`);
+      }
+
+      const data: EmbeddingResponse = await response.json();
+      return data.embedding;
+    } catch (error) {
+      console.error('Error generating embedding:', error);
+      throw error;
+    }
+  }
+
+  async checkModelSupportsVision(modelName: string): Promise<boolean> {
+    // Common vision models in Ollama include llava, bakllava, etc.
+    const visionModels = ['llava', 'bakllava', 'llava-llama3', 'llava-phi3'];
+    return visionModels.some(vm => modelName.toLowerCase().includes(vm));
   }
 }
 
