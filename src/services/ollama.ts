@@ -1,4 +1,4 @@
-import type { OllamaModel, PullProgress, ChatRequest, ChatResponse } from '../types';
+import type { OllamaModel, PullProgress, ChatRequest, ChatResponse, EmbeddingResponse } from '../types';
 
 const OLLAMA_BASE_URL = import.meta.env.VITE_OLLAMA_BASE_URL || 'http://localhost:11434';
 
@@ -19,6 +19,11 @@ export class OllamaService {
     } catch (error) {
       return false;
     }
+  }
+
+  isVisionModel(modelName: string): boolean {
+    const visionModels = ['llava', 'bakllava', 'moondream', 'cogvlm'];
+    return visionModels.some((vm) => modelName.toLowerCase().includes(vm));
   }
 
   async listModels(): Promise<OllamaModel[]> {
@@ -161,6 +166,91 @@ export class OllamaService {
     } catch (error) {
       console.error('Error in chat:', error);
       throw error;
+    }
+  }
+
+  async generateEmbedding(text: string, model: string = 'nomic-embed-text'): Promise<number[]> {
+    try {
+      const response = await fetch(`${this.baseUrl}/api/embeddings`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model,
+          prompt: text,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to generate embedding: ${response.statusText}`);
+      }
+
+      const data: EmbeddingResponse = await response.json();
+      return data.embedding;
+    } catch (error) {
+      console.error('Error generating embedding:', error);
+      throw error;
+    }
+  }
+
+  async generateSummary(text: string, model: string): Promise<string> {
+    try {
+      const response = await fetch(`${this.baseUrl}/api/generate`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model,
+          prompt: `Summarize the following conversation in 2-3 sentences, focusing on key topics and conclusions:\n\n${text}`,
+          stream: false,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to generate summary: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      return data.response;
+    } catch (error) {
+      console.error('Error generating summary:', error);
+      throw error;
+    }
+  }
+
+  async extractKeyPoints(text: string, model: string): Promise<string[]> {
+    try {
+      const response = await fetch(`${this.baseUrl}/api/generate`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model,
+          prompt: `Extract 3-5 key points from this conversation. Return only a JSON array of strings:\n\n${text}`,
+          stream: false,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to extract key points: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      // Try to parse JSON from response
+      try {
+        const keyPoints = JSON.parse(data.response);
+        return Array.isArray(keyPoints) ? keyPoints : [data.response];
+      } catch {
+        // If not valid JSON, split by newlines or return as single point
+        return data.response.split('\n').filter((line: string) => line.trim());
+      }
+    } catch (error) {
+      console.error('Error extracting key points:', error);
+      return [];
     }
   }
 }
