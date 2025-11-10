@@ -1,125 +1,152 @@
 import localforage from 'localforage';
 import type { DocumentChunk, Memory } from '../types';
-import { DocumentParser } from './documentParser';
 
-const MEMORY_STORE_KEY = 'ollama-ui-memories';
+// Configure localforage for better storage
+const vectorStore = localforage.createInstance({
+  name: 'ollama-rag',
+  storeName: 'vectors',
+});
 
-export class VectorStore {
-  private static documentsDB = localforage.createInstance({
-    name: 'ollama-ui',
-    storeName: 'documents',
-  });
+const memoryStore = localforage.createInstance({
+  name: 'ollama-rag',
+  storeName: 'memories',
+});
 
-  private static memoriesDB = localforage.createInstance({
-    name: 'ollama-ui',
-    storeName: 'memories',
-  });
-
-  // Document operations
-  static async saveDocuments(sessionId: string, documents: DocumentChunk[]): Promise<void> {
-    await this.documentsDB.setItem(sessionId, documents);
-  }
-
-  static async getDocuments(sessionId: string): Promise<DocumentChunk[]> {
-    const docs = await this.documentsDB.getItem<DocumentChunk[]>(sessionId);
-    return docs || [];
-  }
-
-  static async deleteDocuments(sessionId: string): Promise<void> {
-    await this.documentsDB.removeItem(sessionId);
-  }
-
-  static async searchDocuments(
-    sessionId: string,
-    queryEmbedding: number[],
-    topK: number = 3
-  ): Promise<DocumentChunk[]> {
-    const documents = await this.getDocuments(sessionId);
-
-    if (!documents.length) return [];
-
-    // Filter documents that have embeddings
-    const documentsWithEmbeddings = documents.filter((doc) => doc.embedding);
-
-    if (!documentsWithEmbeddings.length) return documents.slice(0, topK);
-
-    // Calculate similarity scores
-    const scoredDocs = documentsWithEmbeddings.map((doc) => ({
-      doc,
-      score: DocumentParser.cosineSimilarity(queryEmbedding, doc.embedding!),
-    }));
-
-    // Sort by similarity and return top K
-    scoredDocs.sort((a, b) => b.score - a.score);
-    return scoredDocs.slice(0, topK).map((item) => item.doc);
-  }
-
-  // Memory operations
-  static async saveMemory(memory: Memory): Promise<void> {
-    const memories = await this.getAllMemories();
-    const existingIndex = memories.findIndex((m) => m.id === memory.id);
-
-    if (existingIndex >= 0) {
-      memories[existingIndex] = memory;
-    } else {
-      memories.push(memory);
+export class VectorStoreService {
+  // Cosine similarity calculation
+  private cosineSimilarity(vecA: number[], vecB: number[]): number {
+    if (vecA.length !== vecB.length) {
+      throw new Error('Vectors must have the same length');
     }
 
-    await this.memoriesDB.setItem(MEMORY_STORE_KEY, memories);
+    let dotProduct = 0;
+    let normA = 0;
+    let normB = 0;
+
+    for (let i = 0; i < vecA.length; i++) {
+      dotProduct += vecA[i] * vecB[i];
+      normA += vecA[i] * vecA[i];
+      normB += vecB[i] * vecB[i];
+    }
+
+    return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
   }
 
-  static async getAllMemories(): Promise<Memory[]> {
-    const memories = await this.memoriesDB.getItem<Memory[]>(MEMORY_STORE_KEY);
-    return memories || [];
+  // Store document chunks
+  async storeChunks(chunks: DocumentChunk[]): Promise<void> {
+    for (const chunk of chunks) {
+      await vectorStore.setItem(chunk.id, chunk);
+    }
   }
 
-  static async getMemoriesBySession(sessionId: string): Promise<Memory[]> {
-    const memories = await this.getAllMemories();
-    return memories.filter((m) => m.sessionId === sessionId);
+  // Retrieve all chunks
+  async getAllChunks(): Promise<DocumentChunk[]> {
+    const chunks: DocumentChunk[] = [];
+    await vectorStore.iterate((value: DocumentChunk) => {
+      chunks.push(value);
+    });
+    return chunks;
   }
 
-  static async searchMemories(
+  // Get chunks for a specific document
+  async getChunksByDocumentId(documentId: string): Promise<DocumentChunk[]> {
+    const allChunks = await this.getAllChunks();
+    return allChunks.filter(chunk => chunk.documentId === documentId);
+  }
+
+  // Search for similar chunks
+  async searchSimilarChunks(
     queryEmbedding: number[],
-    excludeSessionId?: string,
-    topK: number = 3
-  ): Promise<Memory[]> {
-    const memories = await this.getAllMemories();
+    topK: number = 5,
+    minSimilarity: number = 0.5
+  ): Promise<{ chunks: DocumentChunk[]; scores: number[] }> {
+    const allChunks = await this.getAllChunks();
+    const chunksWithEmbeddings = allChunks.filter(chunk => chunk.embedding);
 
-    // Filter out current session and memories without embeddings
-    const relevantMemories = memories.filter(
-      (m) => m.sessionId !== excludeSessionId && m.embedding
-    );
-
-    if (!relevantMemories.length) return [];
-
-    // Calculate similarity scores
-    const scoredMemories = relevantMemories.map((memory) => ({
-      memory,
-      score: DocumentParser.cosineSimilarity(queryEmbedding, memory.embedding!),
+    const similarities = chunksWithEmbeddings.map(chunk => ({
+      chunk,
+      score: this.cosineSimilarity(queryEmbedding, chunk.embedding!),
     }));
 
-    // Sort by similarity and return top K
-    scoredMemories.sort((a, b) => b.score - a.score);
-    return scoredMemories.slice(0, topK).map((item) => item.memory);
+    // Filter by minimum similarity and sort by score
+    const filtered = similarities
+      .filter(item => item.score >= minSimilarity)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, topK);
+
+    return {
+      chunks: filtered.map(item => item.chunk),
+      scores: filtered.map(item => item.score),
+    };
   }
 
-  static async deleteMemory(memoryId: string): Promise<void> {
-    const memories = await this.getAllMemories();
-    const filtered = memories.filter((m) => m.id !== memoryId);
-    await this.memoriesDB.setItem(MEMORY_STORE_KEY, filtered);
+  // Delete chunks for a document
+  async deleteChunks(documentId: string): Promise<void> {
+    const chunks = await this.getChunksByDocumentId(documentId);
+    for (const chunk of chunks) {
+      await vectorStore.removeItem(chunk.id);
+    }
   }
 
-  static async deleteSessionMemories(sessionId: string): Promise<void> {
-    const memories = await this.getAllMemories();
-    const filtered = memories.filter((m) => m.sessionId !== sessionId);
-    await this.memoriesDB.setItem(MEMORY_STORE_KEY, filtered);
+  // Memory management
+  async storeMemory(memory: Memory): Promise<void> {
+    await memoryStore.setItem(memory.id, memory);
   }
 
-  static async clearAllMemories(): Promise<void> {
-    await this.memoriesDB.removeItem(MEMORY_STORE_KEY);
+  async getAllMemories(): Promise<Memory[]> {
+    const memories: Memory[] = [];
+    await memoryStore.iterate((value: Memory) => {
+      memories.push(value);
+    });
+    return memories;
   }
 
-  static async clearAllDocuments(): Promise<void> {
-    await this.documentsDB.clear();
+  async getMemoriesBySessionId(sessionId: string): Promise<Memory[]> {
+    const allMemories = await this.getAllMemories();
+    return allMemories.filter(memory => memory.sessionId === sessionId);
+  }
+
+  async searchSimilarMemories(
+    queryEmbedding: number[],
+    topK: number = 3,
+    minSimilarity: number = 0.6
+  ): Promise<{ memories: Memory[]; scores: number[] }> {
+    const allMemories = await this.getAllMemories();
+    const memoriesWithEmbeddings = allMemories.filter(memory => memory.embedding);
+
+    const similarities = memoriesWithEmbeddings.map(memory => ({
+      memory,
+      score: this.cosineSimilarity(queryEmbedding, memory.embedding!),
+    }));
+
+    // Filter by minimum similarity, sort by score and importance
+    const filtered = similarities
+      .filter(item => item.score >= minSimilarity)
+      .sort((a, b) => {
+        // Weight by both similarity and importance
+        const scoreA = a.score * (0.7 + a.memory.importance * 0.3);
+        const scoreB = b.score * (0.7 + b.memory.importance * 0.3);
+        return scoreB - scoreA;
+      })
+      .slice(0, topK);
+
+    return {
+      memories: filtered.map(item => item.memory),
+      scores: filtered.map(item => item.score),
+    };
+  }
+
+  async deleteMemory(memoryId: string): Promise<void> {
+    await memoryStore.removeItem(memoryId);
+  }
+
+  async clearAllMemories(): Promise<void> {
+    await memoryStore.clear();
+  }
+
+  async clearAllChunks(): Promise<void> {
+    await vectorStore.clear();
   }
 }
+
+export const vectorStoreService = new VectorStoreService();

@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { ollamaService } from '../services/ollama';
+import { documentService } from '../services/document';
+import { memoryService } from '../services/memory';
 import { StorageService } from '../utils/storage';
-import type { OllamaModel, ChatSession, Message } from '../types';
+import type { OllamaModel, ChatSession, Message, Attachment, MessageImage } from '../types';
 import './Chat.css';
 
 export function Chat() {
@@ -17,7 +19,16 @@ export function Chat() {
   const [showSidebar, setShowSidebar] = useState(true);
   const [editingSessionId, setEditingSessionId] = useState<string | null>(null);
   const [editingTitle, setEditingTitle] = useState<string>('');
+
+  // New state for RAG and Memory
+  const [useRAG, setUseRAG] = useState<boolean>(true);
+  const [useMemory, setUseMemory] = useState<boolean>(true);
+  const [isVisionModel, setIsVisionModel] = useState<boolean>(false);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [uploadingFiles, setUploadingFiles] = useState<boolean>(false);
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     loadModels();
@@ -28,7 +39,6 @@ export function Chat() {
     scrollToBottom();
   }, [currentSession?.messages, streamingMessage]);
 
-  // Update system prompt when session changes
   useEffect(() => {
     if (currentSession?.systemPrompt !== undefined) {
       setSystemPrompt(currentSession.systemPrompt);
@@ -36,6 +46,17 @@ export function Chat() {
       setSystemPrompt('');
     }
   }, [currentSession?.id]);
+
+  useEffect(() => {
+    checkIfVisionModel();
+  }, [selectedModel]);
+
+  const checkIfVisionModel = async () => {
+    if (selectedModel) {
+      const isVision = await ollamaService.checkModelSupportsVision(selectedModel);
+      setIsVisionModel(isVision);
+    }
+  };
 
   const loadModels = async () => {
     try {
@@ -81,9 +102,15 @@ export function Chat() {
     }
   };
 
-  const deleteSession = (sessionId: string, e: React.MouseEvent) => {
+  const deleteSession = async (sessionId: string, e: React.MouseEvent) => {
     e.stopPropagation();
     if (confirm('Are you sure you want to delete this chat?')) {
+      // Create memory from session before deleting
+      const session = StorageService.getChatSession(sessionId);
+      if (session && useMemory) {
+        await memoryService.createMemoryFromSession(session);
+      }
+
       StorageService.deleteChatSession(sessionId);
       loadSessions();
       if (currentSession?.id === sessionId) {
@@ -93,7 +120,6 @@ export function Chat() {
   };
 
   const saveCurrentSession = (session: ChatSession) => {
-    // Update title based on first message (after first exchange: user + assistant = 2 messages)
     if (session.messages.length === 2 && session.title === 'New Chat') {
       const firstMessage = session.messages[0].content;
       session.title = firstMessage.slice(0, 50) + (firstMessage.length > 50 ? '...' : '');
@@ -143,14 +169,90 @@ export function Chat() {
     setShowSystemPrompt(false);
   };
 
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    setSelectedFiles(prev => [...prev, ...files]);
+  };
+
+  const removeSelectedFile = (index: number) => {
+    setSelectedFiles(prev => prev.filter((_, i) => i !== index));
+  };
+
+  const convertFileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64 = reader.result as string;
+        resolve(base64.split(',')[1]); // Remove data:image/...;base64, prefix
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
+
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputMessage.trim() || isLoading || !selectedModel) return;
+    if ((!inputMessage.trim() && selectedFiles.length === 0) || isLoading || !selectedModel) return;
 
+    setUploadingFiles(true);
     const userMessage: Message = {
       role: 'user',
       content: inputMessage.trim(),
     };
+
+    // Process attachments
+    const attachments: Attachment[] = [];
+    const images: MessageImage[] = [];
+
+    for (const file of selectedFiles) {
+      if (file.type.startsWith('image/')) {
+        // Handle images for vision models
+        try {
+          const base64 = await convertFileToBase64(file);
+          images.push({
+            data: base64,
+            mimeType: file.type,
+          });
+
+          // Also add as attachment for display
+          attachments.push({
+            id: `att_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+            name: file.name,
+            type: file.type,
+            size: file.size,
+            data: base64,
+            uploadedAt: Date.now(),
+          });
+        } catch (error) {
+          console.error('Error processing image:', error);
+        }
+      } else {
+        // Handle documents for RAG
+        try {
+          if (useRAG) {
+            await documentService.processDocument(file);
+          }
+
+          attachments.push({
+            id: `att_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+            name: file.name,
+            type: file.type,
+            size: file.size,
+            uploadedAt: Date.now(),
+          });
+        } catch (error) {
+          console.error('Error processing document:', error);
+          alert(`Failed to process ${file.name}`);
+        }
+      }
+    }
+
+    if (images.length > 0) {
+      userMessage.images = images;
+    }
+    if (attachments.length > 0) {
+      userMessage.attachments = attachments;
+    }
 
     let session = currentSession;
     if (!session) {
@@ -166,7 +268,6 @@ export function Chat() {
       setCurrentSession(session);
     }
 
-    // FIX: Update model to currently selected model
     const updatedSession = {
       ...session,
       model: selectedModel,
@@ -175,18 +276,56 @@ export function Chat() {
     };
     setCurrentSession(updatedSession);
     setInputMessage('');
+    setSelectedFiles([]);
+    setUploadingFiles(false);
     setIsLoading(true);
     setStreamingMessage('');
 
     try {
-      // Build messages array with system prompt if present
       const messagesToSend: Message[] = [];
 
+      // Add system prompt if present
       if (systemPrompt.trim()) {
         messagesToSend.push({
           role: 'system',
           content: systemPrompt.trim(),
         });
+      }
+
+      // Add RAG context if enabled
+      if (useRAG) {
+        try {
+          const ragContext = await documentService.searchRelevantContext(inputMessage.trim(), 5, 0.5);
+          if (ragContext.chunks.length > 0) {
+            const contextText = documentService.formatRAGContext(ragContext);
+            messagesToSend.push({
+              role: 'system',
+              content: contextText,
+            });
+          }
+        } catch (error) {
+          console.error('Error retrieving RAG context:', error);
+        }
+      }
+
+      // Add memory context if enabled
+      if (useMemory && session) {
+        try {
+          const memoryContext = await memoryService.searchRelevantMemories(
+            inputMessage.trim(),
+            session.id,
+            3
+          );
+          if (memoryContext.memories.length > 0) {
+            const contextText = memoryService.formatMemoryContext(memoryContext);
+            messagesToSend.push({
+              role: 'system',
+              content: contextText,
+            });
+          }
+        } catch (error) {
+          console.error('Error retrieving memory context:', error);
+        }
       }
 
       // Add all conversation messages
@@ -351,13 +490,31 @@ export function Chat() {
             </select>
           </div>
 
-          <button
-            onClick={() => setShowSystemPrompt(!showSystemPrompt)}
-            className={`system-prompt-toggle ${systemPrompt.trim() ? 'active' : ''}`}
-            title={systemPrompt.trim() ? 'System prompt set' : 'Set system prompt'}
-          >
-            {systemPrompt.trim() ? '⚙️ System Prompt ✓' : '⚙️ System Prompt'}
-          </button>
+          <div className="header-buttons">
+            <button
+              onClick={() => setShowSystemPrompt(!showSystemPrompt)}
+              className={`system-prompt-toggle ${systemPrompt.trim() ? 'active' : ''}`}
+              title={systemPrompt.trim() ? 'System prompt set' : 'Set system prompt'}
+            >
+              {systemPrompt.trim() ? '⚙️ System Prompt ✓' : '⚙️ System Prompt'}
+            </button>
+
+            <button
+              onClick={() => setUseRAG(!useRAG)}
+              className={`feature-toggle ${useRAG ? 'active' : ''}`}
+              title={useRAG ? 'RAG enabled' : 'RAG disabled'}
+            >
+              📚 RAG {useRAG ? '✓' : ''}
+            </button>
+
+            <button
+              onClick={() => setUseMemory(!useMemory)}
+              className={`feature-toggle ${useMemory ? 'active' : ''}`}
+              title={useMemory ? 'Memory enabled' : 'Memory disabled'}
+            >
+              🧠 Memory {useMemory ? '✓' : ''}
+            </button>
+          </div>
         </div>
 
         {showSystemPrompt && (
@@ -413,11 +570,14 @@ export function Chat() {
             <div className="empty-chat">
               <h2>Start a conversation</h2>
               <p>Select a model and send a message to begin</p>
-              {systemPrompt.trim() && (
-                <div className="system-prompt-preview">
-                  <strong>System Prompt Active:</strong> {systemPrompt.slice(0, 100)}
-                  {systemPrompt.length > 100 ? '...' : ''}
-                </div>
+              {isVisionModel && (
+                <p className="vision-info">🖼️ Vision model detected - you can upload images!</p>
+              )}
+              {useRAG && (
+                <p className="rag-info">📚 RAG enabled - upload documents for context-aware responses</p>
+              )}
+              {useMemory && (
+                <p className="memory-info">🧠 Memory enabled - AI will remember context from past conversations</p>
               )}
             </div>
           ) : (
@@ -428,7 +588,30 @@ export function Chat() {
                     {message.role === 'user' ? '👤 You' :
                      message.role === 'system' ? '⚙️ System' : '🤖 Assistant'}
                   </div>
-                  <div className="message-content">{message.content}</div>
+                  <div className="message-content">
+                    {message.images && message.images.length > 0 && (
+                      <div className="message-images">
+                        {message.images.map((img, idx) => (
+                          <img
+                            key={idx}
+                            src={`data:${img.mimeType};base64,${img.data}`}
+                            alt={`Uploaded image ${idx + 1}`}
+                            className="message-image"
+                          />
+                        ))}
+                      </div>
+                    )}
+                    {message.attachments && message.attachments.length > 0 && (
+                      <div className="message-attachments">
+                        {message.attachments.map((att, idx) => (
+                          <div key={idx} className="attachment-item">
+                            📎 {att.name} ({(att.size / 1024).toFixed(1)} KB)
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    <div className="message-text">{message.content}</div>
+                  </div>
                 </div>
               ))}
 
@@ -445,22 +628,63 @@ export function Chat() {
         </div>
 
         <form onSubmit={handleSendMessage} className="input-form">
-          <textarea
-            value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                handleSendMessage(e);
-              }
-            }}
-            placeholder="Type your message... (Enter to send, Shift+Enter for new line)"
-            disabled={isLoading || models.length === 0}
-            rows={3}
-          />
-          <button type="submit" disabled={isLoading || !inputMessage.trim() || models.length === 0}>
-            {isLoading ? 'Sending...' : 'Send'}
-          </button>
+          {selectedFiles.length > 0 && (
+            <div className="selected-files">
+              {selectedFiles.map((file, index) => (
+                <div key={index} className="selected-file">
+                  <span>
+                    {file.type.startsWith('image/') ? '🖼️' : '📄'} {file.name}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => removeSelectedFile(index)}
+                    className="remove-file"
+                  >
+                    ✕
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="input-row">
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="attach-button"
+              disabled={isLoading}
+              title="Attach files"
+            >
+              📎
+            </button>
+            <input
+              ref={fileInputRef}
+              type="file"
+              onChange={handleFileSelect}
+              multiple
+              accept={isVisionModel ? "image/*,.pdf,.txt" : ".pdf,.txt"}
+              style={{ display: 'none' }}
+            />
+            <textarea
+              value={inputMessage}
+              onChange={(e) => setInputMessage(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSendMessage(e);
+                }
+              }}
+              placeholder="Type your message... (Enter to send, Shift+Enter for new line)"
+              disabled={isLoading || models.length === 0}
+              rows={3}
+            />
+            <button
+              type="submit"
+              disabled={isLoading || (!inputMessage.trim() && selectedFiles.length === 0) || models.length === 0}
+            >
+              {uploadingFiles ? 'Processing...' : isLoading ? 'Sending...' : 'Send'}
+            </button>
+          </div>
         </form>
       </div>
     </div>
