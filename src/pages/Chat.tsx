@@ -332,13 +332,21 @@ export function Chat() {
       messagesToSend.push(...updatedSession.messages);
 
       // Convert MessageImage[] to string[] for Ollama API
-      const apiMessages = messagesToSend.map(msg => ({
-        role: msg.role,
-        content: msg.content,
-        images: msg.images?.map(img =>
-          typeof img === 'string' ? img : img.data
-        ),
-      }));
+      const apiMessages = messagesToSend.map(msg => {
+        const transformedMsg: any = {
+          role: msg.role,
+          content: msg.content,
+        };
+
+        // Only add images if they exist and are non-empty
+        if (msg.images && msg.images.length > 0) {
+          transformedMsg.images = msg.images.map(img =>
+            typeof img === 'string' ? img : img.data
+          );
+        }
+
+        return transformedMsg;
+      });
 
       const response = await ollamaService.chat(
         {

@@ -118,6 +118,9 @@ export class OllamaService {
     onMessage?: (message: string) => void
   ): Promise<string> {
     try {
+      // Log the request for debugging
+      console.log('Ollama chat request:', JSON.stringify(request, null, 2));
+
       const response = await fetch(`${this.baseUrl}/api/chat`, {
         method: 'POST',
         headers: {
@@ -130,6 +133,8 @@ export class OllamaService {
       });
 
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Ollama error response:', errorText);
         throw new Error(`Failed to chat: ${response.statusText}`);
       }
 
