@@ -332,6 +332,7 @@ export function Chat() {
       const apiMessages = messagesToSend.map(msg => ({
         role: msg.role,
         content: msg.content,
+        messagesToSend.push(...updatedSession.messages);
         images: msg.images?.map(img =>
           typeof img === 'string' ? img : img.data
         ),
