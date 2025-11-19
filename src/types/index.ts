@@ -86,6 +86,7 @@ export interface ChatResponse {
   created_at: string;
   message: Message;
   done: boolean;
+  error?: string; // Error message if the request failed
 }
 
 // RAG (Retrieval Augmented Generation) Types

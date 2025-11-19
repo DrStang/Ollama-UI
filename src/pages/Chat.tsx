@@ -195,16 +195,19 @@ export function Chat() {
     if ((!inputMessage.trim() && selectedFiles.length === 0) || isLoading || !selectedModel) return;
 
     setUploadingFiles(true);
+    const userMessageContent = inputMessage.trim();
+    const userFilesToProcess = [...selectedFiles];
+
     const userMessage: Message = {
       role: 'user',
-      content: inputMessage.trim(),
+      content: userMessageContent,
     };
 
     // Process attachments
     const attachments: Attachment[] = [];
     const images: MessageImage[] = [];
 
-    for (const file of selectedFiles) {
+    for (const file of userFilesToProcess) {
       if (file.type.startsWith('image/')) {
         // Handle images for vision models
         try {
@@ -295,7 +298,7 @@ export function Chat() {
       // Add RAG context if enabled
       if (useRAG) {
         try {
-          const ragContext = await documentService.searchRelevantContext(inputMessage.trim(), 5, 0.5);
+          const ragContext = await documentService.searchRelevantContext(userMessageContent, 5, 0.5);
           if (ragContext.chunks.length > 0) {
             const contextText = documentService.formatRAGContext(ragContext);
             messagesToSend.push({
@@ -312,7 +315,7 @@ export function Chat() {
       if (useMemory && session) {
         try {
           const memoryContext = await memoryService.searchRelevantMemories(
-            inputMessage.trim(),
+            userMessageContent,
             session.id,
             3
           );
@@ -335,12 +338,12 @@ export function Chat() {
         const transformedMsg: any = {
           role: msg.role,
           content: msg.content,
-        };  
+        };
         if (msg.images && msg.images.length > 0) {
           transformedMsg.images = msg.images.map(img =>
           typeof img === 'string' ? img : img.data
           );
-        }      
+        }
         return transformedMsg;
     });
       const response = await ollamaService.chat(
@@ -367,7 +370,35 @@ export function Chat() {
       setStreamingMessage('');
     } catch (err) {
       console.error('Failed to send message:', err);
-      alert('Failed to send message. Please try again.');
+
+      // Restore the user's input on failure
+      setInputMessage(userMessageContent);
+      setSelectedFiles(userFilesToProcess);
+
+      // Remove the user message from the session since we failed
+      setCurrentSession({
+        ...updatedSession,
+        messages: updatedSession.messages.slice(0, -1),
+      });
+      setStreamingMessage('');
+
+      // Provide detailed error message
+      let errorMessage = 'Failed to send message. ';
+      if (err instanceof Error) {
+        if (err.message.includes('model crashed') || err.message.includes('insufficient memory')) {
+          errorMessage = err.message + '\n\nYour message has been restored in the input box.';
+        } else if (err.message.includes('timeout')) {
+          errorMessage = err.message + '\n\nYour message has been restored. Try again with a shorter prompt or smaller model.';
+        } else if (err.message.includes('Cannot connect')) {
+          errorMessage = err.message;
+        } else {
+          errorMessage += err.message + '\n\nYour message has been restored. Please try again.';
+        }
+      } else {
+        errorMessage += 'An unknown error occurred. Your message has been restored. Please try again.';
+      }
+
+      alert(errorMessage);
     } finally {
       setIsLoading(false);
     }
