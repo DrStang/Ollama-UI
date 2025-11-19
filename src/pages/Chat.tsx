@@ -328,13 +328,19 @@ export function Chat() {
         }
       }
 
-      // Add all conversation messages
-      messagesToSend.push(...updatedSession.messages);
+      // Add all conversation messages and convert MessageImage[] to string[] for Ollama API
+      const apiMessages = messagesToSend.map(msg => ({
+        role: msg.role,
+        content: msg.content,
+        images: msg.images?.map(img =>
+          typeof img === 'string' ? img : img.data
+        ),
+      }));
 
       const response = await ollamaService.chat(
         {
           model: selectedModel,
-          messages: messagesToSend,
+          messages: apiMessages,
         },
         (partialMessage) => {
           setStreamingMessage(partialMessage);
