@@ -132,7 +132,7 @@ export class OllamaService {
       });
 
       if (!response.ok) {
-        const errorText = await response.test();
+        const errorText = await response.text();
         console.error('Ollama error response:', errorText);
         throw new Error(`Failed to chat: ${response.statusText}`);
       }
