@@ -103,14 +103,12 @@ export class DocumentParser {
   }
 
   static createDocumentChunks(attachment: Attachment): DocumentChunk[] {
-    const chunks = this.chunkText(attachment.content);
+    const chunks = this.chunkText(attachment.content || '');
     return chunks.map((content, index) => ({
       id: `${attachment.id}-chunk-${index}`,
+      documentId: attachment.id,
       content,
-      metadata: {
-        source: attachment.name,
-        chunkIndex: index,
-      },
+      index,
     }));
   }
 
