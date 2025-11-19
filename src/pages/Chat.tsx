@@ -328,7 +328,10 @@ export function Chat() {
         }
       }
 
-      // Add all conversation messages and convert MessageImage[] to string[] for Ollama API
+      // Add all conversation messages
+      messagesToSend.push(...updatedSession.messages);
+
+      // Convert MessageImage[] to string[] for Ollama API
       const apiMessages = messagesToSend.map(msg => ({
         role: msg.role,
         content: msg.content,
