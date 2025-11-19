@@ -115,11 +115,16 @@ export class OllamaService {
 
   async chat(
     request: ChatRequest,
-    onMessage?: (message: string) => void
+    onMessage?: (message: string) => void,
+    retryCount: number = 0,
+    maxRetries: number = 3
   ): Promise<string> {
     try {
       console.log('Ollama chat request:', JSON.stringify(request, null, 2));
-      
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 300000); // 5 minute timeout
+
       const response = await fetch(`${this.baseUrl}/api/chat`, {
         method: 'POST',
         headers: {
@@ -129,11 +134,23 @@ export class OllamaService {
           ...request,
           stream: true,
         }),
+        signal: controller.signal,
       });
+
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         const errorText = await response.text();
         console.error('Ollama error response:', errorText);
+
+        // Check for model runner crash
+        if (errorText.includes('model runner has unexpectedly stopped') ||
+            errorText.includes('resource limitations')) {
+          const error = new Error('MODEL_RUNNER_CRASHED');
+          (error as any).details = errorText;
+          throw error;
+        }
+
         throw new Error(`Failed to chat: ${response.statusText}`);
       }
 
@@ -146,29 +163,101 @@ export class OllamaService {
 
       let fullMessage = '';
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
 
-        const chunk = decoder.decode(value);
-        const lines = chunk.split('\n').filter(line => line.trim());
+          const chunk = decoder.decode(value);
+          const lines = chunk.split('\n').filter(line => line.trim());
 
-        for (const line of lines) {
-          try {
-            const data: ChatResponse = JSON.parse(line);
-            if (data.message?.content) {
-              fullMessage += data.message.content;
-              onMessage?.(fullMessage);
+          for (const line of lines) {
+            try {
+              const data: ChatResponse = JSON.parse(line);
+              if (data.message?.content) {
+                fullMessage += data.message.content;
+                onMessage?.(fullMessage);
+              }
+
+              // Check for errors in the response
+              if (data.error) {
+                console.error('Ollama streaming error:', data.error);
+                if (data.error.includes('model runner') || data.error.includes('EOF')) {
+                  const error = new Error('MODEL_RUNNER_CRASHED');
+                  (error as any).details = data.error;
+                  throw error;
+                }
+              }
+            } catch (e) {
+              if (e instanceof Error && e.message === 'MODEL_RUNNER_CRASHED') {
+                throw e;
+              }
+              console.error('Error parsing chat response:', e);
             }
-          } catch (e) {
-            console.error('Error parsing chat response:', e);
           }
         }
+      } catch (readError) {
+        // Handle stream reading errors (like EOF)
+        if (readError instanceof Error) {
+          if (readError.name === 'AbortError') {
+            throw new Error('Request timeout - model took too long to respond');
+          }
+
+          // Check if it's an EOF or connection error during streaming
+          if (readError.message.includes('EOF') ||
+              readError.message.includes('connection') ||
+              readError.message === 'MODEL_RUNNER_CRASHED') {
+            // If we got some partial response, it might be worth retrying
+            console.warn('Stream interrupted, partial message:', fullMessage);
+            throw readError;
+          }
+        }
+        throw readError;
+      } finally {
+        reader.releaseLock();
       }
 
       return fullMessage;
     } catch (error) {
       console.error('Error in chat:', error);
+
+      // Check if we should retry
+      const isRetriableError = error instanceof Error && (
+        error.message === 'MODEL_RUNNER_CRASHED' ||
+        error.message.includes('EOF') ||
+        error.message.includes('Failed to fetch') ||
+        error.message.includes('network') ||
+        error.name === 'TypeError'
+      );
+
+      if (isRetriableError && retryCount < maxRetries) {
+        const delay = Math.pow(2, retryCount) * 1000; // Exponential backoff: 1s, 2s, 4s
+        console.log(`Retrying request in ${delay}ms (attempt ${retryCount + 1}/${maxRetries})...`);
+
+        await new Promise(resolve => setTimeout(resolve, delay));
+        return this.chat(request, onMessage, retryCount + 1, maxRetries);
+      }
+
+      // Enhance error message for user
+      if (error instanceof Error) {
+        if (error.message === 'MODEL_RUNNER_CRASHED') {
+          throw new Error(
+            'The Ollama model crashed, possibly due to insufficient memory. ' +
+            'Try:\n' +
+            '1. Using a smaller model\n' +
+            '2. Closing other applications to free up RAM\n' +
+            '3. Restarting the Ollama service\n' +
+            '4. Checking Ollama logs with: journalctl -u ollama -n 50'
+          );
+        }
+        if (error.message.includes('timeout')) {
+          throw new Error(
+            'Request timed out. The model is taking too long to respond. ' +
+            'Try using a smaller model or reducing your prompt size.'
+          );
+        }
+      }
+
       throw error;
     }
   }
