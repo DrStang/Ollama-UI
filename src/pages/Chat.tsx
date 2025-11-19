@@ -332,13 +332,17 @@ export function Chat() {
       messagesToSend.push(...updatedSession.messages);
 
       const apiMessages = messagesToSend.map(msg => ({
-        role: msg.role,
-        content: msg.content,
-        images: msg.images?.map(img =>
+        const transformedMsg: any = {
+          role: msg.role,
+          content: msg.content,
+        };  
+        if (msg.images && msg.images.length > 0) {
+          transformedMsg.images = msg.images.map(img =>
           typeof img === 'string' ? img : img.data
-        ),
-      }));
-
+          );
+        }      
+        return transformedMsg;
+    });
       const response = await ollamaService.chat(
         {
           model: selectedModel,
