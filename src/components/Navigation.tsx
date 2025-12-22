@@ -25,6 +25,12 @@ export function Navigation() {
             Chat
           </Link>
           <Link
+            to="/playground"
+            className={`nav-link ${location.pathname === '/playground' ? 'active' : ''}`}
+          >
+            Playground
+          </Link>
+          <Link
             to="/documents"
             className={`nav-link ${location.pathname === '/documents' ? 'active' : ''}`}
           >
