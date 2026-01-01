@@ -129,3 +129,29 @@ export interface EmbeddingRequest {
 export interface EmbeddingResponse {
   embedding: number[];
 }
+
+// External Ollama Library Types (from GitHub JSON)
+export interface OllamaLibraryVariant {
+  tag: string;
+  size_text: string;
+  size_bytes: number;
+  context: number;
+  input: string;
+}
+
+export interface OllamaLibraryModel {
+  slug: string;
+  name: string;
+  blurb: string;
+  description: string;
+  capabilities: string[];
+  pulls: number;
+  pulls_text: string;
+  variants: OllamaLibraryVariant[];
+  tags_count: number;
+}
+
+export interface OllamaLibraryData {
+  scraped_at: string;
+  models: OllamaLibraryModel[];
+}

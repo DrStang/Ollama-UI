@@ -54,6 +54,32 @@
   margin-left: 1rem;
 }
 
+/* Global Pull Progress */
+.pull-progress-global {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.pull-progress-global .progress-container {
+  margin: 0;
+}
+
+.pull-progress-global .progress-bar {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.pull-progress-global .progress-fill {
+  background: white;
+}
+
+.pull-progress-global .progress-info {
+  color: white;
+  font-weight: 500;
+}
+
 .pull-section {
   background: white;
   border-radius: 12px;
