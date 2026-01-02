@@ -2,7 +2,7 @@ import type { OllamaLibraryData, OllamaLibraryModel } from '../types';
 
 const LIBRARY_URL = 'https://raw.githubusercontent.com/chrizzo84/OllamaScraper/refs/heads/main/out/ollama_models.json';
 const CACHE_KEY = 'ollama_library_cache';
-const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
+const CACHE_DURATION = 60 * 360 * 1000; // 1 hour in milliseconds
 
 interface CachedLibrary {
   data: OllamaLibraryData;
