@@ -3,6 +3,7 @@ import { ollamaService } from '../services/ollama';
 import type { OllamaModel, PullProgress } from '../types';
 import { modelCatalog, categories, searchModels } from '../data/modelCatalog';
 import type { ModelCatalogEntry } from '../data/modelCatalog';
+import { OllamaLibrary } from '../components/OllamaLibrary';
 import './Models.css';
 
 export function Models() {
@@ -85,6 +86,30 @@ export function Models() {
     return models.some(m => m.name.toLowerCase().includes(modelName.toLowerCase()));
   };
 
+  const getInstalledModelNames = (): string[] => {
+    return models.map(m => m.name);
+  };
+
+  const handlePullFromLibrary = async (modelName: string): Promise<void> => {
+    if (isPulling) return;
+
+    setIsPulling(true);
+    setPullProgress(null);
+    setError(null);
+
+    try {
+      await ollamaService.pullModel(modelName, (progress) => {
+        setPullProgress(progress);
+      });
+      await loadModels();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to pull model');
+    } finally {
+      setIsPulling(false);
+      setPullProgress(null);
+    }
+  };
+
   const handleDeleteModel = async (modelName: string) => {
     if (deleteConfirm !== modelName) {
       setDeleteConfirm(modelName);
@@ -126,21 +151,48 @@ export function Models() {
       {error && (
         <div className="error-banner">
           <div className="error-content">
-            <pre className="error-message">⚠️ {error}</pre>
+            <pre className="error-message">{error}</pre>
           </div>
           <button onClick={() => setError(null)}>✕</button>
         </div>
       )}
 
-      {/* Model Library Section */}
+      {/* Pull Progress (shown globally) */}
+      {isPulling && pullProgress && (
+        <div className="pull-progress-global">
+          <div className="progress-container">
+            <div className="progress-bar">
+              <div
+                className="progress-fill"
+                style={{ width: `${getProgressPercentage()}%` }}
+              />
+            </div>
+            <div className="progress-info">
+              <span>{pullProgress.status}</span>
+              {pullProgress.total && pullProgress.completed && (
+                <span>{getProgressPercentage()}%</span>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Ollama Model Library (from external JSON) */}
+      <OllamaLibrary
+        onPullModel={handlePullFromLibrary}
+        isPulling={isPulling}
+        installedModels={getInstalledModelNames()}
+      />
+
+      {/* Curated Model Library Section */}
       <div className="library-section">
         <div className="section-header">
-          <h2>Model Library</h2>
+          <h2>Curated Models</h2>
           <button
             className="toggle-library-button"
             onClick={() => setShowLibrary(!showLibrary)}
           >
-            {showLibrary ? '▼ Hide' : '▶ Show'} Library
+            {showLibrary ? '▼ Hide' : '▶ Show'}
           </button>
         </div>
 
