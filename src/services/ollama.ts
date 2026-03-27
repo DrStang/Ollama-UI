@@ -1,6 +1,10 @@
 import type { OllamaModel, PullProgress, ChatRequest, ChatResponse, EmbeddingRequest, EmbeddingResponse } from '../types';
 
-const OLLAMA_BASE_URL = import.meta.env.VITE_OLLAMA_BASE_URL || 'http://localhost:11434';
+// In dev mode, route through Vite's proxy to avoid CORS with remote Ollama servers.
+// The proxy is configured in vite.config.ts to forward /ollama-proxy → VITE_OLLAMA_BASE_URL.
+const OLLAMA_BASE_URL = import.meta.env.DEV
+  ? '/ollama-proxy'
+  : (import.meta.env.VITE_OLLAMA_BASE_URL || 'http://localhost:11434');
 
 export class OllamaService {
   private baseUrl: string;
@@ -59,8 +63,7 @@ export class OllamaService {
         headers: {
           'Content-Type': 'application/json',
         },
-        // Send both fields: 'model' for newer Ollama, 'name' for older versions
-        body: JSON.stringify({ model: trimmedName, name: trimmedName }),
+        body: JSON.stringify({ name: trimmedName, insecure: false }),
       });
 
       if (!response.ok) {
