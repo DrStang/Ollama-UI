@@ -52,15 +52,15 @@ export class OllamaService {
     modelName: string,
     onProgress?: (progress: PullProgress) => void
   ): Promise<void> {
-    // Ensure model name includes a tag (newer Ollama versions require it)
-    const normalizedName = modelName.includes(':') ? modelName : `${modelName}:latest`;
+    const trimmedName = modelName.trim();
     try {
       const response = await fetch(`${this.baseUrl}/api/pull`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ model: normalizedName }),
+        // Send both fields: 'model' for newer Ollama, 'name' for older versions
+        body: JSON.stringify({ model: trimmedName, name: trimmedName }),
       });
 
       if (!response.ok) {

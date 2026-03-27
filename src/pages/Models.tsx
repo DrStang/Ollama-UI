@@ -37,8 +37,8 @@ export function Models() {
 
   const handlePullModel = async (e: React.FormEvent, modelName?: string) => {
     e.preventDefault();
-    const nameToUse = modelName || pullModelName;
-    if (!nameToUse.trim() || isPulling) return;
+    const nameToUse = (modelName || pullModelName).trim();
+    if (!nameToUse || isPulling) return;
 
     setIsPulling(true);
     setPullProgress(null);
