@@ -53,6 +53,7 @@ export class OllamaService {
     onProgress?: (progress: PullProgress) => void
   ): Promise<void> {
     const trimmedName = modelName.trim();    
+    const qualifiedName = trimmedName.includes('/') || !trimmedName.includes(':') ? trimmedName : `registry.ollama.ai/library/${trimmedName}`;
     try {
       const response = await fetch(`${this.baseUrl}/api/pull`, {
         method: 'POST',
@@ -60,7 +61,7 @@ export class OllamaService {
           'Content-Type': 'application/json',
         },
         // Send both fields: 'model' for newer Ollama, 'name' for older versions
-        body: JSON.stringify({ model: trimmedName, name: trimmedName }),      });
+        body: JSON.stringify({ name: qualifiedName }),      });
 
       if (!response.ok) {
         const errorText = await response.text();
