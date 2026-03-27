@@ -58,11 +58,12 @@ export class OllamaService {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name: modelName }),
+        body: JSON.stringify({ model: modelName }),
       });
 
       if (!response.ok) {
-        throw new Error(`Failed to pull model: ${response.statusText}`);
+        const errorText = await response.text();
+        throw new Error(`Failed to pull model: ${errorText || response.statusText}`);
       }
 
       const reader = response.body?.getReader();
@@ -101,11 +102,12 @@ export class OllamaService {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name: modelName }),
+        body: JSON.stringify({ model: modelName }),
       });
 
       if (!response.ok) {
-        throw new Error(`Failed to delete model: ${response.statusText}`);
+        const errorText = await response.text();
+        throw new Error(`Failed to delete model: ${errorText || response.statusText}`);
       }
     } catch (error) {
       console.error('Error deleting model:', error);
