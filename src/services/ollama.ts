@@ -52,13 +52,14 @@ export class OllamaService {
     modelName: string,
     onProgress?: (progress: PullProgress) => void
   ): Promise<void> {
+    const normalizedName = modelName.includes(':') ? modelName : `${modelName}:latest`;
     try {
       const response = await fetch(`${this.baseUrl}/api/pull`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ model: modelName }),
+        body: JSON.stringify({ model: normalizedName }),
       });
 
       if (!response.ok) {
