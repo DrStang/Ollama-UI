@@ -1,6 +1,20 @@
 import type { OllamaModel, PullProgress, ChatRequest, ChatResponse, EmbeddingRequest, EmbeddingResponse } from '../types';
 
-const OLLAMA_BASE_URL = import.meta.env.VITE_OLLAMA_BASE_URL || 'http://localhost:11434';
+// In dev mode, route through Vite's proxy to avoid CORS with remote Ollama servers.
+// The proxy is configured in vite.config.ts to forward /ollama-proxy → VITE_OLLAMA_BASE_URL.
+const OLLAMA_BASE_URL = import.meta.env.DEV
+  ? '/ollama-proxy'
+  : (import.meta.env.VITE_OLLAMA_BASE_URL || 'http://localhost:11434');
+
+// Read a CSRF token from cookies (set by reverse proxies like Pangolin/Traefik).
+// Common cookie names: XSRF-TOKEN, _csrf, csrf-token, pangolin_csrf
+function getCsrfToken(): string | null {
+  if (typeof document === 'undefined') return null;
+  const match = document.cookie.match(
+    /(?:^|;\s*)(?:XSRF-TOKEN|_csrf|csrf[-_]token|pangolin[_-]csrf)=([^;]+)/i
+  );
+  return match ? decodeURIComponent(match[1]) : null;
+}
 
 export class OllamaService {
   private baseUrl: string;
@@ -52,16 +66,27 @@ export class OllamaService {
     modelName: string,
     onProgress?: (progress: PullProgress) => void
   ): Promise<void> {
-    const trimmedName = modelName.trim();    
-    const qualifiedName = trimmedName.includes('/') || !trimmedName.includes(':') ? trimmedName : `registry.ollama.ai/library/${trimmedName}`;
+    const trimmedName = modelName.trim();
+    // Ollama v0.18+ treats colons without a preceding slash as source suffixes
+    // (e.g. :cloud, :local). Qualify plain "name:tag" with the registry prefix so
+    // the colon is parsed as a version separator instead of a source suffix.
+    const qualifiedName =
+      trimmedName.includes('/') || !trimmedName.includes(':')
+        ? trimmedName
+        : `registry.ollama.ai/library/${trimmedName}`;
     try {
+      const csrfToken = getCsrfToken();
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (csrfToken) {
+        headers['X-XSRF-TOKEN'] = csrfToken;
+        headers['X-CSRF-TOKEN'] = csrfToken;
+      }
       const response = await fetch(`${this.baseUrl}/api/pull`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        // Send both fields: 'model' for newer Ollama, 'name' for older versions
-        body: JSON.stringify({ name: qualifiedName }),      });
+        headers,
+        credentials: 'include',
+        body: JSON.stringify({ name: qualifiedName, insecure: false }),
+      });
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -99,11 +124,16 @@ export class OllamaService {
 
   async deleteModel(modelName: string): Promise<void> {
     try {
+      const csrfToken = getCsrfToken();
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (csrfToken) {
+        headers['X-XSRF-TOKEN'] = csrfToken;
+        headers['X-CSRF-TOKEN'] = csrfToken;
+      }
       const response = await fetch(`${this.baseUrl}/api/delete`, {
         method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers,
+        credentials: 'include',
         body: JSON.stringify({ model: modelName }),
       });
 
