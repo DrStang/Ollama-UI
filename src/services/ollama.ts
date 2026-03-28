@@ -67,13 +67,7 @@ export class OllamaService {
     onProgress?: (progress: PullProgress) => void
   ): Promise<void> {
     const trimmedName = modelName.trim();
-    // Ollama v0.18+ treats colons without a preceding slash as source suffixes
-    // (e.g. :cloud, :local). Qualify plain "name:tag" with the registry prefix so
-    // the colon is parsed as a version separator instead of a source suffix.
-    const qualifiedName =
-      trimmedName.includes('/') || !trimmedName.includes(':')
-        ? trimmedName
-        : `registry.ollama.ai/library/${trimmedName}`;
+    
     try {
       const csrfToken = getCsrfToken();
       const headers: Record<string, string> = { 'Content-Type': 'application/json' };
@@ -85,7 +79,7 @@ export class OllamaService {
         method: 'POST',
         headers,
         credentials: 'include',
-        body: JSON.stringify({ name: qualifiedName, insecure: false }),
+        body: JSON.stringify({ name: trimmedName }),
       });
 
       if (!response.ok) {
