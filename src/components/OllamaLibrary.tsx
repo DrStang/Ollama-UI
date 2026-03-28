@@ -61,7 +61,9 @@ export function OllamaLibrary({ onPullModel, isPulling, installedModels }: Ollam
   };
 
   const isVariantInstalled = (slug: string, tag: string): boolean => {
-    const fullName = `${slug}:${tag}`;
+    // variant.tag from the JSON is already the full model name (e.g. "llama3.1:8b"),
+    // except when tag is the hardcoded 'latest' sentinel used by the quick-pull button.
+    const fullName = tag === 'latest' ? slug : tag;
     return installedModels.some(m =>
       m.toLowerCase() === fullName.toLowerCase() ||
       m.toLowerCase() === slug.toLowerCase() && tag === 'latest'
@@ -69,7 +71,9 @@ export function OllamaLibrary({ onPullModel, isPulling, installedModels }: Ollam
   };
 
   const handlePullVariant = async (slug: string, tag: string) => {
-    const modelName = tag === 'latest' ? slug : `${slug}:${tag}`;
+    // variant.tag is the full model name (e.g. "llama3.1:8b"), not just the tag suffix.
+    // The quick-pull button passes the hardcoded string 'latest' instead of variant.tag.
+    const modelName = tag === 'latest' ? slug : tag;
     await onPullModel(modelName);
   };
 
