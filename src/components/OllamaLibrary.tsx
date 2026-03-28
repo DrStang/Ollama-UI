@@ -61,7 +61,7 @@ export function OllamaLibrary({ onPullModel, isPulling, installedModels }: Ollam
   };
 
   const isVariantInstalled = (slug: string, tag: string): boolean => {
-    const fullName = `${slug}:${tag}`;
+    const fullName = tag === 'latest' ? slug : tag;
     return installedModels.some(m =>
       m.toLowerCase() === fullName.toLowerCase() ||
       m.toLowerCase() === slug.toLowerCase() && tag === 'latest'
@@ -69,7 +69,7 @@ export function OllamaLibrary({ onPullModel, isPulling, installedModels }: Ollam
   };
 
   const handlePullVariant = async (slug: string, tag: string) => {
-    const modelName = tag === 'latest' ? slug : `${slug}:${tag}`;
+    const modelName = tag === 'latest' ? slug : tag;
     await onPullModel(modelName);
   };
 
