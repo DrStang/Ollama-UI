@@ -1,8 +1,9 @@
 import * as pdfjsLib from 'pdfjs-dist';
+import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 import type { Attachment, DocumentChunk } from '../types';
 
 // Set worker path for PDF.js
-pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerUrl;
 
 export class DocumentParser {
   static async parseFile(file: File): Promise<Attachment> {
