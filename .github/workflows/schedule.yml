@@ -1,0 +1,33 @@
+name: Run Scheduled Python Script
+
+on:
+  schedule:
+    # This syntax defines the cron schedule (Runs at 00:00 UTC daily)
+    - cron: '0 0 * * *'
+  # Allows you to manually trigger the script from the Actions tab for testing
+  workflow_dispatch: 
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Download a copy of your repository code onto the runner
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      # 2. Set up the Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 3. Install external dependencies (optional)
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f scraper/requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # 4. Execute your Python file
+      - name: Run script
+        run: python scraper/ollama_scraper.py
