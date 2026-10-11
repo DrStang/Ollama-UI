@@ -1,9 +1,8 @@
 import type { OllamaLibraryData, OllamaLibraryModel } from '../types';
-import { LocalStorage } from 'node-localstorage';
 
-//const LIBRARY_URL = 'https://github.com/DrStang/Ollama-UI/blob/4fb69aa893423262822391ef1a10402a65484b77/out/ollama_models.json';
-//const CACHE_KEY = 'ollama_library_cache';
-//const CACHE_DURATION = 60 * 360 * 1000; // 1 hour in milliseconds
+const LIBRARY_URL = 'https://drstang.github.io/Ollama-UI/out/ollama_models.json';
+const CACHE_KEY = 'ollama_library_cache';
+const CACHE_DURATION = 60 * 360 * 1000; // 1 hour in milliseconds
 
 interface CachedLibrary {
   data: OllamaLibraryData;
@@ -20,10 +19,7 @@ export class OllamaLibraryService {
                              
   private loadFromLocalStorage(): void {
     try {
-      const localStorage = new LocalStorage('../../scraper/out');
-
-      //const cached = localStorage.getItem(CACHE_KEY);
-      const cached = localStorage.getItem('ollama_models.json');
+      const cached = localStorage.getItem(CACHE_KEY);
       
       if (cached) {
         this.cache = JSON.parse(cached);
@@ -32,13 +28,8 @@ export class OllamaLibraryService {
       console.error('Error loading library cache:', error);
     }
   }
-  private isCacheValid(): boolean {
-    if (!this.cache) return false;
-    return Date.now() - this.cache.timestamp < CACHE_DURATION;
-  }
   
-  
-  /*private saveToLocalStorage(data: OllamaLibraryData): void {
+  private saveToLocalStorage(data: OllamaLibraryData): void {
     try {
       const cacheEntry: CachedLibrary = {
         data,
@@ -82,7 +73,7 @@ export class OllamaLibraryService {
       }
       throw error;
     }
-  }*/
+  }
 
   searchModels(models: OllamaLibraryModel[], query: string): OllamaLibraryModel[] {
     const lowerQuery = query.toLowerCase().trim();
