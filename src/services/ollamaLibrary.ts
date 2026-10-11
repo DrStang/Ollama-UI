@@ -1,4 +1,6 @@
 import type { OllamaLibraryData, OllamaLibraryModel } from '../types';
+import * as fs from 'fs';
+import * as path from 'path';
 
 const LIBRARY_URL = 'https://github.com/DrStang/Ollama-UI/blob/4fb69aa893423262822391ef1a10402a65484b77/out/ollama_models.json';
 const CACHE_KEY = 'ollama_library_cache';
@@ -16,9 +18,13 @@ export class OllamaLibraryService {
     this.loadFromLocalStorage();
   }
 
+  const filePath = path.join(__dirname, '../../scraper/out/ollama_models.json);
+                             
   private loadFromLocalStorage(): void {
     try {
-      const cached = localStorage.getItem(CACHE_KEY);
+      //const cached = localStorage.getItem(CACHE_KEY);
+      const cached = fs.readFileSync(filePath, 'utf-8');
+      
       if (cached) {
         this.cache = JSON.parse(cached);
       }
@@ -27,7 +33,7 @@ export class OllamaLibraryService {
     }
   }
 
-  private saveToLocalStorage(data: OllamaLibraryData): void {
+  /*private saveToLocalStorage(data: OllamaLibraryData): void {
     try {
       const cacheEntry: CachedLibrary = {
         data,
@@ -71,7 +77,7 @@ export class OllamaLibraryService {
       }
       throw error;
     }
-  }
+  }*/
 
   searchModels(models: OllamaLibraryModel[], query: string): OllamaLibraryModel[] {
     const lowerQuery = query.toLowerCase().trim();
