@@ -28,7 +28,7 @@ export function OllamaLibrary({ onPullModel, isPulling, installedModels }: Ollam
     try {
       setLoading(true);
       setError(null);
-      const data = await ollamaLibraryService.fetchLibrary(forceRefresh);
+      //const data = await ollamaLibraryService.fetchLibrary(forceRefresh);
       setModels(data.models);
       setCapabilities(ollamaLibraryService.getUniqueCapabilities(data.models));
     } catch (err) {
