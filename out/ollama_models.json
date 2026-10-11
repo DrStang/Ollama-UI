@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-11T00:15:38.313756+00:00",
+  "scraped_at": "2026-10-11T02:19:27.518129+00:00",
   "models": [
     {
       "slug": "qwen3.6",
@@ -415,9 +415,9 @@
         "thinking",
         "tools"
       ],
-      "pulls": 599800,
-      "pulls_text": "599.8K \n  Downloads",
-      "blurb": "ornith A self-improving family of open-source models for agentic coding 9b 35b 599.8K",
+      "pulls": 600100,
+      "pulls_text": "600.1K \n  Downloads",
+      "blurb": "ornith A self-improving family of open-source models for agentic coding 9b 35b 600.1K",
       "name": "A self-improving family of open-source models for agentic coding",
       "description": "Readme Highlights: State-of-the-Art Coding Agents : Achieving state-of-the-art performance among open-source models of comparable size on coding benchmarks such as Terminal-Bench 2.1, SWE-Bench, NL2Repo and OpenClaw. Self-Improving Training Framework : Ornith-1.0 employs RL to learn to generate not only solution rollouts, but also the scallfold that drive those rollouts. By jointly optimizing the scaffold and the resulting solution, the model discovers better search trajectories and generates higher-quality solutions. Licence : MIT licensed, globally accessible, and free from regional limitations. 9B ollama run ornith:9b 35B ollama run ornith:35b References Blog Write Preview ![image.png](/assets/library/ornith/fd32d921-16eb-4fc1-a71b-65124dd4abb7) Highlights: * **State-of-the-Art Coding Agents**: Achieving state-of-the-art performance among open-source models of comparable size on coding benchmarks such as Terminal-Bench 2.1, SWE-Bench, NL2Repo and OpenClaw. * **Self-Improving Training Framework**: Ornith-1.0 employs RL to learn to generate not only solution rollouts, but also the scallfold that drive those rollouts. By jointly optimizing the scaffold and the resulting solution, the model discovers better search trajectories and generates higher-quality solutions. * **Licence**: MIT licensed, globally accessible, and free from regional limitations. ### 9B ``` ollama run ornith:9b ``` ![ornith 9b benchmarks](/assets/library/ornith/afc40753-0b00-4683-87b4-2c4a12f74acc) ### 35B ``` ollama run ornith:35b ``` ![ornith 35b benchmarks](/assets/library/ornith/b194b793-a9b5-4609-8625-6fabea9a1d19) ## References - [Blog](https://deep-reinforce.com/ornith_1_0.html) Paste, drop or click to upload images (.png, .jpeg, .jpg, .svg, .gif)",
       "variants": [
@@ -517,9 +517,9 @@
       "capabilities": [
         "vision"
       ],
-      "pulls": 377300,
-      "pulls_text": "377.3K \n  Downloads",
-      "blurb": "ornith-1.5 Chirp Chirp! 🐦 We are introducing Ornith-1.5, a major step toward building foundation models through end-to-end self-improvement. 9b 35b 397b 377.3K",
+      "pulls": 377500,
+      "pulls_text": "377.5K \n  Downloads",
+      "blurb": "ornith-1.5 Chirp Chirp! 🐦 We are introducing Ornith-1.5, a major step toward building foundation models through end-to-end self-improvement. 9b 35b 397b 377.5K",
       "name": "Chirp Chirp! 🐦 We are introducing Ornith-1.5, a major step toward building foundation models through end-to-end self-improvement.",
       "description": "Readme Chirp Chirp! 🐦 We are introducing Ornith-1.5, a major step toward building foundation models through end-to-end self-improvement. Ornith-1.5 extends Ornith-1.0 by expanding the self-improvement loop from scaffold and rollout optimization to jointly optimizing task generation, scaffold construction, and solution rollouts. Rather than relying on a fixed set of human-curated tasks and manually designed harnesses, Ornith-1.5 continuously generates new training tasks, discovers effective strategies for solving them, and improves the policy through reinforcement learning. For more details on the task, harness, and rollout reward design, please refer to our blog . Ornith -1.5-397B Ornith -1.5-35B-A3B Ornith-1.5-9B Write Preview ![ornith_logo.png](/assets/chirpchirp/ornith-1.5/0be8f84b-8da2-47f6-8f48-3699a678dca8) Chirp Chirp! 🐦 We are introducing Ornith-1.5, a major step toward building foundation models through end-to-end self-improvement. Ornith-1.5 extends Ornith-1.0 by expanding the self-improvement loop from scaffold and rollout optimization to jointly optimizing task generation, scaffold construction, and solution rollouts. Rather than relying on a fixed set of human-curated tasks and manually designed harnesses, Ornith-1.5 continuously generates new training tasks, discovers effective strategies for solving them, and improves the policy through reinforcement learning. For more details on the task, harness, and rollout reward design, please refer to our [blog](https://ornith.ai/ornith_1_5.html). ## Ornith -1.5-397B ![ornith_397b_eval.png](/assets/chirpchirp/ornith-1.5/ea501d8c-b23c-4a5f-8e75-ad21ec86fdd0) ## Ornith -1.5-35B-A3B ![ornith_35b_eval.png](/assets/chirpchirp/ornith-1.5/611e031b-c149-4da3-b04b-21bf8788853f) ## Ornith-1.5-9B ![ornith_9b_eval.png](/assets/chirpchirp/ornith-1.5/b812fa15-20bf-401f-b8f5-5545f49b9f60) Paste, drop or click to upload images (.png, .jpeg, .jpg, .svg, .gif)",
       "variants": [
@@ -578,9 +578,9 @@
         "tools",
         "vision"
       ],
-      "pulls": 277000,
-      "pulls_text": "277K \n  Downloads",
-      "blurb": "muse-glimmer Meta's latest open model built for always-on local agents. 30B parameters, licensed under Apache 2.0 and runs on a single GPU — tuned for tool use, long tasks, and failure recovery. 30b 277K",
+      "pulls": 277300,
+      "pulls_text": "277.3K \n  Downloads",
+      "blurb": "muse-glimmer Meta's latest open model built for always-on local agents. 30B parameters, licensed under Apache 2.0 and runs on a single GPU — tuned for tool use, long tasks, and failure recovery. 30b 277.3K",
       "name": "Meta's latest open model built for always-on local agents. 30B parameters, licensed under Apache 2.0 and runs on a single GPU — tuned for tool use, long tasks, and failure recovery.",
       "description": "Readme Muse Glimmer is a 30-billion-parameter causal language model with a dedicated perception encoder, distilled from Muse Spark and purpose-built for autonomous agentic tasks on consumer hardware. The model integrates multi-step reasoning, reliable tool use, multimodal understanding, and failure recovery into a single model that runs locally without requiring cloud infrastructure or network access. Get started To download and run Muse Glimmer with Ollama, use: ollama run muse-glimmer Ollama’s MLX engine provides state-of-the-art performance on Apple Silicon, with support for DFlash and image input: ollama run muse-glimmer:30b-mlx Model information End-to-end Agentic Task Completion. Muse Glimmer achieves strong success rates on full-task benchmarks including DeepSearch QA, MCP-Atlas, 𝛕3-Bench and SWE-Bench, which measure its ability to work within scaffolds, write and debug code, and resolve multi-turn requests from start to finish. Reliable Tool Use. The model handles a wide range of function calls, invoking tools with precise schemas throughout extended workflows. Multi-Step Reasoning. Muse Glimmer chains reasoning over long horizons, sustaining coherent plans across complex, extended workflows. Failure Recovery. When a tool call fails or returns an unexpected result, the model diagnoses the error and retries rather than halt. Multimodal Input and Reasoning. Through a dedicated perception encoder, the model accepts interleaved text and images. This enables agents to interpret screenshots, charts, and documents alongside conversation. Scaffold Compatibility. Muse Glimmer works across OpenClaw, Hermes Agent, and other agentic orchestration patterns. Controllable Effort. The model supports different reasoning strengths to select the right balance between quality and speed. Multilingual. Muse Glimmer is trained on data from more than 100 languages. Benchmarks Meta evaluated Muse Glimmer across a broad range of benchmarks to assess the diverse capabilities required ",
       "variants": [
@@ -698,9 +698,9 @@
         "thinking",
         "tools"
       ],
-      "pulls": 221900,
-      "pulls_text": "221.9K \n  Downloads",
-      "blurb": "nemotron-3.5-lightning NVIDIA Nemotron 3.5 Lightning is an open 30B mixture-of-experts (MoE) model with 3B active parameters built for always-on agents. 30b 221.9K",
+      "pulls": 222000,
+      "pulls_text": "222K \n  Downloads",
+      "blurb": "nemotron-3.5-lightning NVIDIA Nemotron 3.5 Lightning is an open 30B mixture-of-experts (MoE) model with 3B active parameters built for always-on agents. 30b 222K",
       "name": "NVIDIA Nemotron 3.5 Lightning is an open 30B mixture-of-experts (MoE) model with 3B active parameters built for always-on agents.",
       "description": "Readme NVIDIA Nemotron 3.5 Lightning is an open 30B mixture-of-experts (MoE) model with 3B active parameters built for the execution layer of always-on agents. It is designed for harnesses like OpenClaw and Hermes Agent—all supported by the NVIDIA NemoClaw open source security and management stack for running always-on AI agents. Nemotron 3.5 Lightning offers 4x higher throughput and 30% lower task completion time compared to other leading open models of similar size Use cases Personal agents : Power long-running personal assistants for everyday tasks, like managing your email, calendar, projects and bookings. Run these agents locally on your PC to leverage contextualized intel. Financial services workflows : Power special agents for specialized financial services tasks, such as extracting data from documents, checking policy rules, monitoring risk signals, and preparing structured summaries. Cybersecurity operations : Power special agents for specialized security tasks, such as enriching alerts, classifying incidents, querying logs, validating controls, correlating indicators, and preparing structured findings for analysts. Telecom : Power special agents for autonomous networks and proactive customer care, such as triaging network alarms, optimizing network configurations, and answering billing questions. Retail : Power special agents for enriching product catalogs, resolving inventory and fulfillment exceptions, assisting product discovery, and answering order, return, or loyalty questions Benchmarks Write Preview NVIDIA Nemotron 3.5 Lightning is an open 30B mixture-of-experts (MoE) model with 3B active parameters built for the execution layer of always-on agents. It is designed for harnesses like OpenClaw and Hermes Agent—all supported by the NVIDIA NemoClaw open source security and management stack for running always-on AI agents. Nemotron 3.5 Lightning offers 4x higher throughput and 30% lower task completion time compared to other leading open models of simila",
       "variants": [
@@ -794,9 +794,9 @@
         "tools",
         "vision"
       ],
-      "pulls": 182400,
-      "pulls_text": "182.4K \n  Downloads",
-      "blurb": "qwen3.8-flash-next This experimental preview of the architecture that will underpin Qwen4. 182.4K",
+      "pulls": 182500,
+      "pulls_text": "182.5K \n  Downloads",
+      "blurb": "qwen3.8-flash-next This experimental preview of the architecture that will underpin Qwen4. 182.5K",
       "name": "This experimental preview of the architecture that will underpin Qwen4.",
       "description": "Readme Qwen3.8-Flash-Next is the first open-weight model built on the architecture that will underpin Qwen4. It is a multimodal mixture-of-experts model with 125B total parameters and only 6B active per token, designed for cost-efficient inference across agentic coding, tool use, and vision tasks, with a native 256K context window. Highlights A preview of the Qwen4 architecture : an experimental release of Qwen’s next-generation architecture, published early so developers can prepare for the full Qwen4 family. Qwen3.8-Flash, the production model in Qwen’s API, is based on this release. Sparse activation : 125B total parameters with 6B active per token, routed across 512 experts (10 routed plus 1 shared), so per-token compute stays close to that of a small model. Hybrid attention with Qwen Sparse Attention (QSA) : Gated DeltaNet linear-attention layers are interleaved 3:1 with QSA layers that attend over micro-blocks of context rather than individual tokens, cutting long-context latency for agentic workloads. N-gram embedding : an additional 51B parameters live in a 20M-entry embedding table indexed by bigrams and trigrams. This is a new axis for scaling parameters that needs less compute than adding experts and is more amenable to offloading on memory-constrained hardware. Gated residual : element-wise, data-dependent read gates and per-branch write gates on the residual stream add expressiveness with low inference overhead. 256K context, extensible to 1M : 262,144 tokens natively, extensible to 1,000,000 tokens with YaRN. Thinking mode on by default : thinking can be disabled per request, and reasoning depth can be tuned with reasoning_effort ( low , medium , or xhigh ). Reasoning context from historical messages is retained via preserve_thinking . Native image and video understanding : from STEM diagrams, charts, and documents to hour-scale videos, along with computer-use and mobile-use tasks. Strong agentic coding and tool use : outperforms Qwen3.8-27B, Qwen3.7-P",
       "variants": [
@@ -877,8 +877,8 @@
         "thinking",
         "tools"
       ],
-      "pulls": 88700,
-      "pulls_text": "88.7K \n  Downloads",
+      "pulls": 88800,
+      "pulls_text": "88.8K \n  Downloads",
       "blurb": "glm-5.3 Z.ai's flagship model and the most capable open-weights model for coding, with major gains on long-horizon agentic tasks. High usage $1.40 in · $4.40 out per 1M tokens $ $ $ $ | 1M context | cloud",
       "name": "Z.ai's flagship model and the most capable open-weights model for coding, with major gains on long-horizon agentic tasks.",
       "description": "Readme This model is hosted in the United States and Europe. Like all other models on Ollama’s cloud, this model follows Ollama’s privacy policy with zero data retention. GLM-5.3 is Z.ai’s flagship model and the most capable open-weights model for coding, with major gains on long-horizon agentic tasks. GLM-5.3 uses the same base model as GLM-5.2 — every gain comes from post-training. Compared with GLM-5.2, it is much better at complex coding and long-horizon tasks, including a 50% improvement on Z.ai’s in-house Code Bench. What’s new Stronger coding: Terminal-Bench 3.0 improves from 4.6 to 28.3, DeepSWE v1.1 from 46.2 to 66.9, and Terminal-Bench 2.1 from 81.0 to 88.2 over GLM-5.2. Long-horizon agentic tasks: SWE-Marathon more than doubles (19.4 → 42.5), with the top scores in Z.ai’s evaluations on AutomationBench (48.2) and GDPval-AA v2 (1769). Security research: state of the art on CyberGym (84.5) for vulnerability discovery. Adjustable reasoning effort: reasoning_effort accepts low , high , and max , and defaults to max . For chat, set clear_thinking to true . 1M token context window: the same long context as GLM-5.2, for project-level engineering work and long-running sessions. Agentic coding GLM-5.3 is built for coding agents, including Claude Code, OpenCode, Hermes Agent, and OpenClaw. Z.ai’s results below were measured in the Claude Code harness with maximum reasoning effort. Benchmarks Benchmark GLM-5.3 GLM-5.2 Kimi K3 DeepSeek-V4 Pro-0813 Qwen3.8-Max Opus 4.8 Fable 5 GPT-5.6 Sol Terminal Bench 2.1 88.2 81.0 88.3 87.9 86.6 85.0 88.0 88.8 Terminal Bench 3.0 28.3 4.6 17.4 – – 21.1 33.7 34.6 DeepSWE (v1.1) 66.9 46.2 67.5 62.7 56.6 58.0 69.7 72.7 NL2Repo 58.0 48.9 58.0 61.1 55.9 69.7 – – ProgramBench (Almost Solved) 19.0 9.5 17.5 – 10.5 15.5 33.0 23.0 FrontierSWE 78.1 67.5 – – – 66.5 88.2 – SWE-Marathon (v1.1) 42.5 19.4 48.1 – – 48.8 33.1 42.5 PostTrainBench 39.8 31.7 32.0 – – 32.9 41.8 36.2 CyberGym 84.5 77.2 80.0 83.3 78.5 78.1 83.8 83.6 ExploitGym (2h / 6h) 10",
@@ -899,9 +899,9 @@
         "thinking",
         "tools"
       ],
-      "pulls": 81100,
-      "pulls_text": "81.1K \n  Downloads",
-      "blurb": "tev1 A 4B decision model from Together AI for fast classification. decision 0.8b 4b 81.1K",
+      "pulls": 81600,
+      "pulls_text": "81.6K \n  Downloads",
+      "blurb": "tev1 A 4B decision model from Together AI for fast classification. decision 0.8b 4b 81.5K",
       "name": "A 4B decision model from Together AI for fast classification.",
       "description": "Readme Tev1 requires Ollama 0.35 or later. Tev1 is a family of experimental decision models from Together AI, fine-tuned from Qwen3.5 in 4B and 0.8B sizes. You give it a question and a set of options. It selects the answer based on likely outcome, and gives you the probability of each option. It’s meant for the fast classification work that TypeSafe’s Jev does, like routing a support ticket or checking a request against a policy. Models 4B ollama pull tev1:4b 0.8B ollama pull tev1:0.8b Highlights Three question types: Pick from a list, answer true or false, or place something on a rubric. Two sizes: The 4B model is the more accurate of the two. The 0.8B model is an 812MB download for tight memory budgets. Many questions per request: Ask up to 64 questions about the same text in one call. Open: The dataset builders and training scripts are MIT licensed. API Decision models use Ollama’s /v1/systemone endpoint, which follows TypeSafe’s Jev API. Put the text you want judged in state and your questions in questions . Ollama builds Tev1’s prompt for you. Field Description model tev1 (the 4B model) or tev1:0.8b state The text to judge. Use a string, or a JSON object or array for structured input. questions 1 to 64 named questions. Answers come back in the same order. keep_alive Optional. How long the model stays loaded after the request. Every question has a type , instructions , and usually criteria : Type criteria Answer fields choice An object mapping each option to a description. Use null to let the option name describe itself. choice , probabilities , confidence noul Optional. {\"true\": \"...\", \"false\": \"...\"} if you want to describe each side. noul , the probability that the answer is true score An array of level descriptions, lowest first. Levels are numbered from 0. score (the probability-weighted level), legend , probabilities , confidence Choice and score questions take 2 to 26 options. Tev1 was trained on 2 to 24, so stay in that range. confidence runs from 0 to 1",
       "variants": [
@@ -1008,8 +1008,8 @@
         "tools",
         "vision"
       ],
-      "pulls": 78200,
-      "pulls_text": "78.2K \n  Downloads",
+      "pulls": 78300,
+      "pulls_text": "78.3K \n  Downloads",
       "blurb": "deepseek-v4.1-flash DeepSeek-V4.1-Flash is an advanced tool designed to enhance search capabilities, providing users with faster and more accurate results. Medium usage $0.30 in · $1.20 out per 1M tokens $ $ $ $ | 1M context | cloud",
       "name": "DeepSeek-V4.1-Flash is an advanced tool designed to enhance search capabilities, providing users with faster and more accurate results.",
       "description": "Readme DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression DeepSeek-V4.1-Flash is an advanced tool designed to enhance search capabilities, providing users with faster and more accurate results. It’s a multimodal Mixture-of-Experts (MoE) model with 552B backbone parameters and support for contexts of up to one million tokens. DeepSeek-V4.1-Flash uses a Causal Encoder-Decoder (CED) design, stacking a 20-layer causal encoder on top of a 20-layer decoder for 40 Transformer layers total. Under CED, the decoder’s global KV cache is built by projecting the encoder’s final hidden states, instead of being computed from each decoder layer’s hidden states as it normally would be. As a result, only 8B parameters are active per token during prefill and 16B during decode , which cuts costs significantly for agentic workloads that process a lot of input. ￼ DeepSeek-V4.1-Flash builds on Compressed Sparse Attention 2 (CSA2) , where every attention layer runs in one of three fixed modes - Full , Reindex , or Reuse - letting layers share main KV, share indexer K, and recycle Top-K sparse-attention indices. In the decoder, a Hierarchical Sparse Indexer caps later indexing layers to a candidate pool built by the first Full Mode layer, so indexer cost at deeper layers stays bounded no matter how long the context gets. Together with FP4 main KV caching (E2M1 values, one E4M3 scale per 16 channels), this brings the global KV cache down to 890 bytes per token - about a quarter of DeepSeek-V4-Flash. Benchmark (Metric) Opus-5.0 GPT-5.6 Sol K3 GLM-5.3 DS-V4-Pro DS-V4-Flash DS-V4.1-Flash Reasoning GPQA Diamond (Pass@1) 93.4 94.1 92.9 88.1 92.4 89.9 90.9 HLE (Pass@1) 56.3 44.5 43.5 42.0† 42.7† 37.8† 36.8 (39.1†) Codeforces (Rating) — — — — 3348 3289 3471 MathArena Apex (Pass@1) — — 65.6 — 65.3 58.6 65.6 Agentic Terminal-Bench 2.1 (Pass@1) 89.1 88.8 88.3 88.2 87.9 82.7 90.6 Terminal-Bench 3.0 (Pass@1) 43.3 34.4 17.7 28.3 11.8 7.6 30.0 Terminal-Bench 4.0 (Pass@1) 51.8 39.9 12.6 37.9 1",
@@ -1031,9 +1031,9 @@
         "thinking",
         "tools"
       ],
-      "pulls": 35700,
-      "pulls_text": "35.7K \n  Downloads",
-      "blurb": "nimble A 9B decision model from Bespoke Labs for fast, typed classification. decision 9b 35.7K",
+      "pulls": 35800,
+      "pulls_text": "35.8K \n  Downloads",
+      "blurb": "nimble A 9B decision model from Bespoke Labs for fast, typed classification. decision 9b 35.8K",
       "name": "A 9B decision model from Bespoke Labs for fast, typed classification.",
       "description": "Readme Nimble requires Ollama 0.35 or later. Nimble is a 9B decision model from Bespoke Labs, fine-tuned from Qwen3.5-9B. You send Nimble some text and a set of questions. It picks an answer for every question and gives you the probability of each allowed answer. Nimble reads the prompt once per question and scores the answer tokens directly. There’s no reasoning step. This is what makes it fast. ollama pull nimble Highlights Three question types: Pick from a list, answer true or false, or place something on a rubric. Many questions per request: Ask up to 64 questions about the same text in one call. Fast: Nimble answers in under 100ms on a MacBook Pro with an M5 Max. Trained on contrastive pairs: The two examples in a pair differ by one fact, and that fact flips the answer. Apache 2.0 license What you can build Task You define You get back Route a request The destinations and when each one applies The chosen destination and the probability of each destination Check a condition A yes or no question and the evidence True or false, and the probability of each Apply a policy The rules and the allowed outcomes A typed decision based on the text you supply Rate an outcome Ordered levels, each with clear criteria The chosen level and the probability of each level API Decision models use Ollama’s /v1/systemone endpoint, which follows TypeSafe’s Jev API. Put the text you want judged in state and your questions in questions . Ollama builds Nimble’s prompt for you. Field Description model nimble state The text to judge. Use a string, or a JSON object or array for structured input. questions 1 to 64 named questions. Answers come back in the same order. keep_alive Optional. How long the model stays loaded after the request. Every question has a type , instructions , and usually criteria : Type criteria Answer fields choice An object mapping each option to a description. Use null to let the option name describe itself. choice , probabilities , confidence noul Optional. {\"true\": ",
       "variants": [
@@ -1103,9 +1103,9 @@
         "multimodal",
         "vision"
       ],
-      "pulls": 25600,
-      "pulls_text": "25.6K \n  Downloads",
-      "blurb": "embeddinggemma-2 EmbeddingGemma 2 is a model from Google built on the Gemma 4 architecture. audio 270m 440m 570m 740m 25.6K",
+      "pulls": 26000,
+      "pulls_text": "26K \n  Downloads",
+      "blurb": "embeddinggemma-2 EmbeddingGemma 2 is a model from Google built on the Gemma 4 architecture. audio 270m 440m 570m 740m 26K",
       "name": "EmbeddingGemma 2 is a multimodal embedding model from Google built on the Gemma 4 architecture.",
       "description": "Readme EmbeddingGemma 2 is an open multimodal embedding model built by Google DeepMind which maps text (incl. code), images, video, and audio inputs—and combinations thereof—into a single, unified 768-dimensional vector space. The model has 740M total parameters, combining a 270M parameter text model with modular vision (170M) and audio (300M) encoders. Designed to run on consumer hardware such as mobile devices and laptops, EmbeddingGemma 2 delivers low-latency semantic representations for on-device applications, like search, retrieval-augmented generation (RAG), classification, and clustering. EmbeddingGemma 2 builds upon the architectural and capability advancements of Gemma 4, offering several core features:&nbsp; Native multimodality: Native multimodality: Unifies 4 modalities (text, images, video, and audio) in a single shared 768-dimensional embedding space. Multilinguality and code: EmbeddingGemma 2 understands 100+ languages, and achieves a ~14% improvement on code tasks relative to its predecessor.&nbsp; Flexible footprint: Combines a 270M parameter text backbone (130M transformer + 140M embedder) with selectively loadable vision (170M) and audio (300M) encoders, allowing developers to load only the modalities required for their use case. Matryoshka Representation Learning (MRL): Native support for truncated embeddings across 128d, 256d, 512d, and 768d, enabling up to a 6x reduction in vector storage costs with minimal impact on quality. Context length: 8K token context window, capable of processing minutes of audio or video. Task-steered representations: Uses lightweight text instruction prefixes to optimize embeddings for different tasks (search, classification, clustering, semantic similarity, etc.). Model Overview Parameters Total 740M Backbone 130M Embedder 140M Modality Encoders Vision: 170M Audio: 300M Architecture Layers 24 Model Dimension 512 Hidden Dimension 2048 Sliding Window 1024 tokens Vocabulary Size 262,144 # Heads 4 # KV-Heads (Local/Globa",
       "variants": [
@@ -1237,9 +1237,9 @@
         "multimodal",
         "vision"
       ],
-      "pulls": 16100,
-      "pulls_text": "16.1K \n  Downloads",
-      "blurb": "clef-flash Clef-Flash is a 9B model that turns a state and a schema of typed questions into decisions. decision 9b 16.1K",
+      "pulls": 16300,
+      "pulls_text": "16.3K \n  Downloads",
+      "blurb": "clef-flash Clef-Flash is a 9B model that turns a state and a schema of typed questions into decisions. decision 9b 16.3K",
       "name": "Clef-Flash is a 9B multimodal model that turns a state and a schema of typed questions into decisions.",
       "description": "Readme Clef Flash requires Ollama 0.35.1 or later. Clef Flash is a 9B decision model from Cloudflare, fine-tuned from Qwen3.5-9B. Clef Flash can also read images: add encoded images to the request and they’re scored jointly with the text state. It’s fully compatible with the Jev and System One APIs, so it works through Ollama’s /v1/systemone endpoint. Use Clef Flash for latency-critical decisions; see clef for the larger, more accurate variant. ollama pull clef-flash Highlights Fast: Clef Flash had the lowest measured latency of any decision model in Cloudflare’s Decision Index runs — the 27B Clef is roughly five times slower. Multimodal: Decide over text, JSON, or images — screenshots, receipts, forms, photos. One forward pass: Every option of every question is scored jointly in a single non-autoregressive pass. 64K context window: Twice the state Jev’s 32K window holds. Apache 2.0 license What you can build Task You define You get back Route a request The destinations and when each applies The chosen destination and each destination’s probability Check a condition A yes or no question and the evidence True or false, and the probability of each Apply a policy The rules and the allowed outcomes A typed decision based on the text or images you supply Gate an agent step A condition and the agent’s proposed tool call Go or no-go, with the probability of each API Decision models use Ollama’s /v1/systemone endpoint, documented here . Put the text you want judged in state and your questions in questions . Ollama builds Clef Flash’s prompt for you. Field Description model clef-flash state The text to judge. Use a string, or a JSON object or array for structured input. images Optional. Base64-encoded PNG, JPEG, or WebP images shared by all questions, in request order. URLs and data URLs are not supported. questions 1 to 64 named questions. Answers come back in the same order. keep_alive Optional. How long the model stays loaded after the request. Every question has a type ,",
       "variants": [
@@ -1287,9 +1287,9 @@
         "multimodal",
         "vision"
       ],
-      "pulls": 10400,
-      "pulls_text": "10.4K \n  Downloads",
-      "blurb": "clef Clef is a 27B model created by Cloudflare that turns a state and a schema of typed questions into decisions. decision 27b 10.4K",
+      "pulls": 10500,
+      "pulls_text": "10.5K \n  Downloads",
+      "blurb": "clef Clef is a 27B model created by Cloudflare that turns a state and a schema of typed questions into decisions. decision 27b 10.5K",
       "name": "Clef is a 27B multimodal model created by Cloudflare that turns a state and a schema of typed questions into decisions.",
       "description": "Readme Clef requires Ollama 0.35.1 or later. Clef is a 27B decision model from Cloudflare, fine-tuned from Qwen3.8-27B. Clef also reads images. Add encoded images to the request and they’re scored jointly with the text. It’s fully compatible with the Jev and System One APIs, so it works through Ollama’s /v1/systemone endpoint. See clef-flash for a smaller, faster variant. ollama pull clef Highlights Multimodal: Decide over text, JSON, or images — screenshots, receipts, forms, photos. One forward pass: Every option of every question is scored jointly in a single non-autoregressive pass. 64K context window: Twice the state Jev’s 32K window holds. Leading accuracy: Clef tops the Decision Index, Cloudflare’s leaderboard of decision models, and beats Jev on most of its suite. Apache 2.0 license What you can build Task You define You get back Route a request The destinations and when each applies The chosen destination and each destination’s probability Check a condition A yes or no question and the evidence True or false, and the probability of each Apply a policy The rules and the allowed outcomes A typed decision based on the text or images you supply Read a document A photo of the page and the fields to decide A field-by-field decision with probabilities API Decision models use Ollama’s /v1/systemone endpoint, documented here . Put the text you want judged in state and your questions in questions . Ollama builds Clef’s prompt for you. Field Description model clef state The text to judge. Use a string, or a JSON object or array for structured input. images Optional. Base64-encoded PNG, JPEG, or WebP images shared by all questions, in request order. URLs and data URLs are not supported. questions 1 to 64 named questions. Answers come back in the same order. keep_alive Optional. How long the model stays loaded after the request. Every question has a type , instructions , and usually criteria : Type criteria Answer fields choice An object mapping each option to a descript",
       "variants": [
@@ -1353,8 +1353,8 @@
         "tools",
         "vision"
       ],
-      "pulls": 473,
-      "pulls_text": "473 \n  Downloads",
+      "pulls": 521,
+      "pulls_text": "521 \n  Downloads",
       "blurb": "mistral-large-4 Mistral Large 4 is Mistral's open-weight, general-purpose model. Its granular Mixture-of-Experts design activates 52B of 1.05T total parameters, with a 1.6B encoder handling images. High usage $0.68 in · $2.09 out per 1M tokens $ $ $ $ | 1M context | cloud",
       "name": "Mistral Large 4 is Mistral's open-weight, general-purpose multimodal model. Its granular Mixture-of-Experts design activates 52B of 1.05T total parameters, with a 1.6B vision encoder handling images.",
       "description": "Readme Mistral Large 4 is a natively multimodal model with 1 trillion parameters, 49 billion of them active. It’s Mistral’s largest and most capable model to date, and it’s still improving as they refine it. It’s strong across coding, agentic workflows, and multimodal understanding. It’s competitive with the strongest open-source models, and well ahead of open-weight models from the US and Europe. On enterprise workloads like cybersecurity, finance, and law, Mistral reports state-of-the-art results among open models. Reference https://mistral.ai/news/mistral-large-4/ Write Preview Mistral Large 4 is a natively multimodal model with 1 trillion parameters, 49 billion of them active. It's Mistral's largest and most capable model to date, and it's still improving as they refine it. It's strong across coding, agentic workflows, and multimodal understanding. It's competitive with the strongest open-source models, and well ahead of open-weight models from the US and Europe. On enterprise workloads like cybersecurity, finance, and law, Mistral reports state-of-the-art results among open models. ## Reference https://mistral.ai/news/mistral-large-4/ Paste, drop or click to upload images (.png, .jpeg, .jpg, .svg, .gif)",
@@ -1372,9 +1372,9 @@
     {
       "slug": "laya",
       "capabilities": [],
-      "pulls": 117,
-      "pulls_text": "117 \n  Downloads",
-      "blurb": "laya Laya is a 421M decision model from Convai Innovations, fine-tuned from ModernBERT-large. decision 4,116",
+      "pulls": 162,
+      "pulls_text": "162 \n  Downloads",
+      "blurb": "laya Laya is a 421M decision model from Convai Innovations, fine-tuned from ModernBERT-large. decision 4,162",
       "name": "Laya is a 421M decision model from Convai Innovations, fine-tuned from ModernBERT-large.",
       "description": "Readme Laya requires Ollama 0.40.0 or later. Laya is a 421M decision model from Convai Innovations, fine-tuned from ModernBERT-large. It scores every option of every question in a single forward pass and returns typed answers with calibrated probabilities. There is no language-model decoder and no text generation — nothing to parse, nothing to hallucinate. The shipped checkpoint is fine-tuned on real, human-annotated workflows: email triage (spam, phishing, and department routing), content safety, intent routing, and fact verification. ollama pull laya Highlights Small and fast: 421M parameters. Can answer one question in under 10 ms on M5 Max. Calibrated probabilities: trained with RLCD against strictly proper scoring rules, so the only way to maximize reward is to report honest probabilities. In-task calibration error (ECE) is 0.060. Three question types: Pick from a list, answer true or false, or place something on a rubric. Many questions per request: Ask up to 64 questions about the same text in one call. They share a single forward pass. Apache 2.0 license What you can build Task You define You get back Route a request The departments and when each applies The chosen department and each department’s probability Screen an email Flags for spam, phishing, or escalation A probability for each flag Rate urgency Ordered levels, each with clear criteria The expected level and the probability of each level Apply a policy The rules and the allowed outcomes A typed decision based on the text you supply API Decision models use Ollama’s /v1/systemone endpoint, which follows TypeSafe’s Jev API. Put the text you want judged in state and your questions in questions . Ollama builds Laya’s prompt for you. Field Description model laya state The text to judge. Use a string, or a JSON object or array for structured input. questions 1 to 64 named questions. Answers come back in the same order. keep_alive Optional. How long the model stays loaded after the request. Every question h",
       "variants": [
