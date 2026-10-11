@@ -1,0 +1,1413 @@
+{
+  "scraped_at": "2026-10-11T00:15:38.313756+00:00",
+  "models": [
+    {
+      "slug": "qwen3.6",
+      "capabilities": [
+        "reasoning",
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "pulls": 7100000,
+      "pulls_text": "7.1M \n  Downloads",
+      "blurb": "qwen3.6 Qwen3.6 delivers substantial upgrades in agentic coding and preservation than previous Qwen models. 27b 35b 7.1M",
+      "name": "Qwen3.6 delivers substantial upgrades in agentic coding and thinking preservation than previous Qwen models.",
+      "description": "Readme Following the February release of the Qwen3.5 series, we’re pleased to share the first open-weight variant of Qwen3.6. Built on direct feedback from the community, Qwen3.6 prioritizes stability and real-world utility, offering developers a more intuitive, responsive, and genuinely productive coding experience. Qwen3.6 Highlights This release delivers substantial upgrades, particularly in Agentic Coding: the model now handles frontend workflows and repository-level reasoning with greater fluency and precision. Thinking Preservation: we’ve introduced a new option to retain reasoning context from historical messages, streamlining iterative development and reducing overhead. Write Preview <img src=\"/assets/library/qwen3.6/a4dafb1d-29c1-46bc-81ca-a8a6db6b55b3\" width=\"360\" /> Following the February release of the Qwen3.5 series, we're pleased to share the first open-weight variant of Qwen3.6. Built on direct feedback from the community, Qwen3.6 prioritizes stability and real-world utility, offering developers a more intuitive, responsive, and genuinely productive coding experience. ### Qwen3.6 Highlights This release delivers substantial upgrades, particularly in - Agentic Coding: the model now handles frontend workflows and repository-level reasoning with greater fluency and precision. - Thinking Preservation: we've introduced a new option to retain reasoning context from historical messages, streamlining iterative development and reducing overhead. ![qwen3.6_35b_a3b_score.png](/assets/library/qwen3.6/4d333c77-e6ad-4047-8724-f38c68cc5b28) Paste, drop or click to upload images (.png, .jpeg, .jpg, .svg, .gif)",
+      "variants": [
+        {
+          "tag": "qwen3.6:latest",
+          "size_text": "23GB",
+          "size_bytes": 24696061952,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b",
+          "size_text": "23GB",
+          "size_bytes": 24696061952,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b-coding",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b-coding-mtp-q4_K_M",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b-coding-mxfp8",
+          "size_text": "30GB",
+          "size_bytes": 32212254720,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b-coding-nvfp4",
+          "size_text": "19GB",
+          "size_bytes": 20401094656,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b-coding-bf16",
+          "size_text": "55GB",
+          "size_bytes": 59055800320,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b-mlx",
+          "size_text": "19GB",
+          "size_bytes": 20401094656,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b-mlx-bf16",
+          "size_text": "56GB",
+          "size_bytes": 60129542144,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b-mtp-q4_K_M",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b-mtp-q8_0",
+          "size_text": "30GB",
+          "size_bytes": 32212254720,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b-mtp-bf16",
+          "size_text": "56GB",
+          "size_bytes": 60129542144,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b-mxfp8",
+          "size_text": "30GB",
+          "size_bytes": 32212254720,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b-nvfp4",
+          "size_text": "19GB",
+          "size_bytes": 20401094656,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b-q4_K_M",
+          "size_text": "17GB",
+          "size_bytes": 18253611008,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b-q8_0",
+          "size_text": "30GB",
+          "size_bytes": 32212254720,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:27b-bf16",
+          "size_text": "56GB",
+          "size_bytes": 60129542144,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-a3b",
+          "size_text": "23GB",
+          "size_bytes": 24696061952,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-a3b-coding",
+          "size_text": "23GB",
+          "size_bytes": 24696061952,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-a3b-coding-mtp-q4_K_M",
+          "size_text": "23GB",
+          "size_bytes": 24696061952,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-a3b-coding-mxfp8",
+          "size_text": "38GB",
+          "size_bytes": 40802189312,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-a3b-coding-nvfp4",
+          "size_text": "24GB",
+          "size_bytes": 25769803776,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-a3b-q4_K_M",
+          "size_text": "24GB",
+          "size_bytes": 25769803776,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-a3b-coding-bf16",
+          "size_text": "70GB",
+          "size_bytes": 75161927680,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-a3b-mlx-bf16",
+          "size_text": "72GB",
+          "size_bytes": 77309411328,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-a3b-mtp-q4_K_M",
+          "size_text": "23GB",
+          "size_bytes": 24696061952,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-a3b-mtp-q8_0",
+          "size_text": "39GB",
+          "size_bytes": 41875931136,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-a3b-mtp-bf16",
+          "size_text": "72GB",
+          "size_bytes": 77309411328,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-a3b-mxfp8",
+          "size_text": "38GB",
+          "size_bytes": 40802189312,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-a3b-nvfp4",
+          "size_text": "24GB",
+          "size_bytes": 25769803776,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-a3b-q8_0",
+          "size_text": "39GB",
+          "size_bytes": 41875931136,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-a3b-bf16",
+          "size_text": "71GB",
+          "size_bytes": 76235669504,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-coding",
+          "size_text": "23GB",
+          "size_bytes": 24696061952,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.6:35b-mlx",
+          "size_text": "24GB",
+          "size_bytes": 25769803776,
+          "context": "256K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 35
+    },
+    {
+      "slug": "qwen3.8",
+      "capabilities": [
+        "reasoning",
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "pulls": 3500000,
+      "pulls_text": "3.5M \n  Downloads",
+      "blurb": "qwen3.8 Qwen3.8 delivers substantial gains across coding, professional work, research, and long-horizon agentic tasks. 27b 3.5M",
+      "name": "Qwen3.8 delivers substantial gains across coding, professional work, research, and long-horizon agentic tasks.",
+      "description": "Readme Highlights Qwen3.8-27B features the following enhancements: Core Capabilities : Comprehensive improvements across coding, professional work, research, and long-horizon agentic tasks. Agent Execution : Stronger autonomous planning and better handling of environment feedback, leading to more reliable end-to-end task completion. Downstream Compatibility : Broader support for popular harnesses and development tools, making it easier to integrate into your existing stack. Flexible Thinking Control : Thinking mode is on by default and can be disabled per request; reasoning depth can be tuned with reasoning_effort , and reasoning context from historical messages is retained via preserve_thinking . Vision-Language Understanding : Native support for image and video understanding, from STEM diagrams and documents to hour-scale videos. Benchmark Write Preview ### Highlights Qwen3.8-27B features the following enhancements: - **Core Capabilities**: Comprehensive improvements across coding, professional work, research, and long-horizon agentic tasks. - **Agent Execution**: Stronger autonomous planning and better handling of environment feedback, leading to more reliable end-to-end task completion. - **Downstream Compatibility**: Broader support for popular harnesses and development tools, making it easier to integrate into your existing stack. - **Flexible Thinking Control**: Thinking mode is on by default and can be disabled per request; reasoning depth can be tuned with `reasoning_effort`, and reasoning context from historical messages is retained via `preserve_thinking`. - **Vision-Language Understanding**: Native support for image and video understanding, from STEM diagrams and documents to hour-scale videos. ### Benchmark ![text performance](/assets/library/qwen3.8/2a76d126-0f06-40a0-b1b4-5884fd2dc3c7) ![VL performance](/assets/library/qwen3.8/354ae68e-231d-46fb-adf3-6190665b96e0) Paste, drop or click to upload images (.png, .jpeg, .jpg, .svg, .gif)",
+      "variants": [
+        {
+          "tag": "qwen3.8:latest",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8:27b",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8:27b-mlx",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8:27b-mlx-bf16",
+          "size_text": "56GB",
+          "size_bytes": 60129542144,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8:27b-mtp-q4_K_M",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8:27b-mtp-q8_0",
+          "size_text": "30GB",
+          "size_bytes": 32212254720,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8:27b-mtp-bf16",
+          "size_text": "56GB",
+          "size_bytes": 60129542144,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8:27b-mxfp8",
+          "size_text": "32GB",
+          "size_bytes": 34359738368,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8:27b-nvfp4",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8:27b-q4_K_M",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8:27b-q8_0",
+          "size_text": "30GB",
+          "size_bytes": 32212254720,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8:27b-bf16",
+          "size_text": "56GB",
+          "size_bytes": 60129542144,
+          "context": "256K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 12
+    },
+    {
+      "slug": "nemotron3",
+      "capabilities": [
+        "multimodal",
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "pulls": 676300,
+      "pulls_text": "676.3K \n  Downloads",
+      "blurb": "nemotron3 NVIDIA Nemotron 3 Nano Omni is a large language model that unifies video, audio, image, and text understanding to support enterprise-grade Q&A, summarization, transcription, and document intelligence workflows. 33b 676.3K",
+      "name": "NVIDIA Nemotron 3 Nano Omni is a multimodal large language model that unifies video, audio, image, and text understanding to support enterprise-grade Q&A, summarization, transcription, and document intelligence workflows.",
+      "description": "Readme NVIDIA Nemotron 3 Nano Omni is a multimodal large language model that unifies video, audio, image, and text understanding to support enterprise-grade Q&A, summarization, transcription, and document intelligence workflows. It extends the Nemotron Nano family with integrated video+speech comprehension, Graphical User Interface (GUI), Optical Character Recognition (OCR), and speech transcription capabilities, enabling end-to-end processing of rich enterprise content such as meeting recordings, M&E assets, training videos, and complex business documents. NVIDIA Nemotron 3 Nano Omni was developed by NVIDIA as part of the Nemotron model family. This model is available for commercial use. This model was improved using Qwen3-VL-30B-A3B-Instruct, Qwen3.5-122B-A10B, Qwen3.5-397B-A17B, Qwen2.5-VL-72B-Instruct, and gpt-oss-120b. License/Terms of Use Governing Terms: Use of this model is governed by the NVIDIA Open Model Agreement Use Case This model is designed for enterprise customers requiring multimodal understanding capabilities. Expected users include: - Customer service applications (e.g., Doordash video of drop-off at a given address via OCR, drive-thru order verification) - Media and Entertainment (M&E) — video and speech analysis, dense captions, video search and summarization - Document intelligence for AI assistants (contracts, SOW/MSA, scientific discovery, financial documents) - GUI automation for AI agentic applications (incident management, agentic search, browser agents, email agents) Write Preview NVIDIA Nemotron 3 Nano Omni is a multimodal large language model that unifies video, audio, image, and text understanding to support enterprise-grade Q&A, summarization, transcription, and document intelligence workflows. It extends the Nemotron Nano family with integrated video+speech comprehension, Graphical User Interface (GUI), Optical Character Recognition (OCR), and speech transcription capabilities, enabling end-to-end processing of rich enterprise conte",
+      "variants": [
+        {
+          "tag": "nemotron3:33b",
+          "size_text": "28GB",
+          "size_bytes": 30064771072,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "nemotron3:33b-q8",
+          "size_text": "36GB",
+          "size_bytes": 38654705664,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "nemotron3:33b-q4_K_M",
+          "size_text": "28GB",
+          "size_bytes": 30064771072,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "nemotron3:33b-bf16",
+          "size_text": "66GB",
+          "size_bytes": 70866960384,
+          "context": "128K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 4
+    },
+    {
+      "slug": "ornith",
+      "capabilities": [
+        "thinking",
+        "tools"
+      ],
+      "pulls": 599800,
+      "pulls_text": "599.8K \n  Downloads",
+      "blurb": "ornith A self-improving family of open-source models for agentic coding 9b 35b 599.8K",
+      "name": "A self-improving family of open-source models for agentic coding",
+      "description": "Readme Highlights: State-of-the-Art Coding Agents : Achieving state-of-the-art performance among open-source models of comparable size on coding benchmarks such as Terminal-Bench 2.1, SWE-Bench, NL2Repo and OpenClaw. Self-Improving Training Framework : Ornith-1.0 employs RL to learn to generate not only solution rollouts, but also the scallfold that drive those rollouts. By jointly optimizing the scaffold and the resulting solution, the model discovers better search trajectories and generates higher-quality solutions. Licence : MIT licensed, globally accessible, and free from regional limitations. 9B ollama run ornith:9b 35B ollama run ornith:35b References Blog Write Preview ![image.png](/assets/library/ornith/fd32d921-16eb-4fc1-a71b-65124dd4abb7) Highlights: * **State-of-the-Art Coding Agents**: Achieving state-of-the-art performance among open-source models of comparable size on coding benchmarks such as Terminal-Bench 2.1, SWE-Bench, NL2Repo and OpenClaw. * **Self-Improving Training Framework**: Ornith-1.0 employs RL to learn to generate not only solution rollouts, but also the scallfold that drive those rollouts. By jointly optimizing the scaffold and the resulting solution, the model discovers better search trajectories and generates higher-quality solutions. * **Licence**: MIT licensed, globally accessible, and free from regional limitations. ### 9B ``` ollama run ornith:9b ``` ![ornith 9b benchmarks](/assets/library/ornith/afc40753-0b00-4683-87b4-2c4a12f74acc) ### 35B ``` ollama run ornith:35b ``` ![ornith 35b benchmarks](/assets/library/ornith/b194b793-a9b5-4609-8625-6fabea9a1d19) ## References - [Blog](https://deep-reinforce.com/ornith_1_0.html) Paste, drop or click to upload images (.png, .jpeg, .jpg, .svg, .gif)",
+      "variants": [
+        {
+          "tag": "ornith:latest",
+          "size_text": "5.6GB",
+          "size_bytes": 6012954214,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "ornith:9b",
+          "size_text": "5.6GB",
+          "size_bytes": 6012954214,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "ornith:35b",
+          "size_text": "21GB",
+          "size_bytes": 22548578304,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "ornith:9b-q4_K_M",
+          "size_text": "5.6GB",
+          "size_bytes": 6012954214,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "ornith:9b-q8_0",
+          "size_text": "9.5GB",
+          "size_bytes": 10200547328,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "ornith:9b-bf16",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "ornith:35b-q4_K_M",
+          "size_text": "21GB",
+          "size_bytes": 22548578304,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "ornith:35b-q8_0",
+          "size_text": "37GB",
+          "size_bytes": 39728447488,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "ornith:35b-bf16",
+          "size_text": "69GB",
+          "size_bytes": 74088185856,
+          "context": "256K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 9
+    },
+    {
+      "slug": "minimax-m3",
+      "capabilities": [
+        "multimodal",
+        "reasoning",
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "pulls": 522000,
+      "pulls_text": "522K \n  Downloads",
+      "blurb": "minimax-m3 MiniMax M3: Coding & Agentic Frontier. 1M context window. Native Multimodality. High usage $0.60 in · $2.40 out per 1M tokens $ $ $ $ | 500K context | cloud",
+      "name": "MiniMax M3: Coding & Agentic Frontier. 1M context window. Native Multimodality.",
+      "description": "Readme Ollama’s Cloud is officially licensed with MiniMax for commercial usage In partnership with MiniMax, the M3 model on Ollama’s Cloud is US-based with zero data retention. Highlights MiniMax M3 achieves top-tier performance on coding and agentic benchmarks, with autonomous task decomposition, tool invocation, and multi-step reasoning capabilities — providing a reliable foundation for AI coding assistants and automated workflows. Powered by the proprietary MiniMax Sparse Attention (MSA) architecture, M3 supports up to 1M tokens context window with a guaranteed minimum of 512K tokens. The 1M context is the infrastructure for long-range Agent tasks, long-range Coding, and long-video understanding. A natively multimodal model. The entire data pipeline was rebuilt to scale pretraining data to 100T+, with multimodal training from step zero achieving deep alignment between textual and visual semantic spaces. Multimodal is a native core capability, not a superficial add-on. On BrowseComp, M3 scores 83.5, surpassing Opus 4.7 (79.3), demonstrating strong autonomous browsing and information retrieval capabilities. Until now, only a handful of closed-source models could simultaneously achieve frontier coding capabilities, million-token context, and Multimodal. M3 is the first to bring complete frontier capability to the open world. Benchmark Architecture MiniMax Sparse Attention (MSA) Architecture The MSA architecture enables native ultra-long context pretraining. M3 supports up to 1M tokens context window with a guaranteed minimum of 512K tokens, delivering excellent inference latency and throughput at extreme context lengths. The 1M context is the infrastructure for long-range Agent tasks, long-range Coding, and long-video understanding. Reference MiniMax M3 blog Write Preview > Ollama's Cloud is officially licensed with MiniMax for commercial usage > In partnership with MiniMax, the M3 model on Ollama's Cloud is US-based with zero data retention. ### Highlights - MiniMa",
+      "variants": [
+        {
+          "tag": "minimax-m3:cloud",
+          "size_text": null,
+          "size_bytes": null,
+          "context": "512K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 1
+    },
+    {
+      "slug": "ornith-1.5",
+      "capabilities": [
+        "vision"
+      ],
+      "pulls": 377300,
+      "pulls_text": "377.3K \n  Downloads",
+      "blurb": "ornith-1.5 Chirp Chirp! 🐦 We are introducing Ornith-1.5, a major step toward building foundation models through end-to-end self-improvement. 9b 35b 397b 377.3K",
+      "name": "Chirp Chirp! 🐦 We are introducing Ornith-1.5, a major step toward building foundation models through end-to-end self-improvement.",
+      "description": "Readme Chirp Chirp! 🐦 We are introducing Ornith-1.5, a major step toward building foundation models through end-to-end self-improvement. Ornith-1.5 extends Ornith-1.0 by expanding the self-improvement loop from scaffold and rollout optimization to jointly optimizing task generation, scaffold construction, and solution rollouts. Rather than relying on a fixed set of human-curated tasks and manually designed harnesses, Ornith-1.5 continuously generates new training tasks, discovers effective strategies for solving them, and improves the policy through reinforcement learning. For more details on the task, harness, and rollout reward design, please refer to our blog . Ornith -1.5-397B Ornith -1.5-35B-A3B Ornith-1.5-9B Write Preview ![ornith_logo.png](/assets/chirpchirp/ornith-1.5/0be8f84b-8da2-47f6-8f48-3699a678dca8) Chirp Chirp! 🐦 We are introducing Ornith-1.5, a major step toward building foundation models through end-to-end self-improvement. Ornith-1.5 extends Ornith-1.0 by expanding the self-improvement loop from scaffold and rollout optimization to jointly optimizing task generation, scaffold construction, and solution rollouts. Rather than relying on a fixed set of human-curated tasks and manually designed harnesses, Ornith-1.5 continuously generates new training tasks, discovers effective strategies for solving them, and improves the policy through reinforcement learning. For more details on the task, harness, and rollout reward design, please refer to our [blog](https://ornith.ai/ornith_1_5.html). ## Ornith -1.5-397B ![ornith_397b_eval.png](/assets/chirpchirp/ornith-1.5/ea501d8c-b23c-4a5f-8e75-ad21ec86fdd0) ## Ornith -1.5-35B-A3B ![ornith_35b_eval.png](/assets/chirpchirp/ornith-1.5/611e031b-c149-4da3-b04b-21bf8788853f) ## Ornith-1.5-9B ![ornith_9b_eval.png](/assets/chirpchirp/ornith-1.5/b812fa15-20bf-401f-b8f5-5545f49b9f60) Paste, drop or click to upload images (.png, .jpeg, .jpg, .svg, .gif)",
+      "variants": [
+        {
+          "tag": "ornith-1.5:9b",
+          "size_text": "6.6GB",
+          "size_bytes": 7086696038,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "ornith-1.5:35b",
+          "size_text": "23GB",
+          "size_bytes": 24696061952,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "ornith-1.5:397b",
+          "size_text": "242GB",
+          "size_bytes": 259845521408,
+          "context": "256K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 3
+    },
+    {
+      "slug": "glm-5.2",
+      "capabilities": [
+        "thinking",
+        "tools"
+      ],
+      "pulls": 372400,
+      "pulls_text": "372.4K \n  Downloads",
+      "blurb": "glm-5.2 GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks. High usage $1.40 in · $4.40 out per 1M tokens $ $ $ $ | 1M context | cloud",
+      "name": "GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks.",
+      "description": "Readme GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks. With a truly usable 1M-token context window, it can handle project-level engineering context, execute long-running tasks more reliably, follow engineering standards more consistently, and complete the full development workflow from requirements to multi-platform deployment in a single task. What’s new Solid 1M context : A 1M-token context that stably sustains long-horizon work, not just accepts more tokens. Advanced coding with flexible effort : Stronger coding capabilities with multiple thinking effort levels (High and Max) to balance performance against latency and compute. Pure open : An MIT open-source license — technical access without borders. Built for long-horizon tasks Supporting long-horizon tasks starts with making long context engineering-usable: the model must maintain quality across long, messy coding-agent trajectories, not just accept more tokens. A 1M context is easy to claim but much harder to keep reliable under real engineering pressure. To this end, Z.AI substantially expanded 1M-context training for coding-agent scenarios — large-scale implementation, automated research, performance optimization, and complex debugging — producing a long-context system that is both wide in scope and solid in execution. This shows up on three long-horizon coding benchmarks. On FrontierSWE , which measures whether an agent can complete open-ended technical projects at the scale of hours to tens of hours, GLM-5.2 trails Opus 4.8 by only 1% while edging out GPT-5.5 by 1% and Opus 4.7 by 11%. On PostTrainBench , where each agent is given an H100 GPU and judged by how much it improves small models through post-training, GLM-5.2 outperforms both Opus 4.7 and GPT-5.5, ranking second only to Opus 4.8. On SWE-Marathon , an ultra-long-horizon benchmark covering tasks like building compilers, optimizing kernels, and developing production-grade services, GLM-5.2 trails Opus 4.8 by 13% while remaining ",
+      "variants": [
+        {
+          "tag": "glm-5.2:cloud",
+          "size_text": null,
+          "size_bytes": null,
+          "context": "976K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 1
+    },
+    {
+      "slug": "muse-glimmer",
+      "capabilities": [
+        "multimodal",
+        "reasoning",
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "pulls": 277000,
+      "pulls_text": "277K \n  Downloads",
+      "blurb": "muse-glimmer Meta's latest open model built for always-on local agents. 30B parameters, licensed under Apache 2.0 and runs on a single GPU — tuned for tool use, long tasks, and failure recovery. 30b 277K",
+      "name": "Meta's latest open model built for always-on local agents. 30B parameters, licensed under Apache 2.0 and runs on a single GPU — tuned for tool use, long tasks, and failure recovery.",
+      "description": "Readme Muse Glimmer is a 30-billion-parameter causal language model with a dedicated perception encoder, distilled from Muse Spark and purpose-built for autonomous agentic tasks on consumer hardware. The model integrates multi-step reasoning, reliable tool use, multimodal understanding, and failure recovery into a single model that runs locally without requiring cloud infrastructure or network access. Get started To download and run Muse Glimmer with Ollama, use: ollama run muse-glimmer Ollama’s MLX engine provides state-of-the-art performance on Apple Silicon, with support for DFlash and image input: ollama run muse-glimmer:30b-mlx Model information End-to-end Agentic Task Completion. Muse Glimmer achieves strong success rates on full-task benchmarks including DeepSearch QA, MCP-Atlas, 𝛕3-Bench and SWE-Bench, which measure its ability to work within scaffolds, write and debug code, and resolve multi-turn requests from start to finish. Reliable Tool Use. The model handles a wide range of function calls, invoking tools with precise schemas throughout extended workflows. Multi-Step Reasoning. Muse Glimmer chains reasoning over long horizons, sustaining coherent plans across complex, extended workflows. Failure Recovery. When a tool call fails or returns an unexpected result, the model diagnoses the error and retries rather than halt. Multimodal Input and Reasoning. Through a dedicated perception encoder, the model accepts interleaved text and images. This enables agents to interpret screenshots, charts, and documents alongside conversation. Scaffold Compatibility. Muse Glimmer works across OpenClaw, Hermes Agent, and other agentic orchestration patterns. Controllable Effort. The model supports different reasoning strengths to select the right balance between quality and speed. Multilingual. Muse Glimmer is trained on data from more than 100 languages. Benchmarks Meta evaluated Muse Glimmer across a broad range of benchmarks to assess the diverse capabilities required ",
+      "variants": [
+        {
+          "tag": "muse-glimmer:latest",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "muse-glimmer:30b",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "muse-glimmer:30b-bf16-dflash",
+          "size_text": "59GB",
+          "size_bytes": 63350767616,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "muse-glimmer:30b-mlx",
+          "size_text": "19GB",
+          "size_bytes": 20401094656,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "muse-glimmer:30b-mlx-bf16-dflash",
+          "size_text": "65GB",
+          "size_bytes": 69793218560,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "muse-glimmer:30b-mlx-bf16",
+          "size_text": "60GB",
+          "size_bytes": 64424509440,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "muse-glimmer:30b-mxfp8",
+          "size_text": "33GB",
+          "size_bytes": 35433480192,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "muse-glimmer:30b-mxfp8-dflash",
+          "size_text": "35GB",
+          "size_bytes": 37580963840,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "muse-glimmer:30b-nvfp4",
+          "size_text": "17GB",
+          "size_bytes": 18253611008,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "muse-glimmer:30b-nvfp4-dflash",
+          "size_text": "19GB",
+          "size_bytes": 20401094656,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "muse-glimmer:30b-q4_K_M-dflash",
+          "size_text": "20GB",
+          "size_bytes": 21474836480,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "muse-glimmer:30b-q8_0-dflash",
+          "size_text": "33GB",
+          "size_bytes": 35433480192,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "muse-glimmer:30b-q4_K_M",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "muse-glimmer:30b-q8_0",
+          "size_text": "31GB",
+          "size_bytes": 33285996544,
+          "context": "128K",
+          "input": "Text"
+        },
+        {
+          "tag": "muse-glimmer:30b-bf16",
+          "size_text": "57GB",
+          "size_bytes": 61203283968,
+          "context": "128K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 15
+    },
+    {
+      "slug": "nemotron-3.5-lightning",
+      "capabilities": [
+        "thinking",
+        "tools"
+      ],
+      "pulls": 221900,
+      "pulls_text": "221.9K \n  Downloads",
+      "blurb": "nemotron-3.5-lightning NVIDIA Nemotron 3.5 Lightning is an open 30B mixture-of-experts (MoE) model with 3B active parameters built for always-on agents. 30b 221.9K",
+      "name": "NVIDIA Nemotron 3.5 Lightning is an open 30B mixture-of-experts (MoE) model with 3B active parameters built for always-on agents.",
+      "description": "Readme NVIDIA Nemotron 3.5 Lightning is an open 30B mixture-of-experts (MoE) model with 3B active parameters built for the execution layer of always-on agents. It is designed for harnesses like OpenClaw and Hermes Agent—all supported by the NVIDIA NemoClaw open source security and management stack for running always-on AI agents. Nemotron 3.5 Lightning offers 4x higher throughput and 30% lower task completion time compared to other leading open models of similar size Use cases Personal agents : Power long-running personal assistants for everyday tasks, like managing your email, calendar, projects and bookings. Run these agents locally on your PC to leverage contextualized intel. Financial services workflows : Power special agents for specialized financial services tasks, such as extracting data from documents, checking policy rules, monitoring risk signals, and preparing structured summaries. Cybersecurity operations : Power special agents for specialized security tasks, such as enriching alerts, classifying incidents, querying logs, validating controls, correlating indicators, and preparing structured findings for analysts. Telecom : Power special agents for autonomous networks and proactive customer care, such as triaging network alarms, optimizing network configurations, and answering billing questions. Retail : Power special agents for enriching product catalogs, resolving inventory and fulfillment exceptions, assisting product discovery, and answering order, return, or loyalty questions Benchmarks Write Preview NVIDIA Nemotron 3.5 Lightning is an open 30B mixture-of-experts (MoE) model with 3B active parameters built for the execution layer of always-on agents. It is designed for harnesses like OpenClaw and Hermes Agent—all supported by the NVIDIA NemoClaw open source security and management stack for running always-on AI agents. Nemotron 3.5 Lightning offers 4x higher throughput and 30% lower task completion time compared to other leading open models of simila",
+      "variants": [
+        {
+          "tag": "nemotron-3.5-lightning:latest",
+          "size_text": "25GB",
+          "size_bytes": 26843545600,
+          "context": null,
+          "input": "Text"
+        },
+        {
+          "tag": "nemotron-3.5-lightning:30b",
+          "size_text": "25GB",
+          "size_bytes": 26843545600,
+          "context": null,
+          "input": "Text"
+        },
+        {
+          "tag": "nemotron-3.5-lightning:30b-a3b",
+          "size_text": "25GB",
+          "size_bytes": 26843545600,
+          "context": null,
+          "input": "Text"
+        },
+        {
+          "tag": "nemotron-3.5-lightning:30b-a3b-mlx",
+          "size_text": "23GB",
+          "size_bytes": 24696061952,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "nemotron-3.5-lightning:30b-a3b-mlx-bf16",
+          "size_text": "66GB",
+          "size_bytes": 70866960384,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "nemotron-3.5-lightning:30b-a3b-mxfp8",
+          "size_text": "34GB",
+          "size_bytes": 36507222016,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "nemotron-3.5-lightning:30b-a3b-nvfp4",
+          "size_text": "23GB",
+          "size_bytes": 24696061952,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "nemotron-3.5-lightning:30b-a3b-q4_K_M",
+          "size_text": "25GB",
+          "size_bytes": 26843545600,
+          "context": null,
+          "input": "Text"
+        },
+        {
+          "tag": "nemotron-3.5-lightning:30b-a3b-q8_0",
+          "size_text": "35GB",
+          "size_bytes": 37580963840,
+          "context": null,
+          "input": "Text"
+        },
+        {
+          "tag": "nemotron-3.5-lightning:30b-a3b-bf16",
+          "size_text": "66GB",
+          "size_bytes": 70866960384,
+          "context": null,
+          "input": "Text"
+        },
+        {
+          "tag": "nemotron-3.5-lightning:30b-mlx",
+          "size_text": "23GB",
+          "size_bytes": 24696061952,
+          "context": "256K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 11
+    },
+    {
+      "slug": "qwen3.8-flash-next",
+      "capabilities": [
+        "embedding",
+        "multimodal",
+        "reasoning",
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "pulls": 182400,
+      "pulls_text": "182.4K \n  Downloads",
+      "blurb": "qwen3.8-flash-next This experimental preview of the architecture that will underpin Qwen4. 182.4K",
+      "name": "This experimental preview of the architecture that will underpin Qwen4.",
+      "description": "Readme Qwen3.8-Flash-Next is the first open-weight model built on the architecture that will underpin Qwen4. It is a multimodal mixture-of-experts model with 125B total parameters and only 6B active per token, designed for cost-efficient inference across agentic coding, tool use, and vision tasks, with a native 256K context window. Highlights A preview of the Qwen4 architecture : an experimental release of Qwen’s next-generation architecture, published early so developers can prepare for the full Qwen4 family. Qwen3.8-Flash, the production model in Qwen’s API, is based on this release. Sparse activation : 125B total parameters with 6B active per token, routed across 512 experts (10 routed plus 1 shared), so per-token compute stays close to that of a small model. Hybrid attention with Qwen Sparse Attention (QSA) : Gated DeltaNet linear-attention layers are interleaved 3:1 with QSA layers that attend over micro-blocks of context rather than individual tokens, cutting long-context latency for agentic workloads. N-gram embedding : an additional 51B parameters live in a 20M-entry embedding table indexed by bigrams and trigrams. This is a new axis for scaling parameters that needs less compute than adding experts and is more amenable to offloading on memory-constrained hardware. Gated residual : element-wise, data-dependent read gates and per-branch write gates on the residual stream add expressiveness with low inference overhead. 256K context, extensible to 1M : 262,144 tokens natively, extensible to 1,000,000 tokens with YaRN. Thinking mode on by default : thinking can be disabled per request, and reasoning depth can be tuned with reasoning_effort ( low , medium , or xhigh ). Reasoning context from historical messages is retained via preserve_thinking . Native image and video understanding : from STEM diagrams, charts, and documents to hour-scale videos, along with computer-use and mobile-use tasks. Strong agentic coding and tool use : outperforms Qwen3.8-27B, Qwen3.7-P",
+      "variants": [
+        {
+          "tag": "qwen3.8-flash-next:125b-a6b-nvfp4",
+          "size_text": "105GB",
+          "size_bytes": 112742891520,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8-flash-next:125b-a6b-q4_K_M",
+          "size_text": "120GB",
+          "size_bytes": 128849018880,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8-flash-next:125b-a6b-q8_0",
+          "size_text": "189GB",
+          "size_bytes": 202937204736,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8-flash-next:125b-a6b-bf16",
+          "size_text": "355GB",
+          "size_bytes": 381178347520,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8-flash-next:125b-a6b-mlx-bf16",
+          "size_text": "360GB",
+          "size_bytes": 386547056640,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "qwen3.8-flash-next:125b-mlx",
+          "size_text": "105GB",
+          "size_bytes": 112742891520,
+          "context": "256K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 6
+    },
+    {
+      "slug": "glm-5.3-flash",
+      "capabilities": [
+        "multimodal",
+        "reasoning",
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "pulls": 179700,
+      "pulls_text": "179.7K \n  Downloads",
+      "blurb": "glm-5.3-flash Z.ai's first natively model, approaching Claude Opus 4.8 on coding and agentic benchmarks with just 18B active parameters. Medium usage $0.15 in · $0.50 out per 1M tokens $ $ $ $ | 1M context | cloud",
+      "name": "Z.ai's first natively multimodal model, approaching Claude Opus 4.8 on coding and agentic benchmarks with just 18B active parameters.",
+      "description": "Readme This model is hosted in the United States and Europe. Like all other models on Ollama’s cloud, this model follows Ollama’s privacy policy with zero data retention. GLM-5.3-Flash is the first natively multimodal model in Z.ai’s GLM-5 series. With 320B total parameters and just 18B active, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the cost, while approaching Claude Opus 4.8 on coding and agentic benchmarks. Before release, Z.ai tested GLM-5.3-Flash anonymously as ox-alpha where it became the most popular model of the week. Key Features Agentic Coding : Built for sustained, multi-step coding in agent harnesses. Long Context : A 1M context window holds project-scale codebases and long-running sessions. Flexible Thinking : Reasoning is always on, with effort tunable per request across low, high, and max levels. Multimodal Input : Accepts image and video alongside text, for workflows that mix code with visual context. MIT Licensed Competitive performance at Flash cost Across six coding and agentic benchmarks, GLM-5.3-Flash consistently outperforms GLM-5.2, often by a wide margin: 63.4 vs. 46.2 on DeepSWE v1.1 and 48.8 vs. 26.2 on AutomationBench, while approaching Claude Opus 4.8 overall. On the Artificial Analysis Intelligence Index v4.1.1, it pushes the Pareto frontier at 57 points, a level of intelligence previously only available at roughly 10× the cost per task. The same holds on Z.ai Code Bench v1.0 (run in Claude Code 2.1.207), where GLM-5.3-Flash beats GLM-5.2 at every effort level and, at Max effort, nearly matches Claude Opus 4.8 (29.0 vs. 29.5). Built for efficient inference GLM-5.3-Flash starts from a newly trained base model, with its architecture and training recipe redesigned around capability and efficiency. Compared with GLM-4.5, it has a similar total parameter count (320B vs. 355B) but nearly halves both the active parameters (18B vs. 32B) and the number of layers (45 vs. 92). To keep attention cheap at long c",
+      "variants": [
+        {
+          "tag": "glm-5.3-flash:cloud",
+          "size_text": null,
+          "size_bytes": null,
+          "context": null,
+          "input": "Text"
+        }
+      ],
+      "tags_count": 1
+    },
+    {
+      "slug": "glm-5.3",
+      "capabilities": [
+        "reasoning",
+        "thinking",
+        "tools"
+      ],
+      "pulls": 88700,
+      "pulls_text": "88.7K \n  Downloads",
+      "blurb": "glm-5.3 Z.ai's flagship model and the most capable open-weights model for coding, with major gains on long-horizon agentic tasks. High usage $1.40 in · $4.40 out per 1M tokens $ $ $ $ | 1M context | cloud",
+      "name": "Z.ai's flagship model and the most capable open-weights model for coding, with major gains on long-horizon agentic tasks.",
+      "description": "Readme This model is hosted in the United States and Europe. Like all other models on Ollama’s cloud, this model follows Ollama’s privacy policy with zero data retention. GLM-5.3 is Z.ai’s flagship model and the most capable open-weights model for coding, with major gains on long-horizon agentic tasks. GLM-5.3 uses the same base model as GLM-5.2 — every gain comes from post-training. Compared with GLM-5.2, it is much better at complex coding and long-horizon tasks, including a 50% improvement on Z.ai’s in-house Code Bench. What’s new Stronger coding: Terminal-Bench 3.0 improves from 4.6 to 28.3, DeepSWE v1.1 from 46.2 to 66.9, and Terminal-Bench 2.1 from 81.0 to 88.2 over GLM-5.2. Long-horizon agentic tasks: SWE-Marathon more than doubles (19.4 → 42.5), with the top scores in Z.ai’s evaluations on AutomationBench (48.2) and GDPval-AA v2 (1769). Security research: state of the art on CyberGym (84.5) for vulnerability discovery. Adjustable reasoning effort: reasoning_effort accepts low , high , and max , and defaults to max . For chat, set clear_thinking to true . 1M token context window: the same long context as GLM-5.2, for project-level engineering work and long-running sessions. Agentic coding GLM-5.3 is built for coding agents, including Claude Code, OpenCode, Hermes Agent, and OpenClaw. Z.ai’s results below were measured in the Claude Code harness with maximum reasoning effort. Benchmarks Benchmark GLM-5.3 GLM-5.2 Kimi K3 DeepSeek-V4 Pro-0813 Qwen3.8-Max Opus 4.8 Fable 5 GPT-5.6 Sol Terminal Bench 2.1 88.2 81.0 88.3 87.9 86.6 85.0 88.0 88.8 Terminal Bench 3.0 28.3 4.6 17.4 – – 21.1 33.7 34.6 DeepSWE (v1.1) 66.9 46.2 67.5 62.7 56.6 58.0 69.7 72.7 NL2Repo 58.0 48.9 58.0 61.1 55.9 69.7 – – ProgramBench (Almost Solved) 19.0 9.5 17.5 – 10.5 15.5 33.0 23.0 FrontierSWE 78.1 67.5 – – – 66.5 88.2 – SWE-Marathon (v1.1) 42.5 19.4 48.1 – – 48.8 33.1 42.5 PostTrainBench 39.8 31.7 32.0 – – 32.9 41.8 36.2 CyberGym 84.5 77.2 80.0 83.3 78.5 78.1 83.8 83.6 ExploitGym (2h / 6h) 10",
+      "variants": [
+        {
+          "tag": "glm-5.3:cloud",
+          "size_text": null,
+          "size_bytes": null,
+          "context": null,
+          "input": "Text"
+        }
+      ],
+      "tags_count": 1
+    },
+    {
+      "slug": "tev1",
+      "capabilities": [
+        "thinking",
+        "tools"
+      ],
+      "pulls": 81100,
+      "pulls_text": "81.1K \n  Downloads",
+      "blurb": "tev1 A 4B decision model from Together AI for fast classification. decision 0.8b 4b 81.1K",
+      "name": "A 4B decision model from Together AI for fast classification.",
+      "description": "Readme Tev1 requires Ollama 0.35 or later. Tev1 is a family of experimental decision models from Together AI, fine-tuned from Qwen3.5 in 4B and 0.8B sizes. You give it a question and a set of options. It selects the answer based on likely outcome, and gives you the probability of each option. It’s meant for the fast classification work that TypeSafe’s Jev does, like routing a support ticket or checking a request against a policy. Models 4B ollama pull tev1:4b 0.8B ollama pull tev1:0.8b Highlights Three question types: Pick from a list, answer true or false, or place something on a rubric. Two sizes: The 4B model is the more accurate of the two. The 0.8B model is an 812MB download for tight memory budgets. Many questions per request: Ask up to 64 questions about the same text in one call. Open: The dataset builders and training scripts are MIT licensed. API Decision models use Ollama’s /v1/systemone endpoint, which follows TypeSafe’s Jev API. Put the text you want judged in state and your questions in questions . Ollama builds Tev1’s prompt for you. Field Description model tev1 (the 4B model) or tev1:0.8b state The text to judge. Use a string, or a JSON object or array for structured input. questions 1 to 64 named questions. Answers come back in the same order. keep_alive Optional. How long the model stays loaded after the request. Every question has a type , instructions , and usually criteria : Type criteria Answer fields choice An object mapping each option to a description. Use null to let the option name describe itself. choice , probabilities , confidence noul Optional. {\"true\": \"...\", \"false\": \"...\"} if you want to describe each side. noul , the probability that the answer is true score An array of level descriptions, lowest first. Levels are numbered from 0. score (the probability-weighted level), legend , probabilities , confidence Choice and score questions take 2 to 26 options. Tev1 was trained on 2 to 24, so stay in that range. confidence runs from 0 to 1",
+      "variants": [
+        {
+          "tag": "tev1:latest",
+          "size_text": "4.4GB",
+          "size_bytes": 4724464025,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "tev1:0.8b",
+          "size_text": "797MB",
+          "size_bytes": 835715072,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "tev1:4b",
+          "size_text": "4.4GB",
+          "size_bytes": 4724464025,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "tev1:0.8b-mlx-bf16",
+          "size_text": "1.5GB",
+          "size_bytes": 1610612736,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "tev1:0.8b-mxfp8",
+          "size_text": "797MB",
+          "size_bytes": 835715072,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "tev1:0.8b-q8_0",
+          "size_text": "812MB",
+          "size_bytes": 851443712,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "tev1:0.8b-bf16",
+          "size_text": "1.5GB",
+          "size_bytes": 1610612736,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "tev1:4b-mlx-bf16",
+          "size_text": "8.4GB",
+          "size_bytes": 9019431321,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "tev1:4b-mxfp8",
+          "size_text": "4.4GB",
+          "size_bytes": 4724464025,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "tev1:4b-nvfp4",
+          "size_text": "3.1GB",
+          "size_bytes": 3328599654,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "tev1:4b-q4_K_M",
+          "size_text": "2.7GB",
+          "size_bytes": 2899102924,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "tev1:4b-q8_0",
+          "size_text": "4.5GB",
+          "size_bytes": 4831838208,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "tev1:4b-bf16",
+          "size_text": "8.4GB",
+          "size_bytes": 9019431321,
+          "context": "256K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 13
+    },
+    {
+      "slug": "deepseek-v4.1-flash",
+      "capabilities": [
+        "multimodal",
+        "reasoning",
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "pulls": 78200,
+      "pulls_text": "78.2K \n  Downloads",
+      "blurb": "deepseek-v4.1-flash DeepSeek-V4.1-Flash is an advanced tool designed to enhance search capabilities, providing users with faster and more accurate results. Medium usage $0.30 in · $1.20 out per 1M tokens $ $ $ $ | 1M context | cloud",
+      "name": "DeepSeek-V4.1-Flash is an advanced tool designed to enhance search capabilities, providing users with faster and more accurate results.",
+      "description": "Readme DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression DeepSeek-V4.1-Flash is an advanced tool designed to enhance search capabilities, providing users with faster and more accurate results. It’s a multimodal Mixture-of-Experts (MoE) model with 552B backbone parameters and support for contexts of up to one million tokens. DeepSeek-V4.1-Flash uses a Causal Encoder-Decoder (CED) design, stacking a 20-layer causal encoder on top of a 20-layer decoder for 40 Transformer layers total. Under CED, the decoder’s global KV cache is built by projecting the encoder’s final hidden states, instead of being computed from each decoder layer’s hidden states as it normally would be. As a result, only 8B parameters are active per token during prefill and 16B during decode , which cuts costs significantly for agentic workloads that process a lot of input. ￼ DeepSeek-V4.1-Flash builds on Compressed Sparse Attention 2 (CSA2) , where every attention layer runs in one of three fixed modes - Full , Reindex , or Reuse - letting layers share main KV, share indexer K, and recycle Top-K sparse-attention indices. In the decoder, a Hierarchical Sparse Indexer caps later indexing layers to a candidate pool built by the first Full Mode layer, so indexer cost at deeper layers stays bounded no matter how long the context gets. Together with FP4 main KV caching (E2M1 values, one E4M3 scale per 16 channels), this brings the global KV cache down to 890 bytes per token - about a quarter of DeepSeek-V4-Flash. Benchmark (Metric) Opus-5.0 GPT-5.6 Sol K3 GLM-5.3 DS-V4-Pro DS-V4-Flash DS-V4.1-Flash Reasoning GPQA Diamond (Pass@1) 93.4 94.1 92.9 88.1 92.4 89.9 90.9 HLE (Pass@1) 56.3 44.5 43.5 42.0† 42.7† 37.8† 36.8 (39.1†) Codeforces (Rating) — — — — 3348 3289 3471 MathArena Apex (Pass@1) — — 65.6 — 65.3 58.6 65.6 Agentic Terminal-Bench 2.1 (Pass@1) 89.1 88.8 88.3 88.2 87.9 82.7 90.6 Terminal-Bench 3.0 (Pass@1) 43.3 34.4 17.7 28.3 11.8 7.6 30.0 Terminal-Bench 4.0 (Pass@1) 51.8 39.9 12.6 37.9 1",
+      "variants": [
+        {
+          "tag": "deepseek-v4.1-flash:cloud",
+          "size_text": null,
+          "size_bytes": null,
+          "context": null,
+          "input": "Text"
+        }
+      ],
+      "tags_count": 1
+    },
+    {
+      "slug": "nimble",
+      "capabilities": [
+        "reasoning",
+        "thinking",
+        "tools"
+      ],
+      "pulls": 35700,
+      "pulls_text": "35.7K \n  Downloads",
+      "blurb": "nimble A 9B decision model from Bespoke Labs for fast, typed classification. decision 9b 35.7K",
+      "name": "A 9B decision model from Bespoke Labs for fast, typed classification.",
+      "description": "Readme Nimble requires Ollama 0.35 or later. Nimble is a 9B decision model from Bespoke Labs, fine-tuned from Qwen3.5-9B. You send Nimble some text and a set of questions. It picks an answer for every question and gives you the probability of each allowed answer. Nimble reads the prompt once per question and scores the answer tokens directly. There’s no reasoning step. This is what makes it fast. ollama pull nimble Highlights Three question types: Pick from a list, answer true or false, or place something on a rubric. Many questions per request: Ask up to 64 questions about the same text in one call. Fast: Nimble answers in under 100ms on a MacBook Pro with an M5 Max. Trained on contrastive pairs: The two examples in a pair differ by one fact, and that fact flips the answer. Apache 2.0 license What you can build Task You define You get back Route a request The destinations and when each one applies The chosen destination and the probability of each destination Check a condition A yes or no question and the evidence True or false, and the probability of each Apply a policy The rules and the allowed outcomes A typed decision based on the text you supply Rate an outcome Ordered levels, each with clear criteria The chosen level and the probability of each level API Decision models use Ollama’s /v1/systemone endpoint, which follows TypeSafe’s Jev API. Put the text you want judged in state and your questions in questions . Ollama builds Nimble’s prompt for you. Field Description model nimble state The text to judge. Use a string, or a JSON object or array for structured input. questions 1 to 64 named questions. Answers come back in the same order. keep_alive Optional. How long the model stays loaded after the request. Every question has a type , instructions , and usually criteria : Type criteria Answer fields choice An object mapping each option to a description. Use null to let the option name describe itself. choice , probabilities , confidence noul Optional. {\"true\": ",
+      "variants": [
+        {
+          "tag": "nimble:latest",
+          "size_text": "9.3GB",
+          "size_bytes": 9985798963,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "nimble:9b",
+          "size_text": "9.3GB",
+          "size_bytes": 9985798963,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "nimble:9b-mlx-bf16",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "nimble:9b-mxfp8",
+          "size_text": "9.3GB",
+          "size_bytes": 9985798963,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "nimble:9b-nvfp4",
+          "size_text": "6.9GB",
+          "size_bytes": 7408818585,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "nimble:9b-q4_K_M",
+          "size_text": "5.6GB",
+          "size_bytes": 6012954214,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "nimble:9b-q8_0",
+          "size_text": "9.5GB",
+          "size_bytes": 10200547328,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "nimble:9b-bf16",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 8
+    },
+    {
+      "slug": "embeddinggemma-2",
+      "capabilities": [
+        "embedding",
+        "multimodal",
+        "vision"
+      ],
+      "pulls": 25600,
+      "pulls_text": "25.6K \n  Downloads",
+      "blurb": "embeddinggemma-2 EmbeddingGemma 2 is a model from Google built on the Gemma 4 architecture. audio 270m 440m 570m 740m 25.6K",
+      "name": "EmbeddingGemma 2 is a multimodal embedding model from Google built on the Gemma 4 architecture.",
+      "description": "Readme EmbeddingGemma 2 is an open multimodal embedding model built by Google DeepMind which maps text (incl. code), images, video, and audio inputs—and combinations thereof—into a single, unified 768-dimensional vector space. The model has 740M total parameters, combining a 270M parameter text model with modular vision (170M) and audio (300M) encoders. Designed to run on consumer hardware such as mobile devices and laptops, EmbeddingGemma 2 delivers low-latency semantic representations for on-device applications, like search, retrieval-augmented generation (RAG), classification, and clustering. EmbeddingGemma 2 builds upon the architectural and capability advancements of Gemma 4, offering several core features:&nbsp; Native multimodality: Native multimodality: Unifies 4 modalities (text, images, video, and audio) in a single shared 768-dimensional embedding space. Multilinguality and code: EmbeddingGemma 2 understands 100+ languages, and achieves a ~14% improvement on code tasks relative to its predecessor.&nbsp; Flexible footprint: Combines a 270M parameter text backbone (130M transformer + 140M embedder) with selectively loadable vision (170M) and audio (300M) encoders, allowing developers to load only the modalities required for their use case. Matryoshka Representation Learning (MRL): Native support for truncated embeddings across 128d, 256d, 512d, and 768d, enabling up to a 6x reduction in vector storage costs with minimal impact on quality. Context length: 8K token context window, capable of processing minutes of audio or video. Task-steered representations: Uses lightweight text instruction prefixes to optimize embeddings for different tasks (search, classification, clustering, semantic similarity, etc.). Model Overview Parameters Total 740M Backbone 130M Embedder 140M Modality Encoders Vision: 170M Audio: 300M Architecture Layers 24 Model Dimension 512 Hidden Dimension 2048 Sliding Window 1024 tokens Vocabulary Size 262,144 # Heads 4 # KV-Heads (Local/Globa",
+      "variants": [
+        {
+          "tag": "embeddinggemma-2:latest",
+          "size_text": "1.3GB",
+          "size_bytes": 1395864371,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:270m",
+          "size_text": "378MB",
+          "size_bytes": 396361728,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:440m",
+          "size_text": "714MB",
+          "size_bytes": 748683264,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:570m",
+          "size_text": "990MB",
+          "size_bytes": 1038090240,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:740m",
+          "size_text": "1.3GB",
+          "size_bytes": 1395864371,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:270m-bf16-text",
+          "size_text": "574MB",
+          "size_bytes": 601882624,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:270m-mxfp8-text",
+          "size_text": "442MB",
+          "size_bytes": 463470592,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:270m-nvfp4-text",
+          "size_text": "378MB",
+          "size_bytes": 396361728,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:440m-bf16-text-vision",
+          "size_text": "910MB",
+          "size_bytes": 954204160,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:440m-mxfp8-text-vision",
+          "size_text": "778MB",
+          "size_bytes": 815792128,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:440m-nvfp4-text-vision",
+          "size_text": "714MB",
+          "size_bytes": 748683264,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:570m-bf16-text-audio",
+          "size_text": "1.2GB",
+          "size_bytes": 1288490188,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:570m-mxfp8-text-audio",
+          "size_text": "1.1GB",
+          "size_bytes": 1181116006,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:570m-nvfp4-text-audio",
+          "size_text": "990MB",
+          "size_bytes": 1038090240,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:740m-mxfp8",
+          "size_text": "1.4GB",
+          "size_bytes": 1503238553,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:740m-nvfp4",
+          "size_text": "1.3GB",
+          "size_bytes": 1395864371,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "embeddinggemma-2:740m-bf16",
+          "size_text": "1.5GB",
+          "size_bytes": 1610612736,
+          "context": "256K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 17
+    },
+    {
+      "slug": "clef-flash",
+      "capabilities": [
+        "multimodal",
+        "vision"
+      ],
+      "pulls": 16100,
+      "pulls_text": "16.1K \n  Downloads",
+      "blurb": "clef-flash Clef-Flash is a 9B model that turns a state and a schema of typed questions into decisions. decision 9b 16.1K",
+      "name": "Clef-Flash is a 9B multimodal model that turns a state and a schema of typed questions into decisions.",
+      "description": "Readme Clef Flash requires Ollama 0.35.1 or later. Clef Flash is a 9B decision model from Cloudflare, fine-tuned from Qwen3.5-9B. Clef Flash can also read images: add encoded images to the request and they’re scored jointly with the text state. It’s fully compatible with the Jev and System One APIs, so it works through Ollama’s /v1/systemone endpoint. Use Clef Flash for latency-critical decisions; see clef for the larger, more accurate variant. ollama pull clef-flash Highlights Fast: Clef Flash had the lowest measured latency of any decision model in Cloudflare’s Decision Index runs — the 27B Clef is roughly five times slower. Multimodal: Decide over text, JSON, or images — screenshots, receipts, forms, photos. One forward pass: Every option of every question is scored jointly in a single non-autoregressive pass. 64K context window: Twice the state Jev’s 32K window holds. Apache 2.0 license What you can build Task You define You get back Route a request The destinations and when each applies The chosen destination and each destination’s probability Check a condition A yes or no question and the evidence True or false, and the probability of each Apply a policy The rules and the allowed outcomes A typed decision based on the text or images you supply Gate an agent step A condition and the agent’s proposed tool call Go or no-go, with the probability of each API Decision models use Ollama’s /v1/systemone endpoint, documented here . Put the text you want judged in state and your questions in questions . Ollama builds Clef Flash’s prompt for you. Field Description model clef-flash state The text to judge. Use a string, or a JSON object or array for structured input. images Optional. Base64-encoded PNG, JPEG, or WebP images shared by all questions, in request order. URLs and data URLs are not supported. questions 1 to 64 named questions. Answers come back in the same order. keep_alive Optional. How long the model stays loaded after the request. Every question has a type ,",
+      "variants": [
+        {
+          "tag": "clef-flash:latest",
+          "size_text": "11GB",
+          "size_bytes": 11811160064,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "clef-flash:9b",
+          "size_text": "11GB",
+          "size_bytes": 11811160064,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "clef-flash:9b-mlx-bf16",
+          "size_text": "19GB",
+          "size_bytes": 20401094656,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "clef-flash:9b-mxfp8",
+          "size_text": "12GB",
+          "size_bytes": 12884901888,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "clef-flash:9b-q8_0",
+          "size_text": "11GB",
+          "size_bytes": 11811160064,
+          "context": "256K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 5
+    },
+    {
+      "slug": "clef",
+      "capabilities": [
+        "multimodal",
+        "vision"
+      ],
+      "pulls": 10400,
+      "pulls_text": "10.4K \n  Downloads",
+      "blurb": "clef Clef is a 27B model created by Cloudflare that turns a state and a schema of typed questions into decisions. decision 27b 10.4K",
+      "name": "Clef is a 27B multimodal model created by Cloudflare that turns a state and a schema of typed questions into decisions.",
+      "description": "Readme Clef requires Ollama 0.35.1 or later. Clef is a 27B decision model from Cloudflare, fine-tuned from Qwen3.8-27B. Clef also reads images. Add encoded images to the request and they’re scored jointly with the text. It’s fully compatible with the Jev and System One APIs, so it works through Ollama’s /v1/systemone endpoint. See clef-flash for a smaller, faster variant. ollama pull clef Highlights Multimodal: Decide over text, JSON, or images — screenshots, receipts, forms, photos. One forward pass: Every option of every question is scored jointly in a single non-autoregressive pass. 64K context window: Twice the state Jev’s 32K window holds. Leading accuracy: Clef tops the Decision Index, Cloudflare’s leaderboard of decision models, and beats Jev on most of its suite. Apache 2.0 license What you can build Task You define You get back Route a request The destinations and when each applies The chosen destination and each destination’s probability Check a condition A yes or no question and the evidence True or false, and the probability of each Apply a policy The rules and the allowed outcomes A typed decision based on the text or images you supply Read a document A photo of the page and the fields to decide A field-by-field decision with probabilities API Decision models use Ollama’s /v1/systemone endpoint, documented here . Put the text you want judged in state and your questions in questions . Ollama builds Clef’s prompt for you. Field Description model clef state The text to judge. Use a string, or a JSON object or array for structured input. images Optional. Base64-encoded PNG, JPEG, or WebP images shared by all questions, in request order. URLs and data URLs are not supported. questions 1 to 64 named questions. Answers come back in the same order. keep_alive Optional. How long the model stays loaded after the request. Every question has a type , instructions , and usually criteria : Type criteria Answer fields choice An object mapping each option to a descript",
+      "variants": [
+        {
+          "tag": "clef:latest",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "clef:27b",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "clef:27b-mlx-bf16",
+          "size_text": "55GB",
+          "size_bytes": 59055800320,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "clef:27b-mxfp8",
+          "size_text": "31GB",
+          "size_bytes": 33285996544,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "clef:27b-nvfp4",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "clef:27b-q4_k_m",
+          "size_text": "18GB",
+          "size_bytes": 19327352832,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "clef:27b-q8_0",
+          "size_text": "30GB",
+          "size_bytes": 32212254720,
+          "context": "256K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 7
+    },
+    {
+      "slug": "mistral-large-4",
+      "capabilities": [
+        "multimodal",
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "pulls": 473,
+      "pulls_text": "473 \n  Downloads",
+      "blurb": "mistral-large-4 Mistral Large 4 is Mistral's open-weight, general-purpose model. Its granular Mixture-of-Experts design activates 52B of 1.05T total parameters, with a 1.6B encoder handling images. High usage $0.68 in · $2.09 out per 1M tokens $ $ $ $ | 1M context | cloud",
+      "name": "Mistral Large 4 is Mistral's open-weight, general-purpose multimodal model. Its granular Mixture-of-Experts design activates 52B of 1.05T total parameters, with a 1.6B vision encoder handling images.",
+      "description": "Readme Mistral Large 4 is a natively multimodal model with 1 trillion parameters, 49 billion of them active. It’s Mistral’s largest and most capable model to date, and it’s still improving as they refine it. It’s strong across coding, agentic workflows, and multimodal understanding. It’s competitive with the strongest open-source models, and well ahead of open-weight models from the US and Europe. On enterprise workloads like cybersecurity, finance, and law, Mistral reports state-of-the-art results among open models. Reference https://mistral.ai/news/mistral-large-4/ Write Preview Mistral Large 4 is a natively multimodal model with 1 trillion parameters, 49 billion of them active. It's Mistral's largest and most capable model to date, and it's still improving as they refine it. It's strong across coding, agentic workflows, and multimodal understanding. It's competitive with the strongest open-source models, and well ahead of open-weight models from the US and Europe. On enterprise workloads like cybersecurity, finance, and law, Mistral reports state-of-the-art results among open models. ## Reference https://mistral.ai/news/mistral-large-4/ Paste, drop or click to upload images (.png, .jpeg, .jpg, .svg, .gif)",
+      "variants": [
+        {
+          "tag": "mistral-large-4:cloud",
+          "size_text": null,
+          "size_bytes": null,
+          "context": null,
+          "input": "Text"
+        }
+      ],
+      "tags_count": 1
+    },
+    {
+      "slug": "laya",
+      "capabilities": [],
+      "pulls": 117,
+      "pulls_text": "117 \n  Downloads",
+      "blurb": "laya Laya is a 421M decision model from Convai Innovations, fine-tuned from ModernBERT-large. decision 4,116",
+      "name": "Laya is a 421M decision model from Convai Innovations, fine-tuned from ModernBERT-large.",
+      "description": "Readme Laya requires Ollama 0.40.0 or later. Laya is a 421M decision model from Convai Innovations, fine-tuned from ModernBERT-large. It scores every option of every question in a single forward pass and returns typed answers with calibrated probabilities. There is no language-model decoder and no text generation — nothing to parse, nothing to hallucinate. The shipped checkpoint is fine-tuned on real, human-annotated workflows: email triage (spam, phishing, and department routing), content safety, intent routing, and fact verification. ollama pull laya Highlights Small and fast: 421M parameters. Can answer one question in under 10 ms on M5 Max. Calibrated probabilities: trained with RLCD against strictly proper scoring rules, so the only way to maximize reward is to report honest probabilities. In-task calibration error (ECE) is 0.060. Three question types: Pick from a list, answer true or false, or place something on a rubric. Many questions per request: Ask up to 64 questions about the same text in one call. They share a single forward pass. Apache 2.0 license What you can build Task You define You get back Route a request The departments and when each applies The chosen department and each department’s probability Screen an email Flags for spam, phishing, or escalation A probability for each flag Rate urgency Ordered levels, each with clear criteria The expected level and the probability of each level Apply a policy The rules and the allowed outcomes A typed decision based on the text you supply API Decision models use Ollama’s /v1/systemone endpoint, which follows TypeSafe’s Jev API. Put the text you want judged in state and your questions in questions . Ollama builds Laya’s prompt for you. Field Description model laya state The text to judge. Use a string, or a JSON object or array for structured input. questions 1 to 64 named questions. Answers come back in the same order. keep_alive Optional. How long the model stays loaded after the request. Every question h",
+      "variants": [
+        {
+          "tag": "laya:latest",
+          "size_text": "846MB",
+          "size_bytes": 887095296,
+          "context": null,
+          "input": "Text"
+        },
+        {
+          "tag": "laya:322m-multilingual-mlx-fp16",
+          "size_text": "678MB",
+          "size_bytes": 710934528,
+          "context": "1K",
+          "input": "Text"
+        },
+        {
+          "tag": "laya:421m-english-mlx-fp16",
+          "size_text": "846MB",
+          "size_bytes": 887095296,
+          "context": null,
+          "input": "Text"
+        },
+        {
+          "tag": "laya:421m-typed-decisions-mlx-fp16",
+          "size_text": "846MB",
+          "size_bytes": 887095296,
+          "context": "1K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 4
+    }
+  ]
+}
