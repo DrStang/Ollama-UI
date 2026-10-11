@@ -32,9 +32,10 @@ jobs:
       - name: Run script
         run: python ollama_scraper.py
 
-      - name: Upload JSON output
-        uses: actions/upload-artifact@v4
-        with:
-          name: script-output-json
-          path: out/ollama_models.json
-          retention-days: 90
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@://github.com"
+          git add out/ollama_models.json
+          git commit -m "Auto-update JSON output [skip cli]" || echo "No changes to commit"
+          git push
