@@ -18,7 +18,7 @@ export class OllamaLibraryService {
     this.loadFromLocalStorage();
   }
 
-  const filePath = path.join(__dirname, '../../scraper/out/ollama_models.json);
+  const filePath = path.join(__dirname, '../../scraper/out/ollama_models.json');
                              
   private loadFromLocalStorage(): void {
     try {
