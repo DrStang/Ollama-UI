@@ -31,3 +31,10 @@ jobs:
       # 4. Execute your Python file
       - name: Run script
         run: python ollama_scraper.py
+
+      - name: Upload JSON output
+        uses: actions/upload-artifact@v4
+        with:
+          name: script-output-json
+          path: out/ollama_models.json
+          retention-days: 90
