@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-27T02:30:47.076646+00:00",
+  "scraped_at": "2026-10-28T02:39:38.861775+00:00",
   "models": [
     {
       "slug": "glm-5.3-flash",
@@ -10,8 +10,8 @@
         "tools",
         "vision"
       ],
-      "pulls": 196100,
-      "pulls_text": "196.1K \n  Downloads",
+      "pulls": 197000,
+      "pulls_text": "197K \n  Downloads",
       "blurb": "glm-5.3-flash 2mo cloud Z.ai's first natively model, approaching Claude Opus 4.8 on coding and agentic benchmarks with just 18B active parameters. 1M $ $ $ $",
       "name": "Z.ai's first natively multimodal model, approaching Claude Opus 4.8 on coding and agentic benchmarks with just 18B active parameters.",
       "description": "Readme This model is hosted in the United States and Europe. Like all other models on Ollama’s cloud, this model follows Ollama’s privacy policy with zero data retention. GLM-5.3-Flash is the first natively multimodal model in Z.ai’s GLM-5 series. With 320B total parameters and just 18B active, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the cost, while approaching Claude Opus 4.8 on coding and agentic benchmarks. Before release, Z.ai tested GLM-5.3-Flash anonymously as ox-alpha where it became the most popular model of the week. Key Features Agentic Coding : Built for sustained, multi-step coding in agent harnesses. Long Context : A 1M context window holds project-scale codebases and long-running sessions. Flexible Thinking : Reasoning is always on, with effort tunable per request across low, high, and max levels. Multimodal Input : Accepts image and video alongside text, for workflows that mix code with visual context. MIT Licensed Competitive performance at Flash cost Across six coding and agentic benchmarks, GLM-5.3-Flash consistently outperforms GLM-5.2, often by a wide margin: 63.4 vs. 46.2 on DeepSWE v1.1 and 48.8 vs. 26.2 on AutomationBench, while approaching Claude Opus 4.8 overall. On the Artificial Analysis Intelligence Index v4.1.1, it pushes the Pareto frontier at 57 points, a level of intelligence previously only available at roughly 10× the cost per task. The same holds on Z.ai Code Bench v1.0 (run in Claude Code 2.1.207), where GLM-5.3-Flash beats GLM-5.2 at every effort level and, at Max effort, nearly matches Claude Opus 4.8 (29.0 vs. 29.5). Built for efficient inference GLM-5.3-Flash starts from a newly trained base model, with its architecture and training recipe redesigned around capability and efficiency. Compared with GLM-4.5, it has a similar total parameter count (320B vs. 355B) but nearly halves both the active parameters (18B vs. 32B) and the number of layers (45 vs. 92). To keep attention cheap at long c",
@@ -35,8 +35,8 @@
         "tools",
         "vision"
       ],
-      "pulls": 177100,
-      "pulls_text": "177.1K \n  Downloads",
+      "pulls": 179800,
+      "pulls_text": "179.8K \n  Downloads",
       "blurb": "deepseek-v4.1-flash 1w cloud Designed for greater capability, faster inference, higher throughput, and scaling to larger models. 1M $ $ $ $",
       "name": "Designed for greater capability, faster inference, higher throughput, and scaling to larger models.",
       "description": "Readme DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression DeepSeek-V4.1-Flash is an advanced tool designed to enhance search capabilities, providing users with faster and more accurate results. It’s a multimodal Mixture-of-Experts (MoE) model with 552B backbone parameters and support for contexts of up to one million tokens. DeepSeek-V4.1-Flash uses a Causal Encoder-Decoder (CED) design, stacking a 20-layer causal encoder on top of a 20-layer decoder for 40 Transformer layers total. Under CED, the decoder’s global KV cache is built by projecting the encoder’s final hidden states, instead of being computed from each decoder layer’s hidden states as it normally would be. As a result, only 8B parameters are active per token during prefill and 16B during decode , which cuts costs significantly for agentic workloads that process a lot of input. ￼ DeepSeek-V4.1-Flash builds on Compressed Sparse Attention 2 (CSA2) , where every attention layer runs in one of three fixed modes - Full , Reindex , or Reuse - letting layers share main KV, share indexer K, and recycle Top-K sparse-attention indices. In the decoder, a Hierarchical Sparse Indexer caps later indexing layers to a candidate pool built by the first Full Mode layer, so indexer cost at deeper layers stays bounded no matter how long the context gets. Together with FP4 main KV caching (E2M1 values, one E4M3 scale per 16 channels), this brings the global KV cache down to 890 bytes per token - about a quarter of DeepSeek-V4-Flash. Benchmark (Metric) Opus-5.0 GPT-5.6 Sol K3 GLM-5.3 DS-V4-Pro DS-V4-Flash DS-V4.1-Flash Reasoning GPQA Diamond (Pass@1) 93.4 94.1 92.9 88.1 92.4 89.9 90.9 HLE (Pass@1) 56.3 44.5 43.5 42.0† 42.7† 37.8† 36.8 (39.1†) Codeforces (Rating) — — — — 3348 3289 3471 MathArena Apex (Pass@1) — — 65.6 — 65.3 58.6 65.6 Agentic Terminal-Bench 2.1 (Pass@1) 89.1 88.8 88.3 88.2 87.9 82.7 90.6 Terminal-Bench 3.0 (Pass@1) 43.3 34.4 17.7 28.3 11.8 7.6 30.0 Terminal-Bench 4.0 (Pass@1) 51.8 39.9 12.6 37.9 1",
@@ -65,9 +65,9 @@
         "thinking",
         "tools"
       ],
-      "pulls": 146800,
-      "pulls_text": "146.8K \n  Downloads",
-      "blurb": "glm-5.3 1mo cloud Z.ai's flagship model and the most capable open-weights model for coding, with major gains on long-horizon agentic tasks. 1M $ $ $ $",
+      "pulls": 148200,
+      "pulls_text": "148.2K \n  Downloads",
+      "blurb": "glm-5.3 2mo cloud Z.ai's flagship model and the most capable open-weights model for coding, with major gains on long-horizon agentic tasks. 1M $ $ $ $",
       "name": "Z.ai's flagship model and the most capable open-weights model for coding, with major gains on long-horizon agentic tasks.",
       "description": "Readme This model is hosted in the United States and Europe. Like all other models on Ollama’s cloud, this model follows Ollama’s privacy policy with zero data retention. GLM-5.3 is Z.ai’s flagship model and the most capable open-weights model for coding, with major gains on long-horizon agentic tasks. GLM-5.3 uses the same base model as GLM-5.2 — every gain comes from post-training. Compared with GLM-5.2, it is much better at complex coding and long-horizon tasks, including a 50% improvement on Z.ai’s in-house Code Bench. What’s new Stronger coding: Terminal-Bench 3.0 improves from 4.6 to 28.3, DeepSWE v1.1 from 46.2 to 66.9, and Terminal-Bench 2.1 from 81.0 to 88.2 over GLM-5.2. Long-horizon agentic tasks: SWE-Marathon more than doubles (19.4 → 42.5), with the top scores in Z.ai’s evaluations on AutomationBench (48.2) and GDPval-AA v2 (1769). Security research: state of the art on CyberGym (84.5) for vulnerability discovery. Adjustable reasoning effort: reasoning_effort accepts low , high , and max , and defaults to max . For chat, set clear_thinking to true . 1M token context window: the same long context as GLM-5.2, for project-level engineering work and long-running sessions. Agentic coding GLM-5.3 is built for coding agents, including Claude Code, OpenCode, Hermes Agent, and OpenClaw. Z.ai’s results below were measured in the Claude Code harness with maximum reasoning effort. Benchmarks Benchmark GLM-5.3 GLM-5.2 Kimi K3 DeepSeek-V4 Pro-0813 Qwen3.8-Max Opus 4.8 Fable 5 GPT-5.6 Sol Terminal Bench 2.1 88.2 81.0 88.3 87.9 86.6 85.0 88.0 88.8 Terminal Bench 3.0 28.3 4.6 17.4 – – 21.1 33.7 34.6 DeepSWE (v1.1) 66.9 46.2 67.5 62.7 56.6 58.0 69.7 72.7 NL2Repo 58.0 48.9 58.0 61.1 55.9 69.7 – – ProgramBench (Almost Solved) 19.0 9.5 17.5 – 10.5 15.5 33.0 23.0 FrontierSWE 78.1 67.5 – – – 66.5 88.2 – SWE-Marathon (v1.1) 42.5 19.4 48.1 – – 48.8 33.1 42.5 PostTrainBench 39.8 31.7 32.0 – – 32.9 41.8 36.2 CyberGym 84.5 77.2 80.0 83.3 78.5 78.1 83.8 83.6 ExploitGym (2h / 6h) 10",
       "variants": [
@@ -87,9 +87,9 @@
         "thinking",
         "tools"
       ],
-      "pulls": 120000,
-      "pulls_text": "120K \n  Downloads",
-      "blurb": "tev1 1w decision A 4B decision model from Together AI for fast classification. 120K 13 tags 0.8b 4b",
+      "pulls": 122000,
+      "pulls_text": "122K \n  Downloads",
+      "blurb": "tev1 2w decision A 4B decision model from Together AI for fast classification. 122K 13 tags 0.8b 4b",
       "name": "A 4B decision model from Together AI for fast classification.",
       "description": "Readme Tev1 requires Ollama 0.35 or later. Tev1 is a family of experimental decision models from Together AI, fine-tuned from Qwen3.5 in 4B and 0.8B sizes. You give it a question and a set of options. It selects the answer based on likely outcome, and gives you the probability of each option. It’s meant for the fast classification work that TypeSafe’s Jev does, like routing a support ticket or checking a request against a policy. Models 4B ollama pull tev1:4b 0.8B ollama pull tev1:0.8b Highlights Three question types: Pick from a list, answer true or false, or place something on a rubric. Two sizes: The 4B model is the more accurate of the two. The 0.8B model is an 812MB download for tight memory budgets. Many questions per request: Ask up to 64 questions about the same text in one call. Open: The dataset builders and training scripts are MIT licensed. API Decision models use Ollama’s /v1/systemone endpoint, which follows TypeSafe’s Jev API. Put the text you want judged in state and your questions in questions . Ollama builds Tev1’s prompt for you. Field Description model tev1 (the 4B model) or tev1:0.8b state The text to judge. Use a string, or a JSON object or array for structured input. questions 1 to 64 named questions. Answers come back in the same order. keep_alive Optional. How long the model stays loaded after the request. Every question has a type , instructions , and usually criteria : Type criteria Answer fields choice An object mapping each option to a description. Use null to let the option name describe itself. choice , probabilities , confidence noul Optional. {\"true\": \"...\", \"false\": \"...\"} if you want to describe each side. noul , the probability that the answer is true score An array of level descriptions, lowest first. Levels are numbered from 0. score (the probability-weighted level), legend , probabilities , confidence Choice and score questions take 2 to 26 options. Tev1 was trained on 2 to 24, so stay in that range. confidence runs from 0 to 1",
       "variants": [
@@ -194,9 +194,9 @@
         "multimodal",
         "vision"
       ],
-      "pulls": 91400,
-      "pulls_text": "91.4K \n  Downloads",
-      "blurb": "embeddinggemma-2 1w audio EmbeddingGemma 2 is a model from Google built on the Gemma 4 architecture. 91.4K 21 tags 270m 440m 570m 740m",
+      "pulls": 94900,
+      "pulls_text": "94.9K \n  Downloads",
+      "blurb": "embeddinggemma-2 1w audio EmbeddingGemma 2 is a model from Google built on the Gemma 4 architecture. 94.8K 21 tags 270m 440m 570m 740m",
       "name": "EmbeddingGemma 2 is a multimodal embedding model from Google built on the Gemma 4 architecture.",
       "description": "Readme EmbeddingGemma 2 is an open multimodal embedding model built by Google DeepMind which maps text (incl. code), images, video, and audio inputs—and combinations thereof—into a single, unified 768-dimensional vector space. The model has 740M total parameters, combining a 270M parameter text model with modular vision (170M) and audio (300M) encoders. Designed to run on consumer hardware such as mobile devices and laptops, EmbeddingGemma 2 delivers low-latency semantic representations for on-device applications, like search, retrieval-augmented generation (RAG), classification, and clustering. EmbeddingGemma 2 builds upon the architectural and capability advancements of Gemma 4, offering several core features:&nbsp; Native multimodality: Native multimodality: Unifies 4 modalities (text, images, video, and audio) in a single shared 768-dimensional embedding space. Multilinguality and code: EmbeddingGemma 2 understands 100+ languages, and achieves a ~14% improvement on code tasks relative to its predecessor.&nbsp; Flexible footprint: Combines a 270M parameter text backbone (130M transformer + 140M embedder) with selectively loadable vision (170M) and audio (300M) encoders, allowing developers to load only the modalities required for their use case. Matryoshka Representation Learning (MRL): Native support for truncated embeddings across 128d, 256d, 512d, and 768d, enabling up to a 6x reduction in vector storage costs with minimal impact on quality. Context length: 8K token context window, capable of processing minutes of audio or video. Task-steered representations: Uses lightweight text instruction prefixes to optimize embeddings for different tasks (search, classification, clustering, semantic similarity, etc.). Model Overview Parameters Total 740M Backbone 130M Embedder 140M Modality Encoders Vision: 170M Audio: 300M Architecture Layers 24 Model Dimension 512 Hidden Dimension 2048 Sliding Window 1024 tokens Vocabulary Size 262,144 # Heads 4 # KV-Heads (Local/Globa",
       "variants": [
@@ -357,9 +357,9 @@
         "tools",
         "vision"
       ],
-      "pulls": 71600,
-      "pulls_text": "71.6K \n  Downloads",
-      "blurb": "bonsai-2 1w Bonsai 2 from Prism ML is a family of models built for ternary weights – smaller models with close to full-precision quality. 71.6K 9 tags 2b 4b 9b 27b",
+      "pulls": 76300,
+      "pulls_text": "76.3K \n  Downloads",
+      "blurb": "bonsai-2 1w Bonsai 2 from Prism ML is a family of models built for ternary weights – smaller models with close to full-precision quality. 76.3K 9 tags 2b 4b 9b 27b",
       "name": "Bonsai 2 from Prism ML is a family of vision models built for ternary weights – smaller models with close to full-precision quality.",
       "description": "Readme Bonsai 2 from Prism ML is a family of vision models built for ternary weights (−1, 0 or +1): about half the size of standard 4-bit models, at close to full-precision quality. All sizes support thinking, tool calling, image input and a 262K-token context window. References Prism ML on Hugging Face Bonsai 2 27B whitepaper License: Apache 2.0 Write Preview Bonsai 2 from [Prism ML](https://prismml.com) is a family of vision models built for ternary weights (−1, 0 or +1): about half the size of standard 4-bit models, at close to full-precision quality. All sizes support thinking, tool calling, image input and a 262K-token context window. ## References - [Prism ML on Hugging Face](https://huggingface.co/prism-ml) - [Bonsai 2 27B whitepaper](https://github.com/PrismML-Eng/Bonsai-demo/blob/main/bonsai-2-27b-whitepaper.pdf) - License: Apache 2.0 Paste, drop or click to upload images (.png, .jpeg, .jpg, .svg, .gif)",
       "variants": [
@@ -430,78 +430,6 @@
       "tags_count": 9
     },
     {
-      "slug": "nimble",
-      "capabilities": [
-        "reasoning",
-        "thinking",
-        "tools"
-      ],
-      "pulls": 61200,
-      "pulls_text": "61.2K \n  Downloads",
-      "blurb": "nimble 1w decision A 9B decision model from Bespoke Labs for fast, typed classification. 61.2K 8 tags 9b",
-      "name": "A 9B decision model from Bespoke Labs for fast, typed classification.",
-      "description": "Readme Nimble is a 9B decision model from Bespoke Labs, fine-tuned from Qwen3.5-9B. You send Nimble some text and a set of questions. It picks an answer for every question and gives you the probability of each allowed answer. Nimble reads the prompt once per question and scores the answer tokens directly. There’s no reasoning step. This is what makes it fast. ollama pull nimble Highlights Three question types: Pick from a list, answer true or false, or place something on a rubric. Many questions per request: Ask up to 64 questions about the same text in one call. Fast: Nimble answers in under 100ms on a MacBook Pro with an M5 Max. Trained on contrastive pairs: The two examples in a pair differ by one fact, and that fact flips the answer. Apache 2.0 license What you can build Task You define You get back Route a request The destinations and when each one applies The chosen destination and the probability of each destination Check a condition A yes or no question and the evidence True or false, and the probability of each Apply a policy The rules and the allowed outcomes A typed decision based on the text you supply Rate an outcome Ordered levels, each with clear criteria The chosen level and the probability of each level API Decision models use Ollama’s /v1/systemone endpoint, which follows TypeSafe’s Jev API. Put the text you want judged in state and your questions in questions . Ollama builds Nimble’s prompt for you. Field Description model nimble state The text to judge. Use a string, or a JSON object or array for structured input. questions 1 to 64 named questions. Answers come back in the same order. keep_alive Optional. How long the model stays loaded after the request. Every question has a type , instructions , and usually criteria : Type criteria Answer fields choice An object mapping each option to a description. Use null to let the option name describe itself. choice , probabilities , confidence noul Optional. {\"true\": \"...\", \"false\": \"...\"} if you want to ",
-      "variants": [
-        {
-          "tag": "nimble:latest",
-          "size_text": "9.3GB",
-          "size_bytes": 9985798963,
-          "context": "256K",
-          "input": "Text"
-        },
-        {
-          "tag": "nimble:9b",
-          "size_text": "9.3GB",
-          "size_bytes": 9985798963,
-          "context": "256K",
-          "input": "Text"
-        },
-        {
-          "tag": "nimble:9b-mlx-bf16",
-          "size_text": "18GB",
-          "size_bytes": 19327352832,
-          "context": "256K",
-          "input": "Text"
-        },
-        {
-          "tag": "nimble:9b-mxfp8",
-          "size_text": "9.3GB",
-          "size_bytes": 9985798963,
-          "context": "256K",
-          "input": "Text"
-        },
-        {
-          "tag": "nimble:9b-nvfp4",
-          "size_text": "6.9GB",
-          "size_bytes": 7408818585,
-          "context": "256K",
-          "input": "Text"
-        },
-        {
-          "tag": "nimble:9b-q4_K_M",
-          "size_text": "5.6GB",
-          "size_bytes": 6012954214,
-          "context": "256K",
-          "input": "Text"
-        },
-        {
-          "tag": "nimble:9b-q8_0",
-          "size_text": "9.5GB",
-          "size_bytes": 10200547328,
-          "context": "256K",
-          "input": "Text"
-        },
-        {
-          "tag": "nimble:9b-bf16",
-          "size_text": "18GB",
-          "size_bytes": 19327352832,
-          "context": "256K",
-          "input": "Text"
-        }
-      ],
-      "tags_count": 8
-    },
-    {
       "slug": "beam",
       "capabilities": [
         "reasoning",
@@ -509,8 +437,8 @@
         "tools",
         "vision"
       ],
-      "pulls": 46300,
-      "pulls_text": "46.3K \n  Downloads",
+      "pulls": 48600,
+      "pulls_text": "48.6K \n  Downloads",
       "blurb": "beam 1w cloud Beam is an open model by Reflection designed to deliver strong performance for areas such as agentic tool use, coding and general with an emphasis on token efficient usage. 1M free",
       "name": "Beam is an open model by Reflection designed to deliver strong performance for areas such as agentic tool use, coding and general reasoning with an emphasis on token efficient usage.",
       "description": "Readme Beam is an open model built by Reflection. Beam takes text as input and generates text as output. Beam uses a sparse mixture-of-experts (MoE) architecture with 501B total parameters and 23B active parameters. It supports a context window of 1M tokens and was developed predominantly for English. Primary capabilities Token-efficient reasoning: Reaches comparable solution quality to leading open models using approximately 3x fewer inference-time reasoning tokens. Software engineering: Resolves real-world GitHub issues, operates in CLI and DevOps environments, and integrates directly with agentic coding harnesses. Code generation supported across languages. Agentic tool use: Long-horizon task completion, MCP-based tool integration, and browsing. Executes multi-step workflows from natural-language instructions. Reasoning (math and science): Graduate-level science problem solving, theorem proving, and applied mathematics. Reasoning quality transfers to debugging, planning, and self-correction during agentic execution. Model Overview Beam models are designed to deliver strong performance for areas such as agentic tool use, coding and general reasoning with an emphasis on token efficient usage. Property Beam 501B A23B MoE Total Parameters 501.3B Active Parameters 23.4B Layers 52: 3 dense + 49 MoE Attention Gated GQA + Sliding Window Attention Context Length 1M Vocabulary Size 152k tokens Expert Count 256 Supported Modalities Text Chat Template Modified Harmony format Numerics BF16, FP8, NVFP4 Knowledge cutoff June 30, 2026 Property Beam 501B A23B MoE Total Parameters 501.3B Active Parameters 23.4B Layers 52: 3 dense + 49 MoE Attention Gated GQA + Sliding Window Attention Context Length 1M Vocabulary Size 152k tokens Expert Count 256 Supported Modalities Text Chat Template Modified Harmony format Numerics BF16, FP8, NVFP4 Knowledge cutoff June 30, 2026 Benchmark Results These models were evaluated against a large collection of different datasets and metrics to cover d",
@@ -531,9 +459,9 @@
         "multimodal",
         "vision"
       ],
-      "pulls": 43700,
-      "pulls_text": "43.7K \n  Downloads",
-      "blurb": "clef 1w decision cloud Clef is a 27B model created by Cloudflare that turns a state and a schema of typed questions into decisions. 43.7K 9 tags 64K $ $ $ $ 27b",
+      "pulls": 48100,
+      "pulls_text": "48.1K \n  Downloads",
+      "blurb": "clef 2w decision cloud Clef is a 27B model created by Cloudflare that turns a state and a schema of typed questions into decisions. 48K 9 tags 64K $ $ $ $ 27b",
       "name": "Clef is a 27B multimodal model created by Cloudflare that turns a state and a schema of typed questions into decisions.",
       "description": "Readme Clef requires Ollama 0.35.1 or later. To use Clef in Ollama’s cloud, use Ollama 0.40.6 or later. Clef is a 27B decision model from Cloudflare, fine-tuned from Qwen3.8-27B. Clef reads text, JSON, and images. Images are scored together with the text. Clef uses the System One API through Ollama’s /v1/systemone endpoint. You can call it from the Ollama CLI, the Ollama Python and JavaScript libraries, or TypeSafe’s Python SDK. See clef-flash for a smaller, faster variant. ollama pull clef Or run it in Ollama’s cloud with a paid plan or usage credits . No download needed: ollama run clef:cloud --ask \"Is a refund being requested?\" < ticket.txt Highlights Multimodal: Decide over text, JSON, or images, such as screenshots, receipts, forms, and photos. One forward pass: Every option of every question is scored jointly in a single non-autoregressive pass. 64K context window: Twice the state Jev’s 32K window holds. Leading accuracy: Clef tops the Decision Index, Cloudflare’s leaderboard of decision models, and beats Jev on most of its suite. Apache 2.0 license What you can build Task You define You get back Route a request The destinations and when each applies The chosen destination and each destination’s probability Check a condition A yes-or-no question and the evidence The probability that the answer is yes Apply a policy The rules and the allowed outcomes A typed decision based on the text or images you supply Read a document A photo of the page and the fields to decide A field-by-field decision with probabilities Moderate a tool call The call an agent is about to make The probability that it’s harmful, before it runs CLI Ask questions about text you pipe in, or pass after the model name. Each --ask is a yes-or-no question unless you follow it with labels to choose from ( --choice ) or levels to score it on ( --level , lowest first). # Yes or no ollama run clef:cloud --ask \"Is a refund being requested?\" < ticket.txt yes 99% # Choose a label and score urgency in one ",
       "variants": [
@@ -604,37 +532,14 @@
       "tags_count": 9
     },
     {
-      "slug": "minimax-m3.1-flash",
-      "capabilities": [
-        "thinking",
-        "tools",
-        "vision"
-      ],
-      "pulls": 42400,
-      "pulls_text": "42.4K \n  Downloads",
-      "blurb": "minimax-m3.1-flash 1w cloud As a next-generation Flash model, M3.1 Flash delivers a generational leap in agentic tasks, coding, Computer Use and cybersecurity, while making online inference nearly three times faster and reducing usage costs by 70%. 976K $ $ $ $",
-      "name": "As a next-generation Flash model, M3.1 Flash delivers a generational leap in agentic tasks, coding, Computer Use and cybersecurity, while making online inference nearly three times faster and reducing usage costs by 70%.",
-      "description": "Readme No readme Write Preview Paste, drop or click to upload images (.png, .jpeg, .jpg, .svg, .gif)",
-      "variants": [
-        {
-          "tag": "minimax-m3.1-flash:cloud",
-          "size_text": null,
-          "size_bytes": null,
-          "context": "976K",
-          "input": "Text"
-        }
-      ],
-      "tags_count": 1
-    },
-    {
       "slug": "clef-flash",
       "capabilities": [
         "multimodal",
         "vision"
       ],
-      "pulls": 41600,
-      "pulls_text": "41.6K \n  Downloads",
-      "blurb": "clef-flash 1w decision Clef-Flash is a 9B model that turns a state and a schema of typed questions into decisions. 41.6K 5 tags 9b",
+      "pulls": 43200,
+      "pulls_text": "43.2K \n  Downloads",
+      "blurb": "clef-flash 2w decision Clef-Flash is a 9B model that turns a state and a schema of typed questions into decisions. 43.2K 5 tags 9b",
       "name": "Clef-Flash is a 9B multimodal model that turns a state and a schema of typed questions into decisions.",
       "description": "Readme Clef Flash requires Ollama 0.35.1 or later. Clef Flash is a 9B decision model from Cloudflare, fine-tuned from Qwen3.5-9B. Clef Flash can also read images: add encoded images to the request and they’re scored jointly with the text state. It’s fully compatible with the Jev and System One APIs, so it works through Ollama’s /v1/systemone endpoint. Use Clef Flash for latency-critical decisions; see clef for the larger, more accurate variant. ollama pull clef-flash Highlights Fast: Clef Flash had the lowest measured latency of any decision model in Cloudflare’s Decision Index runs — the 27B Clef is roughly five times slower. Multimodal: Decide over text, JSON, or images — screenshots, receipts, forms, photos. One forward pass: Every option of every question is scored jointly in a single non-autoregressive pass. 64K context window: Twice the state Jev’s 32K window holds. Apache 2.0 license What you can build Task You define You get back Route a request The destinations and when each applies The chosen destination and each destination’s probability Check a condition A yes or no question and the evidence True or false, and the probability of each Apply a policy The rules and the allowed outcomes A typed decision based on the text or images you supply Gate an agent step A condition and the agent’s proposed tool call Go or no-go, with the probability of each API Decision models use Ollama’s /v1/systemone endpoint, documented here . Put the text you want judged in state and your questions in questions . Ollama builds Clef Flash’s prompt for you. Field Description model clef-flash state The text to judge. Use a string, or a JSON object or array for structured input. images Optional. Base64-encoded PNG, JPEG, or WebP images shared by all questions, in request order. URLs and data URLs are not supported. questions 1 to 64 named questions. Answers come back in the same order. keep_alive Optional. How long the model stays loaded after the request. Every question has a type ,",
       "variants": [
@@ -677,14 +582,37 @@
       "tags_count": 5
     },
     {
+      "slug": "minimax-m3.1-flash",
+      "capabilities": [
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "pulls": 43100,
+      "pulls_text": "43.1K \n  Downloads",
+      "blurb": "minimax-m3.1-flash 1w cloud As a next-generation Flash model, M3.1 Flash delivers a generational leap in agentic tasks, coding, Computer Use and cybersecurity, while making online inference nearly three times faster and reducing usage costs by 70%. 976K $ $ $ $",
+      "name": "As a next-generation Flash model, M3.1 Flash delivers a generational leap in agentic tasks, coding, Computer Use and cybersecurity, while making online inference nearly three times faster and reducing usage costs by 70%.",
+      "description": "Readme No readme Write Preview Paste, drop or click to upload images (.png, .jpeg, .jpg, .svg, .gif)",
+      "variants": [
+        {
+          "tag": "minimax-m3.1-flash:cloud",
+          "size_text": null,
+          "size_bytes": null,
+          "context": "976K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 1
+    },
+    {
       "slug": "flint",
       "capabilities": [
         "thinking",
         "tools"
       ],
-      "pulls": 26700,
-      "pulls_text": "26.7K \n  Downloads",
-      "blurb": "flint 4d Flint is a 39.8 billion-parameter mixture-of-experts model from Recursive, built for coding agents. 26.7K 7 tags 40b",
+      "pulls": 30600,
+      "pulls_text": "30.6K \n  Downloads",
+      "blurb": "flint 5d Flint is a 39.8 billion-parameter mixture-of-experts model from Recursive, built for coding agents. 30.6K 7 tags 40b",
       "name": "Flint is a 39.8 billion-parameter mixture-of-experts model from Recursive, built for coding agents.",
       "description": "Readme Flint is Recursive’s open model for local coding agents. Give it a repository task—investigating a bug, implementing a feature, or writing tests—and it can reason through the work and use tools across multiple turns. It is built for development workflows that move from understanding code to making changes. Learn more about Flint Flint has 39.8 billion total parameters, with approximately 2.5 billion active per token. Its 262K-token context provides room for substantial code and task history. Quantized versions are available for Apple Silicon and other GPUs hardware, and the model is released under Apache 2.0 . Coding benchmarks In Recursive’s release evaluations, Flint scored 54.9% on Terminal-Bench 2.1 , 89.7% on SWE-bench Pro v2 , and 74.2% on SWE-bench Verified . These are publisher-reported results; evaluation setups and runtimes can affect scores. Source: Recursive’s evaluation Recursive’s published BF16 and NVFP4 benchmark comparison. Model details and evaluation methodology Write Preview <p align=\"center\"><img src=\"/assets/library/flint/dfd80fbb-5886-4bed-ad28-49350a681080\" width=\"160\" alt=\"Flint logo\"></p> Flint is Recursive's open model for local coding agents. Give it a repository task—investigating a bug, implementing a feature, or writing tests—and it can reason through the work and use tools across multiple turns. It is built for development workflows that move from understanding code to making changes. [Learn more about Flint](https://huggingface.co/RecursiveSI/flint) Flint has 39.8 billion total parameters, with approximately 2.5 billion active per token. Its 262K-token context provides room for substantial code and task history. Quantized versions are available for [Apple Silicon](https://huggingface.co/RecursiveSI/flint-int4) and [other GPUs](https://huggingface.co/RecursiveSI/flint-nvfp4-gguf) hardware, and the model is released under [Apache 2.0](https://huggingface.co/RecursiveSI/flint/blob/main/LICENSE). ## Coding benchmarks In Recursive'",
       "variants": [
@@ -748,9 +676,9 @@
         "tools",
         "vision"
       ],
-      "pulls": 23900,
-      "pulls_text": "23.9K \n  Downloads",
-      "blurb": "nemotron-3.5-bolt 3d audio Nemotron 3.5 Bolt is NVIDIA’s compact -language model for local coding, reasoning, and tool use. 23.9K 10 tags e4b",
+      "pulls": 27200,
+      "pulls_text": "27.2K \n  Downloads",
+      "blurb": "nemotron-3.5-bolt 4d audio Nemotron 3.5 Bolt is NVIDIA’s compact -language model for local coding, reasoning, and tool use. 27.2K 10 tags e4b",
       "name": "Nemotron 3.5 Bolt is NVIDIA’s compact vision-language model for local coding, reasoning, and tool use.",
       "description": "Readme Nemotron 3.5 Bolt Nemotron 3.5 Bolt is NVIDIA’s compact vision-language model for local coding, reasoning, and tool use. Bolt E4B Bolt E4B is an 8-billion-parameter model, with 4 billion effective , post-trained by NVIDIA from Gemma 4 E4B. It is designed for fast local conversations, instruction following, and multi-turn tool use. Its companion DFlash draft accelerates generation through speculative decoding. NVIDIA BF16 model card · NVIDIA Q4_K_M model card ollama run nemotron-3.5-bolt:e4b E4B is supported on both Windows/Linux and Apple Silicon. NVIDIA DFlash model card Bolt 74B-A9B It has 74 billion total parameters, with 9 billion active per token , and combines a Mamba-2/Transformer mixture-of-experts backbone with a C-RADIO vision encoder. NVIDIA model card NVIDIA developed Bolt from Nemotron 3.5 Super through model compression and further training. Its published GGUF uses quantization-aware distillation for IQ2_XXS expert weights , alongside NVFP4 and Q8_0 for other layers. Vision: Work with images, screenshots, charts, and documents. Tools: Call functions and use their results in multi-turn tasks. Thinking: Enable or disable reasoning before the answer. Context: Supports up to 256K tokens . Usable context depends on available memory; images, conversation history, tool results, and output share that budget. ollama run nemotron-3.5-bolt Compatibility Apple Silicon / Metal is not currently supported for 74B-A9B. Memory requirements depend on context size, visual inputs, and speculative decoding. License Released under the OpenMDW License Agreement, version 1.1 . See the NVIDIA model cards above for training details and evaluations. Write Preview # Nemotron 3.5 Bolt Nemotron 3.5 Bolt is NVIDIA's compact vision-language model for local coding, reasoning, and tool use. ## Bolt E4B Bolt E4B is an **8-billion-parameter model, with 4 billion effective**, post-trained by NVIDIA from Gemma 4 E4B. It is designed for fast local conversations, instruction following",
       "variants": [
@@ -833,9 +761,9 @@
         "multimodal",
         "vision"
       ],
-      "pulls": 21300,
-      "pulls_text": "21.3K \n  Downloads",
-      "blurb": "d1 1w d1 is a 3B decision model from Liquid AI, built on LFM2.5-VL-3B 21.3K 3 tags 3b",
+      "pulls": 22200,
+      "pulls_text": "22.2K \n  Downloads",
+      "blurb": "d1 9h decision d1 is a 3B decision model from Liquid AI, built on LFM2.5-VL-3B 22.2K 7 tags 2b 3b",
       "name": "d1 is a 3B decision model from Liquid AI, built on LFM2.5-VL-3B",
       "description": "Readme d1 is a 3B decision model from Liquid AI, built on LFM2.5-VL-3B. Give it a state (text, JSON, images, or a mix) and a set of typed questions, and it returns a calibrated probability for every answer in a single forward pass. It isn’t a chat model and doesn’t generate text. It’s compatible with the Jev and System One APIs, so it works through Ollama’s /v1/systemone endpoint and ollama run --ask . ollama pull d1 Highlights Small and accurate : Liquid AI reports 48.57 on Decision Index 0.2.1, the best score for a decision model under 10B, ahead of the 35B-A3B Decider (47.11). Multimodal : images and text in the same state. One forward pass : every option of every question is scored together, with no output tokens. Multilingual : Arabic, Chinese, English, French, German, Hindi, Indonesian, Italian, Japanese, Korean, Polish, Portuguese, Russian, Spanish, Thai, and Vietnamese. What you can build Task You define You get back Route or triage a request The destinations and when each applies The chosen destination and each destination’s probability Moderate content A policy as a yes or no question True or false, and the probability of each Judge an answer A rubric of levels The probability-weighted level and each level’s probability Inspect an image Questions about what’s in the frame Typed answers with probabilities Gate an agent step A condition and the agent’s proposed action Go or no-go, with the probability of each CLI ollama run d1 --ask \"Is a refund being requested?\" < ticket.txt ollama run d1 --ask \"Which team should handle this?\" \\ --choice billing=\"Payments and refunds\" \\ --choice technical=\"Outages and errors\" < ticket.txt ollama run d1 --ask \"How urgent is this?\" \\ --level \"Routine\" \\ --level \"Soon\" \\ --level \"Immediate\" < ticket.txt The state can also follow the model name instead of coming from stdin. API Decision models use Ollama’s /v1/systemone endpoint, documented here . Put the text you want judged in state and your questions in questions . Ollama bu",
       "variants": [
@@ -847,10 +775,38 @@
           "input": "Text"
         },
         {
+          "tag": "d1:2b",
+          "size_text": "3.9GB",
+          "size_bytes": 4187593113,
+          "context": "125K",
+          "input": "Text"
+        },
+        {
           "tag": "d1:3b",
           "size_text": "3.7GB",
           "size_bytes": 3972844748,
           "context": "32K",
+          "input": "Text"
+        },
+        {
+          "tag": "d1:2b-mlx-bf16",
+          "size_text": "3.9GB",
+          "size_bytes": 4187593113,
+          "context": "125K",
+          "input": "Text"
+        },
+        {
+          "tag": "d1:2b-mxfp8",
+          "size_text": "2.4GB",
+          "size_bytes": 2576980377,
+          "context": "125K",
+          "input": "Text"
+        },
+        {
+          "tag": "d1:2b-nvfp4",
+          "size_text": "1.7GB",
+          "size_bytes": 1825361100,
+          "context": "125K",
           "input": "Text"
         },
         {
@@ -861,7 +817,7 @@
           "input": "Text"
         }
       ],
-      "tags_count": 3
+      "tags_count": 7
     },
     {
       "slug": "nimble-v3",
@@ -870,9 +826,9 @@
         "thinking",
         "tools"
       ],
-      "pulls": 18300,
-      "pulls_text": "18.3K \n  Downloads",
-      "blurb": "nimble-v3 2w decision A 9B decision model from Bespoke Labs for fast classification, routing, and scoring. 18.3K 8 tags 9b",
+      "pulls": 18900,
+      "pulls_text": "18.9K \n  Downloads",
+      "blurb": "nimble-v3 2w decision A 9B decision model from Bespoke Labs for fast classification, routing, and scoring. 18.9K 8 tags 9b",
       "name": "A 9B decision model from Bespoke Labs for fast classification, routing, and scoring.",
       "description": "Readme Nimble v3 Requires Ollama 0.40.4 or later. Nimble v3 is a 9B decision model from Bespoke Labs, fine-tuned from Qwen3.5-9B. Give it the relevant facts and questions with defined answers. It returns probabilities for those answers, letting your application route a request, check a condition, or assign a rating. It scores candidate answer tokens directly, without generating a reasoning trace or a free-form response. Noncommercial use only. Nimble v3 is licensed under CC BY-NC 4.0 , unlike the earlier nimble release. The Qwen3.5-9B base is separately licensed under Apache 2.0. See the publisher’s license statement . ollama pull nimble-v3 Highlights Three question types: categorical choices, Boolean questions, and ordered rubric scores. Multiple questions per request: evaluate several aspects of the same input. 32K text context: up to 32,768 tokens, including the formatted questions. MLX and GGUF: automatic backend selection, with unquantized and smaller quantized variants available. API Send requests to Ollama’s /v1/systemone endpoint. Put the evidence in state and name each question in questions . Ollama formats the model’s prompt and returns an answers object using those names. Type Criteria Result choice Option names mapped to descriptions. choice names the selected option; probabilities gives each option’s probability. noul Optional descriptions for true and false . noul is the probability that the answer is true, from 0 to 1. score An array of level descriptions in ascending order. score is the probability-weighted level, numbered from 0; probabilities and legend describe the levels. Example This request checks return eligibility, selects a department, and rates damage: curl --fail-with-body -sS http://localhost:11434/v1/systemone \\ -H 'Content-Type: application/json' \\ -d '{ \"model\": \"nimble-v3\", \"state\": \"Returns are allowed within 30 days. This item was bought 12 days ago. It arrived undamaged.\", \"questions\": { \"eligible\": { \"type\": \"noul\", \"instructions\"",
       "variants": [
@@ -936,148 +892,13 @@
       "tags_count": 8
     },
     {
-      "slug": "muse-spark-open",
-      "capabilities": [
-        "multimodal",
-        "reasoning",
-        "thinking",
-        "tools",
-        "vision"
-      ],
-      "pulls": 15400,
-      "pulls_text": "15.4K \n  Downloads",
-      "blurb": "muse-spark-open 1w cloud Muse Spark Open is a natively model with 816B total parameters (42B active) and a 1M-token context window. Built for coding and agentic work, it excels at long-horizon tasks, complex software engineering, and multi-step reasoning. 1M $ $ $ $",
-      "name": "Muse Spark Open is a natively multimodal model with 816B total parameters (42B active) and a 1M-token context window. Built for coding and agentic work, it excels at long-horizon tasks, complex software engineering, and multi-step reasoning.",
-      "description": "Readme Muse Spark Open is a natively multimodal model with 816B total parameters (42B active) and a 1M-token context window. Built for coding and agentic work, it excels at long-horizon tasks, complex software engineering, and multi-step reasoning. License Muse Model License with limited commercial terms, which allow many developers to use the model for free. Write Preview Muse Spark Open is a natively multimodal model with 816B total parameters (42B active) and a 1M-token context window. Built for coding and agentic work, it excels at long-horizon tasks, complex software engineering, and multi-step reasoning. ![muse spark open](/assets/library/muse-spark-open/f159a648-1a77-4844-9762-c774438b8fac) ### License [Muse Model License](https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B/blob/main/LICENSE.md) with limited commercial terms, which allow many developers to use the model for free. Paste, drop or click to upload images (.png, .jpeg, .jpg, .svg, .gif)",
-      "variants": [
-        {
-          "tag": "muse-spark-open:cloud",
-          "size_text": null,
-          "size_bytes": null,
-          "context": null,
-          "input": "Text"
-        }
-      ],
-      "tags_count": 1
-    },
-    {
-      "slug": "phonon",
-      "capabilities": [],
-      "pulls": 14800,
-      "pulls_text": "14.8K \n  Downloads",
-      "blurb": "phonon 2d Phonon is Gradium’s text-to-speech family. It turns written text into spoken audio as it generates, making it useful for reading assistant replies, narrating passages, and adding a voice to local apps. 14.8K 14 tags",
-      "name": "Phonon is Gradium’s text-to-speech family. It turns written text into spoken audio as it generates, making it useful for reading assistant replies, narrating passages, and adding a voice to local apps.",
-      "description": "Readme Phonon is Gradium’s text-to-speech family. It turns written text into spoken audio as it generates, making it useful for reading assistant replies, narrating passages, and adding a voice to local apps. ollama run phonon \"Good morning. Here is a short update before your first meeting.\" The default model is Phonon 31M English . It includes one voice, named default . Choose a 40M model for another language or for the multilingual checkpoint: Ollama tag Language Loaded memory on Apple M5 Max phonon ( phonon:31m-en , phonon:en ) English, 31M 121 MB phonon:40m-en English, 40M 141 MB phonon:40m-fr ( phonon:fr ) French, 40M 141 MB phonon:40m-de ( phonon:de ) German, 40M 141 MB phonon:40m-es ( phonon:es ) Spanish, 40M 141 MB phonon:40m-pt ( phonon:pt ) Portuguese, 40M 141 MB phonon:40m-multilingual ( phonon:multilingual ) All five languages, 40M 141 MB The 31M English checkpoint is released under Apache 2.0 . The 40M English , French , German , Spanish , Portuguese , and multilingual checkpoints are released under CC BY-NC 4.0 , which limits use to noncommercial purposes. Phonon produces 24 kHz mono audio. These Ollama packages require Apple Silicon and Ollama 0.40.9 or later. Give the model text intended to be spoken; formatting marks such as Markdown headings may be read aloud. For saving audio or using the speech API, see the Ollama speech guide . Write Preview Phonon is [Gradium's](https://huggingface.co/gradium) text-to-speech family. It turns written text into spoken audio as it generates, making it useful for reading assistant replies, narrating passages, and adding a voice to local apps. ```shell ollama run phonon \"Good morning. Here is a short update before your first meeting.\" ``` The default model is [Phonon 31M English](https://huggingface.co/gradium/phonon-31m-en). It includes one voice, named `default`. Choose a 40M model for another language or for the multilingual checkpoint: | Ollama tag | Language | Loaded memory on Apple M5 Max | |---|---|---:| | `p",
-      "variants": [
-        {
-          "tag": "phonon:latest",
-          "size_text": "113MB",
-          "size_bytes": 118489088,
-          "context": "8K",
-          "input": "Text"
-        },
-        {
-          "tag": "phonon:de",
-          "size_text": "123MB",
-          "size_bytes": 128974848,
-          "context": "8K",
-          "input": "Text"
-        },
-        {
-          "tag": "phonon:en",
-          "size_text": "104MB",
-          "size_bytes": 109051904,
-          "context": "8K",
-          "input": "Text"
-        },
-        {
-          "tag": "phonon:es",
-          "size_text": "123MB",
-          "size_bytes": 128974848,
-          "context": "8K",
-          "input": "Text"
-        },
-        {
-          "tag": "phonon:fr",
-          "size_text": "123MB",
-          "size_bytes": 128974848,
-          "context": "8K",
-          "input": "Text"
-        },
-        {
-          "tag": "phonon:multilingual",
-          "size_text": "123MB",
-          "size_bytes": 128974848,
-          "context": "8K",
-          "input": "Text"
-        },
-        {
-          "tag": "phonon:pt",
-          "size_text": "123MB",
-          "size_bytes": 128974848,
-          "context": "8K",
-          "input": "Text"
-        },
-        {
-          "tag": "phonon:31m-en",
-          "size_text": "104MB",
-          "size_bytes": 109051904,
-          "context": "8K",
-          "input": "Text"
-        },
-        {
-          "tag": "phonon:40m-de",
-          "size_text": "126MB",
-          "size_bytes": 132120576,
-          "context": "8K",
-          "input": "Text"
-        },
-        {
-          "tag": "phonon:40m-en",
-          "size_text": "132MB",
-          "size_bytes": 138412032,
-          "context": "8K",
-          "input": "Text"
-        },
-        {
-          "tag": "phonon:40m-es",
-          "size_text": "129MB",
-          "size_bytes": 135266304,
-          "context": "8K",
-          "input": "Text"
-        },
-        {
-          "tag": "phonon:40m-fr",
-          "size_text": "126MB",
-          "size_bytes": 132120576,
-          "context": "8K",
-          "input": "Text"
-        },
-        {
-          "tag": "phonon:40m-multilingual",
-          "size_text": "148MB",
-          "size_bytes": 155189248,
-          "context": "8K",
-          "input": "Text"
-        },
-        {
-          "tag": "phonon:40m-pt",
-          "size_text": "125MB",
-          "size_bytes": 131072000,
-          "context": "8K",
-          "input": "Text"
-        }
-      ],
-      "tags_count": 14
-    },
-    {
       "slug": "d3",
       "capabilities": [
         "vision"
       ],
-      "pulls": 14500,
-      "pulls_text": "14.5K \n  Downloads",
-      "blurb": "d3 4d decision Turn text, structured data, and images into scored choices, yes/no answers, and ratings. 14.5K 16 tags 2b 4b 9b 27b",
+      "pulls": 18100,
+      "pulls_text": "18.1K \n  Downloads",
+      "blurb": "d3 5d decision Turn text, structured data, and images into scored choices, yes/no answers, and ratings. 18.1K 16 tags 2b 4b 9b 27b",
       "name": "Turn text, structured data, and images into scored choices, yes/no answers, and ratings.",
       "description": "Readme d3 is a family of decision models from vLLM Semantic Router . Give it text, structured state, or a still image, then ask it to choose a category, answer yes or no, or rate something on a scale. It returns scores and probabilities for the options you provide. It does not write a conversational answer. Use d3 to route support requests, triage documents, prioritize cases, or check whether an image meets a criterion. You can ask several questions about the same input in one request. Get started d3 runs the 4B model, a good starting point on a 16 GB machine. This example routes a support request: ollama run d3 \"A customer says their card was charged twice.\" \\ --ask \"Which team should handle this?\" \\ --choice 'billing=Invoices and charges' \\ --choice 'returns=Refunds and replacements' \\ --choice 'technical=App errors' d3 requires Ollama 0.40.9 or later. Choose a size Model Best fit Tested Apple Silicon system Loaded model memory d3:2b Fast, local routing and classification 8 GB 3.62 GB d3 (4B) General use 16 GB 5.63 GB d3:9b Harder decisions that benefit from more capacity 32 GB 10.09 GB d3:27b Highest accuracy in the publisher’s family evaluation 64 GB 28.61 GB Memory figures are the peak loaded model allocations measured in Ollama for the default MXFP8 packages on Apple Silicon with a 4,096-token context. The system recommendations leave room for macOS and the full test workload. On other supported systems, these names select Q8_0 packages and memory use will differ. Format-specific tags are available when you need a particular quantization. Quality The publisher reports these Jev Decision Index 0.3.2 scores for the original checkpoints. They are not scores for the Ollama quantized packages. Model 2B 4B 9B 27B Text index 38.9 52.6 55.8 66.3 Vision index 54.7 63.2 66.9 71.3 Limits Ollama supports text, structured state, and still images for d3. Video and Box/Track decisions are unavailable. d3 scores the options and levels you supply. Clear, distinct criteria matt",
       "variants": [
@@ -1197,104 +1018,321 @@
       "tags_count": 16
     },
     {
-      "slug": "pplx-decider",
-      "capabilities": [
-        "multimodal",
-        "vision"
-      ],
-      "pulls": 12400,
-      "pulls_text": "12.4K \n  Downloads",
-      "blurb": "pplx-decider 1w decision pplx-decider is a 27B decision model from Perplexity, fine-tuned from Qwen3.8-27B 12.4K 6 tags 27b",
-      "name": "pplx-decider is a 27B decision model from Perplexity, fine-tuned from Qwen3.8-27B",
-      "description": "Readme pplx-decider is a 27B decision model from Perplexity, fine-tuned from Qwen3.8-27B. Give it a state (text, JSON, or images) and a set of typed questions, and it returns a calibrated probability for every answer in a single forward pass. It doesn’t generate text. It’s compatible with the Jev and System One APIs, so it works through Ollama’s /v1/systemone endpoint and ollama run --ask . ollama pull pplx-decider Highlights Accurate : 85.7% across 11 public benchmarks in Perplexity’s evaluation, ahead of Jev (84.5%) and its Qwen3.8-27B base (74.8%). Multimodal : decide over text, JSON, or images such as screenshots, receipts, and forms. One forward pass : every option of every question is scored together, with no output tokens. Apache 2.0 license What you can build Task You define You get back Route a request The destinations and when each applies The chosen destination and each destination’s probability Check a condition A yes or no question True or false, and the probability of each Grade an answer A rubric of levels The probability-weighted level and each level’s probability Gate an agent step A condition and the agent’s proposed action Go or no-go, with the probability of each CLI ollama run pplx-decider --ask \"Is a refund being requested?\" < ticket.txt ollama run pplx-decider --ask \"Which team should handle this?\" \\ --choice billing=\"Payments and refunds\" \\ --choice technical=\"Outages and errors\" < ticket.txt ollama run pplx-decider --ask \"How urgent is this?\" \\ --level \"Routine\" \\ --level \"Soon\" \\ --level \"Immediate\" < ticket.txt The state can also follow the model name instead of coming from stdin. API Decision models use Ollama’s /v1/systemone endpoint, documented here . Put the text you want judged in state and your questions in questions . Ollama builds pplx-decider’s prompt for you. Field Description model pplx-decider state The text to judge. Use a string, or a JSON object or array for structured input. images Optional. Base64-encoded PNG, JPEG, or Web",
+      "slug": "phonon",
+      "capabilities": [],
+      "pulls": 18100,
+      "pulls_text": "18.1K \n  Downloads",
+      "blurb": "phonon 3d Phonon is Gradium’s text-to-speech family. It turns written text into spoken audio as it generates, making it useful for reading assistant replies, narrating passages, and adding a voice to local apps. 18.1K 14 tags",
+      "name": "Phonon is Gradium’s text-to-speech family. It turns written text into spoken audio as it generates, making it useful for reading assistant replies, narrating passages, and adding a voice to local apps.",
+      "description": "Readme Phonon is Gradium’s text-to-speech family. It turns written text into spoken audio as it generates, making it useful for reading assistant replies, narrating passages, and adding a voice to local apps. ollama run phonon \"Good morning. Here is a short update before your first meeting.\" The default model is Phonon 31M English . It includes one voice, named default . Choose a 40M model for another language or for the multilingual checkpoint: Ollama tag Language Loaded memory on Apple M5 Max phonon ( phonon:31m-en , phonon:en ) English, 31M 121 MB phonon:40m-en English, 40M 141 MB phonon:40m-fr ( phonon:fr ) French, 40M 141 MB phonon:40m-de ( phonon:de ) German, 40M 141 MB phonon:40m-es ( phonon:es ) Spanish, 40M 141 MB phonon:40m-pt ( phonon:pt ) Portuguese, 40M 141 MB phonon:40m-multilingual ( phonon:multilingual ) All five languages, 40M 141 MB The 31M English checkpoint is released under Apache 2.0 . The 40M English , French , German , Spanish , Portuguese , and multilingual checkpoints are released under CC BY-NC 4.0 , which limits use to noncommercial purposes. Phonon produces 24 kHz mono audio. These Ollama packages require Apple Silicon and Ollama 0.40.9 or later. Give the model text intended to be spoken; formatting marks such as Markdown headings may be read aloud. For saving audio or using the speech API, see the Ollama speech guide . Write Preview Phonon is [Gradium's](https://huggingface.co/gradium) text-to-speech family. It turns written text into spoken audio as it generates, making it useful for reading assistant replies, narrating passages, and adding a voice to local apps. ```shell ollama run phonon \"Good morning. Here is a short update before your first meeting.\" ``` The default model is [Phonon 31M English](https://huggingface.co/gradium/phonon-31m-en). It includes one voice, named `default`. Choose a 40M model for another language or for the multilingual checkpoint: | Ollama tag | Language | Loaded memory on Apple M5 Max | |---|---|---:| | `p",
       "variants": [
         {
-          "tag": "pplx-decider:latest",
-          "size_text": "17GB",
-          "size_bytes": 18253611008,
-          "context": "256K",
+          "tag": "phonon:latest",
+          "size_text": "113MB",
+          "size_bytes": 118489088,
+          "context": "8K",
           "input": "Text"
         },
         {
-          "tag": "pplx-decider:27b",
-          "size_text": "17GB",
-          "size_bytes": 18253611008,
-          "context": "256K",
+          "tag": "phonon:de",
+          "size_text": "123MB",
+          "size_bytes": 128974848,
+          "context": "8K",
           "input": "Text"
         },
         {
-          "tag": "pplx-decider:27b-mlx-bf16",
-          "size_text": "52GB",
-          "size_bytes": 55834574848,
-          "context": "256K",
+          "tag": "phonon:en",
+          "size_text": "104MB",
+          "size_bytes": 109051904,
+          "context": "8K",
           "input": "Text"
         },
         {
-          "tag": "pplx-decider:27b-mxfp8",
-          "size_text": "29GB",
-          "size_bytes": 31138512896,
-          "context": "256K",
+          "tag": "phonon:es",
+          "size_text": "123MB",
+          "size_bytes": 128974848,
+          "context": "8K",
           "input": "Text"
         },
         {
-          "tag": "pplx-decider:27b-nvfp4",
-          "size_text": "19GB",
-          "size_bytes": 20401094656,
-          "context": "256K",
+          "tag": "phonon:fr",
+          "size_text": "123MB",
+          "size_bytes": 128974848,
+          "context": "8K",
           "input": "Text"
         },
         {
-          "tag": "pplx-decider:27b-q4_K_M",
-          "size_text": "17GB",
-          "size_bytes": 18253611008,
-          "context": "256K",
+          "tag": "phonon:multilingual",
+          "size_text": "123MB",
+          "size_bytes": 128974848,
+          "context": "8K",
+          "input": "Text"
+        },
+        {
+          "tag": "phonon:pt",
+          "size_text": "123MB",
+          "size_bytes": 128974848,
+          "context": "8K",
+          "input": "Text"
+        },
+        {
+          "tag": "phonon:31m-en",
+          "size_text": "104MB",
+          "size_bytes": 109051904,
+          "context": "8K",
+          "input": "Text"
+        },
+        {
+          "tag": "phonon:40m-de",
+          "size_text": "126MB",
+          "size_bytes": 132120576,
+          "context": "8K",
+          "input": "Text"
+        },
+        {
+          "tag": "phonon:40m-en",
+          "size_text": "132MB",
+          "size_bytes": 138412032,
+          "context": "8K",
+          "input": "Text"
+        },
+        {
+          "tag": "phonon:40m-es",
+          "size_text": "129MB",
+          "size_bytes": 135266304,
+          "context": "8K",
+          "input": "Text"
+        },
+        {
+          "tag": "phonon:40m-fr",
+          "size_text": "126MB",
+          "size_bytes": 132120576,
+          "context": "8K",
+          "input": "Text"
+        },
+        {
+          "tag": "phonon:40m-multilingual",
+          "size_text": "148MB",
+          "size_bytes": 155189248,
+          "context": "8K",
+          "input": "Text"
+        },
+        {
+          "tag": "phonon:40m-pt",
+          "size_text": "125MB",
+          "size_bytes": 131072000,
+          "context": "8K",
           "input": "Text"
         }
       ],
-      "tags_count": 6
+      "tags_count": 14
     },
     {
-      "slug": "d1-omni",
+      "slug": "lfm3-omni",
       "capabilities": [
-        "multimodal",
+        "reasoning",
+        "thinking",
+        "tools",
         "vision"
       ],
-      "pulls": 10800,
-      "pulls_text": "10.8K \n  Downloads",
-      "blurb": "d1-omni 1w d1-omni is a 600M decision model from Liquid AI 10.8K 4 tags 600m",
-      "name": "d1-omni is a multimodal 600M decision model from Liquid AI",
-      "description": "Readme d1-omni is a 600M decision model from Liquid AI, built on LFM2.5-Encoder-350M. Give it a state (text or JSON, with images or a short voice clip) and a set of typed questions, and it returns a calibrated probability for every answer in a single forward pass. It works through Ollama’s /v1/systemone endpoint and ollama run --ask . Highlights Edge-sized : 587M parameters, a 0.85 GB download. The same trunk handles every modality, with small vision (94M) and audio (112M) encoders. Images : one or more images per state; large frames are tiled. Speech : up to 30 seconds of English speech per request. One forward pass : every option of every question is scored together, with no output tokens. For the most accurate decisions over text and images, use d1 , Liquid AI’s 3B model. Use d1-omni when size matters or you need audio. Usage ollama run d1-omni --ask \"Is this support request urgent?\" < ticket.txt curl http://localhost:11434/v1/systemone -d '{ \"model\": \"d1-omni\", \"state\": \"Our app crashes on launch for every user since this morning'\\''s update. Please fix it now.\", \"questions\": { \"urgent\": {\"type\": \"noul\", \"instructions\": \"Is this support request urgent?\"}, \"team\": { \"type\": \"choice\", \"instructions\": \"Which team should handle this request?\", \"criteria\": { \"billing\": \"Payments, invoices, and refunds\", \"technical\": \"Outages, errors, and configuration\", \"sales\": \"Plans and upgrades\" } } } }' d1-omni answers urgent with 0.998 and picks technical with probability 0.995. Speech Put one base64-encoded WAV clip in images , and send audio or images, not both. Clips are cut at 30 seconds. The audio training data was English requests from a speaker to an assistant, so questions about what kind of utterance it is, its topic, and what the speaker wants work best. curl http://localhost:11434/v1/systemone -d '{ \"model\": \"d1-omni\", \"state\": \"Voice message from a customer.\", \"images\": [\"<base64-encoded WAV>\"], \"questions\": { \"intent\": { \"type\": \"choice\", \"instructions\": \"What does",
+      "pulls": 580,
+      "pulls_text": "580 \n  Downloads",
+      "blurb": "lfm3-omni 9h audio a single end-to-end model that understands text, images, video and audio, and answers in text and speech 571 5 tags 2b",
+      "name": "a single end-to-end model that understands text, images, video and audio, and answers in text and speech",
+      "description": "Readme LFM3-Omni-2B is Liquid AI’s first omni-modal model in the LFM3 family: a single end-to-end model that understands text, images, video and audio, and answers in text and speech. It is built for on-device use: one model replaces a separate ASR model, vision-language model, LLM and TTS model. Any input, text or speech output: ask about a photo by voice, transcribe or translate speech, chat out loud, or ask questions about a video and its soundtrack together. Watches and listens together: for videos with sound, the model sees and hears them at the same time, so it can answer questions that need both. Small enough for devices: at 2.2B parameters, it is designed to run efficiently on phones, laptops and other edge hardware. Property Specification Checkpoint Post-trained omni-modal model Parameters 2.17B total Architecture LFM3 backbone, LFM3 vision encoder, LFM3 causal audio encoder, LiquidCodec audio tokenizer. Inputs Text, images, video with or without its soundtrack, and 16 kHz audio. Images and video are processed at native resolution; each 2×2 block of patches becomes one language token. Video is sampled at 2 fps. Outputs Text, 24 kHz speech, or interleaved text and speech Context length 32K tokens (input + output) Vocabulary 128,000 text tokens Text languages English, Arabic, Chinese, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Vietnamese, Thai, Indonesian, Hindi, Russian, Polish Speech languages Arabic, Danish, German, Greek, British English, American English, Finnish, French, Hebrew, Italian, Japanese, Korean, Dutch, Polish, Portuguese, Spanish, Swedish, Turkish, Chinese License LFM Open License v1.0 This is a non-reasoning model. Thinking is not supported. Write Preview LFM3-Omni-2B is Liquid AI's first **omni-modal** model in the LFM3 family: a single end-to-end model that **understands text, images, video and audio,** and **answers in text and speech.** It is built for **on-device** use: one model replaces a separate ASR model, vision",
       "variants": [
         {
-          "tag": "d1-omni:latest",
-          "size_text": "850MB",
-          "size_bytes": 891289600,
+          "tag": "lfm3-omni:latest",
+          "size_text": "2.4GB",
+          "size_bytes": 2576980377,
           "context": "125K",
           "input": "Text"
         },
         {
-          "tag": "d1-omni:600m",
-          "size_text": "850MB",
-          "size_bytes": 891289600,
+          "tag": "lfm3-omni:2b",
+          "size_text": "2.4GB",
+          "size_bytes": 2576980377,
           "context": "125K",
           "input": "Text"
         },
         {
-          "tag": "d1-omni:600m-q8_0",
-          "size_text": "850MB",
-          "size_bytes": 891289600,
+          "tag": "lfm3-omni:2b-mlx-bf16",
+          "size_text": "4.5GB",
+          "size_bytes": 4831838208,
           "context": "125K",
           "input": "Text"
         },
         {
-          "tag": "d1-omni:600m-bf16",
-          "size_text": "1.2GB",
-          "size_bytes": 1288490188,
+          "tag": "lfm3-omni:2b-mxfp8",
+          "size_text": "3.1GB",
+          "size_bytes": 3328599654,
+          "context": "125K",
+          "input": "Text"
+        },
+        {
+          "tag": "lfm3-omni:2b-nvfp4",
+          "size_text": "2.4GB",
+          "size_bytes": 2576980377,
           "context": "125K",
           "input": "Text"
         }
       ],
-      "tags_count": 4
+      "tags_count": 5
+    },
+    {
+      "slug": "lfm3-vl",
+      "capabilities": [
+        "reasoning",
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "pulls": 453,
+      "pulls_text": "453 \n  Downloads",
+      "blurb": "lfm3-vl 9h LFM3-VL-2B is a -language model for on-device visual understanding. 446 5 tags 2b",
+      "name": "LFM3-VL-2B is a vision-language model for on-device visual understanding.",
+      "description": "Readme LFM3-VL-2B is a vision-language model for on-device visual understanding. It takes text, images, and video (soon) as input, and combines the LFM3 language model with a new in-house vision encoder. New in LFM3-VL-2B: Video understanding (soon): the first LFM vision model that takes video as input. Ask questions about a recorded lecture, a walkthrough filmed on your phone, or a clip from a camera feed. Thinking: the model reasons step by step before it answers. This helps most with harder visual questions, such as math, charts, and multi-step problems. Spatial and embodied reasoning: the model finds objects and reasons about how they are placed relative to each other, a strong foundation for robotics applications. Model details The LFM3 family includes base, text, vision, audio, omni, and decision models. Property Specification Checkpoint Post-trained vision-language model Parameters 1.92B: 1.73B language model, 164M vision encoder, 25M projector Architecture LFM3, 24 layers: 13 gated short convolutions, 5 sliding-window attention, 6 global attention Vision encoder 14 layers: 8 gated depthwise 2D convolutions, 6 bidirectional attention, 16×16 patches with 2D rotary embeddings Inputs Text, images, and video (soon) at native resolution. Each 2×2 block of patches becomes one language token. Video is sampled at 2 fps. Context length 128K tokens (input + output) Vocabulary 128,000 tokens Languages English, Arabic, Chinese, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Vietnamese, Thai, Indonesian, Hindi, Russian, Polish License LFM Open License v1.0 LFM3-VL-2B is designed for on-device visual tasks: questions about video, reading documents, charts, and app screens, finding objects in an image, and spatial reasoning for robots. It is not recommended for coding, multi-turn conversations, or complex reasoning. Write Preview LFM3-VL-2B is a **vision-language model for on-device visual understanding.** It takes text, images, and video (soon) as input, a",
+      "variants": [
+        {
+          "tag": "lfm3-vl:latest",
+          "size_text": "1.7GB",
+          "size_bytes": 1825361100,
+          "context": "125K",
+          "input": "Text"
+        },
+        {
+          "tag": "lfm3-vl:2b",
+          "size_text": "1.7GB",
+          "size_bytes": 1825361100,
+          "context": "125K",
+          "input": "Text"
+        },
+        {
+          "tag": "lfm3-vl:2b-mlx-bf16",
+          "size_text": "3.9GB",
+          "size_bytes": 4187593113,
+          "context": "125K",
+          "input": "Text"
+        },
+        {
+          "tag": "lfm3-vl:2b-mxfp8",
+          "size_text": "2.4GB",
+          "size_bytes": 2576980377,
+          "context": "125K",
+          "input": "Text"
+        },
+        {
+          "tag": "lfm3-vl:2b-nvfp4",
+          "size_text": "1.7GB",
+          "size_bytes": 1825361100,
+          "context": "125K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 5
+    },
+    {
+      "slug": "lfm3-audio",
+      "capabilities": [
+        "reasoning",
+        "tools",
+        "vision"
+      ],
+      "pulls": 274,
+      "pulls_text": "274 \n  Downloads",
+      "blurb": "lfm3-audio 9h audio LFM3-Audio-2B is a compact, fully featured audio model. 265 5 tags 2b",
+      "name": "LFM3-Audio-2B is a compact, fully featured audio model.",
+      "description": "Readme LFM3-Audio-2B is a compact, fully featured audio model that runs locally on laptops and edge devices. It takes text or audio as input and responds with text, speech, or both. Voice chat: ask questions aloud and receive streaming replies in text and speech. For text-only responses, the model can reason before answering. Multilingual speech: transcribe, synthesize, and translate speech across 18 languages. Audio understanding and reasoning: interpret recordings and answer questions about the speech, sounds, and events they contain. Tool calling: turn spoken requests into tool calls to control apps and devices, with text or speech alongside the calls. LFM3-Audio-2B introduces an in-house audio encoder and LiquidCodec audio tokenizer, improving speech quality over LFM2.5-Audio. Model details The LFM3 family includes base, text, vision, audio, omni, and decision models. Property Specification Parameters 2B total Architecture LFM3 backbone, causal audio encoder, and LiquidCodec audio tokenizer Input Text or audio; audio encoder operates at 16 kHz Output Text, 24 kHz speech, or interleaved text and speech Context length 32K tokens (input + output) Streaming Causal audio encoding, incremental prefill, and streaming speech generation Speech languages / locales Arabic, Danish, German, Greek, British English, American English, Finnish, French, Hebrew, Italian, Japanese, Korean, Dutch, Polish, Portuguese, Spanish, Swedish, Turkish, Chinese License LFM Open License v1.0 LFM3-Audio-2B is designed for local agents, tool calling, structured outputs, and domain-specific fine-tuning. Use retrieval or search for knowledge-heavy tasks. It is not recommended for agentic coding or complex multi-step reasoning due to its small size. Write Preview LFM3-Audio-2B is a **compact, fully featured audio model that runs locally on laptops and edge devices.** It takes text or audio as input and responds with text, speech, or both. * **Voice chat:** ask questions aloud and receive streaming ",
+      "variants": [
+        {
+          "tag": "lfm3-audio:latest",
+          "size_text": "2.1GB",
+          "size_bytes": 2254857830,
+          "context": null,
+          "input": "Audio"
+        },
+        {
+          "tag": "lfm3-audio:2b",
+          "size_text": "2.1GB",
+          "size_bytes": 2254857830,
+          "context": null,
+          "input": "Audio"
+        },
+        {
+          "tag": "lfm3-audio:2b-mlx-bf16",
+          "size_text": "4.2GB",
+          "size_bytes": 4509715660,
+          "context": null,
+          "input": "Audio"
+        },
+        {
+          "tag": "lfm3-audio:2b-mxfp8",
+          "size_text": "2.7GB",
+          "size_bytes": 2899102924,
+          "context": null,
+          "input": "Audio"
+        },
+        {
+          "tag": "lfm3-audio:2b-nvfp4",
+          "size_text": "2.1GB",
+          "size_bytes": 2254857830,
+          "context": null,
+          "input": "Audio"
+        }
+      ],
+      "tags_count": 5
+    },
+    {
+      "slug": "lfm3",
+      "capabilities": [
+        "reasoning",
+        "thinking",
+        "tools",
+        "vision"
+      ],
+      "pulls": 54,
+      "pulls_text": "054 \n  Downloads",
+      "blurb": "lfm3 9h LFM3-1.7B is a tri-hybrid model for local agents and specialized applications. 1,045 5 tags 1.7b",
+      "name": "LFM3-1.7B is a tri-hybrid model for local agents and specialized applications.",
+      "description": "Readme LFM3-1.7B is a text model for local agents and specialized applications , based on a new tri-hybrid architecture. Agentic training: post-trained for agentic harnesses such as Hermes Agent, Pi, and OpenClaw, with a 256K-token context window. Designed for the edge: at 4-bit precision, it takes about 1 GB of memory, so it fits on any phone or laptop. Made to be specialized: adapt the model to your domains, formats, and tools via quick single-GPU fine-tuning. Model details The LFM3 family includes base, text, vision, audio, omni, and decision models. Property Specification Checkpoint Post-trained, text-only language model Parameters 1.73B Architecture 24 layers: 13 gated short convolutions, 5 sliding-window attention, 6 global attention Context length 256K tokens (input + output) Vocabulary 128,000 tokens Languages English, Arabic, Chinese, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Vietnamese, Thai, Indonesian, Hindi, Russian, Polish License LFM Open License v1.0 LFM3-1.7B is designed for local agents, tool calling, structured outputs, and domain-specific fine-tuning. Use retrieval or search for knowledge-heavy tasks. It is not recommended for agentic coding or complex multi-step reasoning due to its small size. Write Preview LFM3-1.7B is a **text model for local agents and specialized applications**, based on a new tri-hybrid architecture. * **Agentic training:** post-trained for agentic harnesses such as Hermes Agent, Pi, and OpenClaw, with a 256K-token context window. * **Designed for the edge:** at 4-bit precision, it takes about 1 GB of memory, so it fits on any phone or laptop. * **Made to be specialized:** adapt the model to your domains, formats, and tools via quick single-GPU fine-tuning. # Model details The LFM3 family includes base, text, vision, audio, omni, and decision models. | Property | Specification | |:--- |:---:| | Checkpoint | Post-trained, text-only language model | | Parameters | 1.73B | | Architecture | 24 layers: 13 ",
+      "variants": [
+        {
+          "tag": "lfm3:latest",
+          "size_text": "1.7GB",
+          "size_bytes": 1825361100,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "lfm3:1.7b",
+          "size_text": "1.7GB",
+          "size_bytes": 1825361100,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "lfm3:1.7b-mlx-bf16",
+          "size_text": "3.5GB",
+          "size_bytes": 3758096384,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "lfm3:1.7b-mxfp8",
+          "size_text": "2.1GB",
+          "size_bytes": 2254857830,
+          "context": "256K",
+          "input": "Text"
+        },
+        {
+          "tag": "lfm3:1.7b-nvfp4",
+          "size_text": "1.7GB",
+          "size_bytes": 1825361100,
+          "context": "256K",
+          "input": "Text"
+        }
+      ],
+      "tags_count": 5
     }
   ]
 }
